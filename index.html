@@ -40,27 +40,29 @@
             border-radius: 8px !important;
             padding: 12px !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
-            font-family: Arial, sans-serif;
             font-size: 13px;
         }
-        
-        /* Styles pour simuler les catégories de groupe (Tiroirs) */
-        .menu-categorie-titre {
+
+        /* Injection propre des en-têtes de sections */
+        .menu-section-header {
             font-weight: bold;
             color: #00ffcc;
-            margin: 10px 0 5px 0;
+            margin: 12px 0 6px 0;
             display: block;
             border-bottom: 1px solid #444;
             padding-bottom: 3px;
             font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .menu-categorie-titre:first-child {
+        .menu-section-header:first-child {
             margin-top: 0;
         }
-        .leaflet-control-layers-overlays label {
-            padding-left: 5px;
-            margin-bottom: 3px;
+
+        .leaflet-control-layers-list label {
+            margin-bottom: 4px;
             display: block;
+            cursor: pointer;
         }
 
         /* Style de la Légende Dynamique */
@@ -73,7 +75,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             font-size: 13px;
             line-height: 18px;
-            font-family: Arial, sans-serif;
         }
         .info.legend h4 {
             margin: 0 0 8px 0;
@@ -134,7 +135,7 @@
         }
 
         // -------------------------------------------------------------
-        // FONCTION DE COLORATION DE LA QUALITÉ (Règles strictes demandées)
+        // FONCTION DE COLORATION DE LA QUALITÉ
         // -------------------------------------------------------------
         function getColorByQuality(valeur) {
             if (!valeur) return "#888888";
@@ -225,28 +226,24 @@
         }
 
         // -------------------------------------------------------------
-        // CONTRÔLE DES COUCHES NATIF SÉCURISÉ & STYLISÉ
+        // CONFIGURATION STANDARD DU MENU NATIF (SANS INJECTION HTML POLLUANTE)
         // -------------------------------------------------------------
         const baseMaps = {
             "Plan IGN (Officiel)": planIGN,
             "OpenStreetMap": osm
         };
 
-        // On utilise des balises HTML spéciales dans les clés du tableau pour forcer l'affichage de séparateurs textuels
         const overlayMaps = {
-            "<span class='menu-categorie-titre'>Périmètre</span>Limites Sud-Lorraine": coucheLimitesSL,
-            
-            "<span class='menu-categorie-titre'>Territoires</span>Sud Meuse": coucheSudMeuse,
+            "Limites Sud-Lorraine": coucheLimitesSL,
+            "Sud Meuse": coucheSudMeuse,
             "Sud 54": coucheSud54,
             "Vosges Ouest": coucheVosgesOuest,
             "Saint-Dié (SDDV)": coucheSDDV,
-            
-            "<span class='menu-categorie-titre'>Cours d'eau</span>Qualité globale": coucheCEQualiteGlobale,
+            "Qualité globale": coucheCEQualiteGlobale,
             "Qualité écologique": coucheCEQualiteEcologique,
             "Qualité chimique": coucheCEQualiteChimique
         };
 
-        // Rendu du menu officiel Leaflet (Fiabilité absolue)
         const menuControl = L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
 
         // Sécurisation anti-zoom / anti-propagation au clic sur le menu
@@ -254,9 +251,56 @@
         L.DomEvent.disableClickPropagation(containerHtml);
         L.DomEvent.disableScrollPropagation(containerHtml);
 
-        // Logique d'exclusion pour les cours d'eau : décocher les autres quand on en choisit un
+        // -------------------------------------------------------------
+        // INJECTION DYNAMIQUE DES TITRES DE RUBRIQUES PAR LE DOM (ZÉRO BUG DE DÉCALAGE)
+        // -------------------------------------------------------------
+        function structurerLeMenu() {
+            const labels = containerHtml.querySelectorAll('label');
+            
+            labels.forEach(label => {
+                const text = label.textContent.trim();
+                
+                // 1. Ajouter le titre "Fond de carte" juste avant Plan IGN
+                if (text === "Plan IGN (Officiel)") {
+                    const header = document.createElement('span');
+                    header.className = 'menu-section-header';
+                    header.innerText = "Fond de carte";
+                    label.parentNode.insertBefore(header, label);
+                }
+                // 2. Ajouter le titre "Périmètre" avant les limites globales
+                if (text === "Limites Sud-Lorraine") {
+                    const header = document.createElement('span');
+                    header.className = 'menu-section-header';
+                    header.innerText = "Périmètre";
+                    label.parentNode.insertBefore(header, label);
+                }
+                // 3. Ajouter le titre "Territoires" avant Sud Meuse
+                if (text === "Sud Meuse") {
+                    const header = document.createElement('span');
+                    header.className = 'menu-section-header';
+                    header.innerText = "Territoires";
+                    label.parentNode.insertBefore(header, label);
+                }
+                // 4. Ajouter le titre "Cours d'eau" avant la qualité globale
+                if (text === "Qualité globale") {
+                    const header = document.createElement('span');
+                    header.className = 'menu-section-header';
+                    header.innerText = "Cours d'eau";
+                    label.parentNode.insertBefore(header, label);
+                }
+            });
+        }
+        
+        // Lancement de la structuration une fois le DOM chargé
+        structurerLeMenu();
+
+        // -------------------------------------------------------------
+        // LOGIQUE D'EXCLUSION DES COURS D'EAU (DÉCOCHE AUTOMATIQUE)
+        // -------------------------------------------------------------
         map.on('layeradd', function (event) {
             const layer = event.layer;
+            
+            // Si on ajoute une des trois qualités, on désactive immédiatement les deux autres
             if (layer === coucheCEQualiteGlobale) {
                 if (map.hasLayer(coucheCEQualiteEcologique)) map.removeLayer(coucheCEQualiteEcologique);
                 if (map.hasLayer(coucheCEQualiteChimique)) map.removeLayer(coucheCEQualiteChimique);
@@ -267,6 +311,9 @@
                 if (map.hasLayer(coucheCEQualiteGlobale)) map.removeLayer(coucheCEQualiteGlobale);
                 if (map.hasLayer(coucheCEQualiteEcologique)) map.removeLayer(coucheCEQualiteEcologique);
             }
+            
+            // On force Leaflet à mettre à jour les cases à cocher cochées/décochées du menu à l'écran
+            menuControl._update();
         });
 
         // -------------------------------------------------------------
@@ -311,7 +358,6 @@
                 ];
             }
 
-            // Masquer la légende si aucun cours d'eau n'est coché
             if (!typeQualite) {
                 this._div.style.display = 'none';
                 return;
@@ -327,7 +373,6 @@
 
         legende.addTo(map);
 
-        // Demander la mise à jour de la légende dès qu'une couche change
         map.on('layeradd layerremove', function () {
             legende.update();
         });
