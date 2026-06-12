@@ -45,7 +45,7 @@
             padding: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             font-size: 13px;
-            width: 250px;
+            width: 260px;
             max-height: 85vh;
             overflow-y: auto;
         }
@@ -67,17 +67,35 @@
             letter-spacing: 0.5px;
         }
         .tiroir-contenu {
-            padding: 6px 4px 4px 4px;
+            padding: 8px 4px 4px 4px;
         }
-        .tiroir-contenu label {
+        
+        /* Conteneur pour aligner proprement une couche et son slider */
+        .item-couche {
+            margin-bottom: 10px;
+        }
+        .item-couche label {
             display: block;
-            margin-bottom: 6px;
             cursor: pointer;
             white-space: nowrap;
+            margin-bottom: 2px;
         }
-        .tiroir-contenu input {
+        .item-couche input[type="checkbox"], 
+        .item-couche input[type="radio"] {
             margin-right: 8px;
             vertical-align: middle;
+        }
+
+        /* Style des barres de réglage de transparence (Sliders) */
+        .slider-opacite {
+            display: block;
+            width: 90%;
+            margin: 2px 0 0 22px;
+            height: 4px;
+            background: #444;
+            outline: none;
+            accent-color: #00ffcc; /* Curseur vert fluo assorti */
+            cursor: pointer;
         }
 
         /* Alignement forcé à gauche pour les fonds de carte */
@@ -93,7 +111,10 @@
 
         /* Décalage (Retrait à droite) pour l'arborescence des territoires */
         .decalage-sous-couche {
-            padding-left: 20px; /* Crée l'effet hiérarchique sous le Sud-Lorraine */
+            padding-left: 18px; /* Crée l'effet hiérarchique sous le Sud-Lorraine */
+        }
+        .decalage-sous-couche .slider-opacite {
+            width: 85%;
         }
 
         /* Titre fixe hors tiroir pour le fond de carte */
@@ -151,13 +172,29 @@
         <details class="tiroir-menu" open>
             <summary>Territoires</summary>
             <div class="tiroir-contenu">
-                <label><input type="checkbox" id="chkLimitesSL" checked>Limites Sud-Lorraine</label>
+                
+                <div class="item-couche">
+                    <label><input type="checkbox" id="chkLimitesSL" checked>Limites Sud-Lorraine</label>
+                    <input type="range" class="slider-opacite" id="sldLimitesSL" min="0" max="100" value="100" title="Transparence">
+                </div>
                 
                 <div class="decalage-sous-couche">
-                    <label><input type="checkbox" id="chkSudMeuse" checked>Sud Meuse</label>
-                    <label><input type="checkbox" id="chkSud54" checked>Sud 54</label>
-                    <label><input type="checkbox" id="chkVosgesOuest" checked>Vosges Ouest</label>
-                    <label><input type="checkbox" id="chkSDDV" checked>Saint-Dié (SDDV)</label>
+                    <div class="item-couche">
+                        <label><input type="checkbox" id="chkSudMeuse" checked>Sud Meuse</label>
+                        <input type="range" class="slider-opacite" id="sldSudMeuse" min="0" max="100" value="100" title="Transparence">
+                    </div>
+                    <div class="item-couche">
+                        <label><input type="checkbox" id="chkSud54" checked>Sud 54</label>
+                        <input type="range" class="slider-opacite" id="sldSud54" min="0" max="100" value="100" title="Transparence">
+                    </div>
+                    <div class="item-couche">
+                        <label><input type="checkbox" id="chkVosgesOuest" checked>Vosges Ouest</label>
+                        <input type="range" class="slider-opacite" id="sldVosgesOuest" min="0" max="100" value="100" title="Transparence">
+                    </div>
+                    <div class="item-couche">
+                        <label><input type="checkbox" id="chkSDDV" checked>Saint-Dié (SDDV)</label>
+                        <input type="range" class="slider-opacite" id="sldSDDV" min="0" max="100" value="100" title="Transparence">
+                    </div>
                 </div>
             </div>
         </details>
@@ -165,9 +202,18 @@
         <details class="tiroir-menu" open>
             <summary>Cours d'eau</summary>
             <div class="tiroir-contenu">
-                <label><input type="radio" name="qualiteCE" id="rbCEGlobale" value="globale" checked>Qualité globale</label>
-                <label><input type="radio" name="qualiteCE" id="rbCEEcologique" value="ecologique">Qualité écologique</label>
-                <label><input type="radio" name="qualiteCE" id="rbCEChimique" value="chimique">Qualité chimique</label>
+                <div class="item-couche">
+                    <label><input type="radio" name="qualiteCE" id="rbCEGlobale" value="globale" checked>Qualité globale</label>
+                    <input type="range" class="slider-opacite" id="sldCEGlobale" min="0" max="100" value="85" title="Transparence">
+                </div>
+                <div class="item-couche">
+                    <label><input type="radio" name="qualiteCE" id="rbCEEcologique" value="ecologique">Qualité écologique</label>
+                    <input type="range" class="slider-opacite" id="sldCEEcologique" min="0" max="100" value="85" title="Transparence">
+                </div>
+                <div class="item-couche">
+                    <label><input type="radio" name="qualiteCE" id="rbCEChimique" value="chimique">Qualité chimique</label>
+                    <input type="range" class="slider-opacite" id="sldCEChimique" min="0" max="100" value="85" title="Transparence">
+                </div>
             </div>
         </details>
     </div>
@@ -176,7 +222,7 @@
 
     <script>
         // -------------------------------------------------------------
-        // FONCTION DE REPROJECTION LAMBERT-93 (EPSG:2154) -> WGS84 (EPSG:4326)
+        // REPROJECTION LAMBERT-93 (EPSG:2154) -> WGS84 (EPSG:4326)
         // -------------------------------------------------------------
         function reprojectLambert93ToWGS84(coords) {
             const X = coords[0]; const Y = coords[1];
@@ -210,7 +256,7 @@
         }
 
         // -------------------------------------------------------------
-        // FONCTION DE COLORATION DE LA QUALITÉ
+        // COLORATION DE LA QUALITÉ
         // -------------------------------------------------------------
         function getColorByQuality(valeur) {
             if (!valeur) return "#888888";
@@ -238,52 +284,58 @@
             attribution: '&copy; OpenStreetMap'
         });
 
-        // Instanciation des Couches
+        // Instanciation des Couches (Variables globales pour modifications dynamiques d'opacité)
+        let geojsonLimitesSL, geojsonSudMeuse, geojsonSud54, geojsonVosgesOuest, geojsonSDDV;
+        let geojsonCEGlobale, geojsonCEEcologique, geojsonCEChimique;
+
         const coucheLimitesSL = L.layerGroup().addTo(map);
         const coucheSudMeuse = L.layerGroup().addTo(map);
         const coucheSud54 = L.layerGroup().addTo(map);
         const coucheVosgesOuest = L.layerGroup().addTo(map);
         const coucheSDDV = L.layerGroup().addTo(map);
 
-        const coucheCEQualiteGlobale = L.layerGroup().addTo(map); // Activé par défaut
+        const coucheCEQualiteGlobale = L.layerGroup().addTo(map); 
         const coucheCEQualiteEcologique = L.layerGroup();
         const coucheCEQualiteChimique = L.layerGroup();
 
         // -------------------------------------------------------------
-        // CHARGEMENT DES DONNÉES GEOJSON
+        // CHARGEMENT DES DONNÉES GEOJSON (STYLE NOUVEAU APPLIQUÉ)
         // -------------------------------------------------------------
         fetch('data/Limites SL.geojson').then(r => r.json()).then(data => {
-            L.geoJSON(fixGeoJSONProjection(data), { style: { color: "#ff3333", weight: 3.5, fillOpacity: 0, dashArray: "6, 12" } }).addTo(coucheLimitesSL);
+            // AJUSTEMENT DEMANDÉ : Trait noir, continu, un peu épais (sans tirets)
+            geojsonLimitesSL = L.geoJSON(fixGeoJSONProjection(data), { 
+                style: { color: "#000000", weight: 4.0, fillOpacity: 0 } 
+            }).addTo(coucheLimitesSL);
         });
 
         fetch('data/Plaque SudMeuse.geojson').then(r => r.json()).then(d => {
-            L.geoJSON(fixGeoJSONProjection(d), { style: { color: '#e6194B', weight: 2, fillColor: '#e6194B', fillOpacity: 0.1 } }).addTo(coucheSudMeuse);
+            geojsonSudMeuse = L.geoJSON(fixGeoJSONProjection(d), { style: { color: '#e6194B', weight: 2, fillColor: '#e6194B', fillOpacity: 0.1 } }).addTo(coucheSudMeuse);
         });
         fetch('data/Plaque Sud54.geojson').then(r => r.json()).then(d => {
-            L.geoJSON(fixGeoJSONProjection(d), { style: { color: '#3cb44b', weight: 2, fillColor: '#3cb44b', fillOpacity: 0.1 } }).addTo(coucheSud54);
+            geojsonSud54 = L.geoJSON(fixGeoJSONProjection(d), { style: { color: '#3cb44b', weight: 2, fillColor: '#3cb44b', fillOpacity: 0.1 } }).addTo(coucheSud54);
         });
         fetch('data/Plaque Vosges Ouest.geojson').then(r => r.json()).then(d => {
-            L.geoJSON(fixGeoJSONProjection(d), { style: { color: '#ffe119', weight: 2, fillColor: '#ffe119', fillOpacity: 0.1 } }).addTo(coucheVosgesOuest);
+            geojsonVosgesOuest = L.geoJSON(fixGeoJSONProjection(d), { style: { color: '#ffe119', weight: 2, fillColor: '#ffe119', fillOpacity: 0.1 } }).addTo(coucheVosgesOuest);
         });
         fetch('data/Plaque SDDV.geojson').then(r => r.json()).then(d => {
-            L.geoJSON(fixGeoJSONProjection(d), { style: { color: '#4363d8', weight: 2, fillColor: '#4363d8', fillOpacity: 0.1 } }).addTo(coucheSDDV);
+            geojsonSDDV = L.geoJSON(fixGeoJSONProjection(d), { style: { color: '#4363d8', weight: 2, fillColor: '#4363d8', fillOpacity: 0.1 } }).addTo(coucheSDDV);
         });
 
         fetch('data/Etats general - ecologique - chimique - masses eaux Sl-alleger.geojson').then(r => r.json()).then(data => {
-            L.geoJSON(data, {
+            geojsonCEGlobale = L.geoJSON(data, {
                 style: function(f) { return { color: getColorByQuality(f.properties["Etat masse eau "]), weight: 2.5, opacity: 0.85 }; },
                 onEachFeature: genererPopup
             }).addTo(coucheCEQualiteGlobale);
 
-            L.geoJSON(data, {
+            geojsonCEEcologique = L.geoJSON(data, {
                 style: function(f) { return { color: getColorByQuality(f.properties["Etat ecologique"]), weight: 2.5, opacity: 0.85 }; },
                 onEachFeature: genererPopup
-            }).addTo(coucheCEQualiteEcologique);
+            });
 
-            L.geoJSON(data, {
+            geojsonCEChimique = L.geoJSON(data, {
                 style: function(f) { return { color: getColorByQuality(f.properties["Etat chimique"]), weight: 2.5, opacity: 0.85 }; },
                 onEachFeature: genererPopup
-            }).addTo(coucheCEQualiteChimique);
+            });
         });
 
         function genererPopup(f, layer) {
@@ -299,7 +351,7 @@
         }
 
         // -------------------------------------------------------------
-        // INTERACTION DU PANNEAU (ÉVÉNEMENTS & RE-ROUTAGES)
+        // INTERACTION DU PANNEAU (ÉVÉNEMENTS & COUCHES)
         // -------------------------------------------------------------
         const panel = document.getElementById('controlPanel');
         L.DomEvent.disableClickPropagation(panel);
@@ -309,45 +361,80 @@
         document.getElementById('rbPlanIGN').addEventListener('change', function() { if(this.checked) { map.addLayer(planIGN); map.removeLayer(osm); } });
         document.getElementById('rbOSM').addEventListener('change', function() { if(this.checked) { map.addLayer(osm); map.removeLayer(planIGN); } });
 
-        // Territoires et Périmètres groupés
+        // Territoires (Activation/Désactivation)
         document.getElementById('chkLimitesSL').addEventListener('change', function() { this.checked ? map.addLayer(coucheLimitesSL) : map.removeLayer(coucheLimitesSL); });
         document.getElementById('chkSudMeuse').addEventListener('change', function() { this.checked ? map.addLayer(coucheSudMeuse) : map.removeLayer(coucheSudMeuse); });
         document.getElementById('chkSud54').addEventListener('change', function() { this.checked ? map.addLayer(coucheSud54) : map.removeLayer(coucheSud54); });
         document.getElementById('chkVosgesOuest').addEventListener('change', function() { this.checked ? map.addLayer(coucheVosgesOuest) : map.removeLayer(coucheVosgesOuest); });
         document.getElementById('chkSDDV').addEventListener('change', function() { this.checked ? map.addLayer(coucheSDDV) : map.removeLayer(coucheSDDV); });
 
-        // LOGIQUE D'INTERRUPTEUR AVANCÉE SUR BOUTONS RADIOS (ON / OFF AU RE-CLIC)
-        let optionQualiteActive = "globale"; // Initialement calé sur globale au chargement
+        // Logique d'interrupteur ON/OFF au re-clic pour les Cours d'eau
+        let optionQualiteActive = "globale";
 
         document.querySelectorAll('input[name="qualiteCE"]').forEach(radio => {
             radio.addEventListener('click', function() {
-                // Si l'utilisateur clique sur le bouton déjà actif : on décoche tout !
                 if (optionQualiteActive === this.value) {
                     this.checked = false;
                     optionQualiteActive = null;
                 } else {
                     optionQualiteActive = this.value;
                 }
-                
-                // Exécution de la bascule graphique sur la carte
                 rafraichirQualiteCoursDeau();
             });
         });
 
         function rafraichirQualiteCoursDeau() {
-            // Nettoyage systématique des 3 couches de cours d'eau
             map.removeLayer(coucheCEQualiteGlobale);
             map.removeLayer(coucheCEQualiteEcologique);
             map.removeLayer(coucheCEQualiteChimique);
 
-            // Si un bouton est resté sélectionné, on monte sa couche associée
             if (optionQualiteActive === "globale") map.addLayer(coucheCEQualiteGlobale);
             if (optionQualiteActive === "ecologique") map.addLayer(coucheCEQualiteEcologique);
             if (optionQualiteActive === "chimique") map.addLayer(coucheCEQualiteChimique);
             
-            // Mise à jour synchrone de la légende
             legende.update();
         }
+
+        // -------------------------------------------------------------
+        // LOGIQUE INTERACTIVE DE RÉGLAGE DE LA TRANSPARENCE (OPACITÉ)
+        // -------------------------------------------------------------
+        function appliquerOpaciteVecteur(geojsonObject, valeurPourcent, estUnPolygone = true) {
+            if (!geojsonObject) return;
+            const alpha = valeurPourcent / 100;
+            
+            geojsonObject.setStyle({
+                opacity: alpha,                    // Opacité de la bordure / ligne
+                fillOpacity: estUnPolygone ? alpha * 0.1 : 0 // Opacité de remplissage (proportionnelle)
+            });
+        }
+
+        // Liaison des écouteurs "input" (mise à jour en temps réel lors de la glisse)
+        document.getElementById('sldLimitesSL').addEventListener('input', function() {
+            appliquerOpaciteVecteur(geojsonLimitesSL, this.value, false); // false = c'est une ligne
+        });
+        document.getElementById('sldSudMeuse').addEventListener('input', function() {
+            appliquerOpaciteVecteur(geojsonSudMeuse, this.value, true);
+        });
+        document.getElementById('sldSud54').addEventListener('input', function() {
+            appliquerOpaciteVecteur(geojsonSud54, this.value, true);
+        });
+        document.getElementById('sldVosgesOuest').addEventListener('input', function() {
+            appliquerOpaciteVecteur(geojsonVosgesOuest, this.value, true);
+        });
+        document.getElementById('sldSDDV').addEventListener('input', function() {
+            appliquerOpaciteVecteur(geojsonSDDV, this.value, true);
+        });
+
+        // Sliders pour les cours d'eau
+        document.getElementById('sldCEGlobale').addEventListener('input', function() {
+            appliquerOpaciteVecteur(geojsonCEGlobale, this.value, false);
+        });
+        document.getElementById('sldCEEcologique').addEventListener('input', function() {
+            appliquerOpaciteVecteur(geojsonCEEcologique, this.value, false);
+        });
+        document.getElementById('sldCEChimique').addEventListener('input', function() {
+            appliquerOpaciteVecteur(geojsonCEChimique, this.value, false);
+        });
 
         // -------------------------------------------------------------
         // CRÉATION DE LA LÉGENDE DYNAMIQUE
