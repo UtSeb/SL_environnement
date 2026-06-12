@@ -94,7 +94,7 @@
             height: 4px;
             background: #444;
             outline: none;
-            accent-color: #00ffcc; /* Curseur vert fluo assorti */
+            accent-color: #00ffcc;
             cursor: pointer;
         }
 
@@ -232,40 +232,6 @@
 
     <script>
         // -------------------------------------------------------------
-        // REPROJECTION LAMBERT-93 (EPSG:2154) -> WGS84 (EPSG:4326)
-        // -------------------------------------------------------------
-        function reprojectLambert93ToWGS84(coords) {
-            const X = coords[0]; const Y = coords[1];
-            const c = 11754255.426; const n = 0.725607765053267;
-            const xs = 700000; const ys = 12655612.0493776; const e = 0.0818191910428158;
-            const dx = X - xs; const dy = Y - ys;
-            const R = Math.sqrt(dx * dx + dy * dy); const gamma = Math.atan(dx / -dy);
-            const latIso = Math.log(c / R) / n;
-            let lat = 2 * Math.atan(Math.exp(latIso)) - Math.PI / 2;
-            for (let i = 0; i < 5; i++) {
-                const sinLat = Math.sin(lat);
-                lat = 2 * Math.atan(Math.pow((1 + e * sinLat) / (1 - e * sinLat), e / 2) * Math.exp(latIso)) - Math.PI / 2;
-            }
-            const lon = gamma / n + (3 * Math.PI / 180);
-            return [lon * 180 / Math.PI, lat * 180 / Math.PI];
-        }
-
-        function fixGeoJSONProjection(geojson) {
-            if (!geojson || !geojson.crs || !geojson.crs.properties || !geojson.crs.properties.name.includes("2154")) return geojson;
-            const transformCoords = (coords, type) => {
-                if (type === "Point") return reprojectLambert93ToWGS84(coords);
-                if (type === "LineString" || type === "MultiPoint") return coords.map(reprojectLambert93ToWGS84);
-                if (type === "Polygon" || type === "MultiLineString") return coords.map(ring => ring.map(reprojectLambert93ToWGS84));
-                if (type === "MultiPolygon") return coords.map(poly => poly.map(ring => ring.map(reprojectLambert93ToWGS84)));
-                return coords;
-            };
-            geojson.features.forEach(feature => {
-                if (feature.geometry) feature.geometry.coordinates = transformCoords(feature.geometry.coordinates, feature.geometry.type);
-            });
-            return geojson;
-        }
-
-        // -------------------------------------------------------------
         // COLORATION DE LA QUALITÉ
         // -------------------------------------------------------------
         function getColorByQuality(valeur) {
@@ -293,7 +259,7 @@
             attribution: '&copy; OpenStreetMap'
         });
 
-        // Structures GeoJSON reprojetées et prêtes pour Turf
+        // Variables pour stocker les données GeoJSON brutes (Toutes natives WGS 84 désormais)
         let rawLimitesSL, rawSudMeuse, rawSud54, rawVosgesOuest, rawSDDV;
         let rawMassesEaux; 
 
@@ -311,29 +277,29 @@
         const coucheCEQualiteChimique = L.layerGroup();
 
         // -------------------------------------------------------------
-        // CHARGEMENT DES DONNÉES GEOJSON (CORRIGÉ)
+        // CHARGEMENT DES DONNÉES GEOJSON (DIRECTEMENT EN WGS 84)
         // -------------------------------------------------------------
         fetch('data/Limites SL.geojson').then(r => r.json()).then(data => {
-            rawLimitesSL = fixGeoJSONProjection(data); // Reprojeté en WGS84 dès le départ !
+            rawLimitesSL = data; 
             geojsonLimitesSL = L.geoJSON(rawLimitesSL, { 
                 style: { color: "#000000", weight: 4.0, fillOpacity: 0 } 
             }).addTo(coucheLimitesSL);
         });
 
         fetch('data/Plaque SudMeuse.geojson').then(r => r.json()).then(d => {
-            rawSudMeuse = fixGeoJSONProjection(d); // Reprojeté !
+            rawSudMeuse = d; 
             geojsonSudMeuse = L.geoJSON(rawSudMeuse, { style: { color: '#e6194B', weight: 2, fillColor: '#e6194B', fillOpacity: 0.1 } }).addTo(coucheSudMeuse);
         });
         fetch('data/Plaque Sud54.geojson').then(r => r.json()).then(d => {
-            rawSud54 = fixGeoJSONProjection(d); // Reprojeté !
+            rawSud54 = d; 
             geojsonSud54 = L.geoJSON(rawSud54, { style: { color: '#3cb44b', weight: 2, fillColor: '#3cb44b', fillOpacity: 0.1 } }).addTo(coucheSud54);
         });
         fetch('data/Plaque Vosges Ouest.geojson').then(r => r.json()).then(d => {
-            rawVosgesOuest = fixGeoJSONProjection(d); // Reprojeté !
+            rawVosgesOuest = d; 
             geojsonVosgesOuest = L.geoJSON(rawVosgesOuest, { style: { color: '#ffe119', weight: 2, fillColor: '#ffe119', fillOpacity: 0.1 } }).addTo(coucheVosgesOuest);
         });
         fetch('data/Plaque SDDV.geojson').then(r => r.json()).then(d => {
-            rawSDDV = fixGeoJSONProjection(d); // Reprojeté !
+            rawSDDV = d; 
             geojsonSDDV = L.geoJSON(rawSDDV, { style: { color: '#4363d8', weight: 2, fillColor: '#4363d8', fillOpacity: 0.1 } }).addTo(coucheSDDV);
         });
 
@@ -342,7 +308,7 @@
             initialiserEtFiltrerCoursDeau();
         });
 
-        // Fonction de filtrage spatial croisé
+        // Fonction de filtrage spatial croisé (Turf.js)
         function initialiserEtFiltrerCoursDeau() {
             if (!rawMassesEaux) return;
 
@@ -369,10 +335,9 @@
                     let intersecte = false;
                     for (let i = 0; i < polygonesActifs.length; i++) {
                         let territoire = polygonesActifs[i];
-                        terterritoire.features.forEach(polyFeature => {
+                        territoire.features.forEach(polyFeature => {
                             if (!intersecte) {
                                 try {
-                                    // Les deux entités étant maintenant en WGS84, le calcul fonctionne parfaitement !
                                     if (turf.booleanIntersects(lineFeature, polyFeature)) {
                                         intersecte = true;
                                     }
@@ -436,7 +401,7 @@
         });
         document.getElementById('sldBasemap').addEventListener('input', rafraichirOpaciteBasemap);
 
-        // Déclencheurs de filtrage
+        // Écouteurs de changement sur les Territoires
         document.getElementById('chkLimitesSL').addEventListener('change', function() { 
             this.checked ? map.addLayer(coucheLimitesSL) : map.removeLayer(coucheLimitesSL);
             initialiserEtFiltrerCoursDeau();
