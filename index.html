@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma Nouvelle Webmap — SIG</title>
     
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     
     <style>
         html, body {
@@ -153,7 +153,7 @@
         <div class="bloc-fonds">
             <label><input type="radio" name="basemap" id="rbPlanIGN" checked>Plan IGN (Officiel)</label>
             <label><input type="radio" name="basemap" id="rbOrthoIGN">Orthophoto (Aérien)</label>
-            <label><input type="radio" name="basemap" id="rbReliefIGN">Relief (Ombrage)</label>
+            <label><input type="radio" name="basemap" id="rbRelief">Relief (Ombrage)</label>
             <label><input type="radio" name="basemap" id="rbOSM">OpenStreetMap</label>
             <input type="range" class="slider-opacite" id="sldBasemap" min="0" max="100" value="100">
         </div>
@@ -267,18 +267,23 @@
         // -------------------------------------------------------------
         // DÉFINITION DES FONDS DE CARTE (BASEMAPS)
         // -------------------------------------------------------------
+        // 1. Plan IGN Officiel
         var planIGN = L.tileLayer('https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/png&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}', {
             attribution: '&copy; IGN'
         }).addTo(map); // Activé par défaut
 
+        // 2. Orthophoto IGN
         var orthoIGN = L.tileLayer('https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/jpeg&LAYER=ORTHOIMAGERY.ORTHOPHOTOS&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}', {
             attribution: '&copy; IGN'
         });
 
-        var reliefIGN = L.tileLayer('https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/png&LAYER=ELEVATION.SLOPES&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}', {
-            attribution: '&copy; IGN'
+        // 3. Relief Ombré Mondial (Esri ArcGIS)
+        var reliefEsri = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', {
+            attribution: '&copy; Esri, USGS',
+            maxZoom: 13
         });
 
+        // 4. OpenStreetMap classique
         var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap'
         });
@@ -308,7 +313,7 @@
         fetch('data/Plaque Vosges Ouest.geojson').then(function(r){ return r.json(); }).then(function(d) { L.geoJSON(d, { style: { color: '#ffe119', weight: 2, fillColor: '#ffe119', fillOpacity: 0.08 } }).addTo(coucheVosgesOuest); }).catch(function(e){ console.error(e); });
         fetch('data/Plaque SDDV.geojson').then(function(r){ return r.json(); }).then(function(d) { L.geoJSON(d, { style: { color: '#4363d8', weight: 2, fillColor: '#4363d8', fillOpacity: 0.08 } }).addTo(coucheSDDV); }).catch(function(e){ console.error(e); });
 
-        // 2. Chargement des 4 fichiers GEOJSON de rivières spécifiques
+        // 2. Chargement des fichiers GEOJSON de rivières spécifiques
         function chargerFichierTerritoireCE(nomFichierGeojson, idCheckboxAsso) {
             fetch('data/' + nomFichierGeojson).then(function(r){ return r.json(); }).then(function(data) {
                 
@@ -337,13 +342,11 @@
             }).catch(function(err) { console.error("Erreur lors du chargement de " + nomFichierGeojson, err); });
         }
 
-        // Appels vers vos fichiers spécifiques
         chargerFichierTerritoireCE('SudMeuse_Etats general - ecologique - chimique - masses eaux Sl-alleger.geojson', 'chkSudMeuse');
         chargerFichierTerritoireCE('Sud54_Etats general - ecologique - chimique - masses eaux Sl-alleger.geojson', 'chkSud54');
         chargerFichierTerritoireCE('Vosges_ouest_Etats general - ecologique - chimique - masses eaux Sl-alleger.geojson', 'chkVosgesOuest');
         chargerFichierTerritoireCE('SDDV_Etats general - ecologique - chimique - masses eaux Sl-alleger.geojson', 'chkSDDV');
 
-        // Génération de la popup au clic
         function genererPopup(f, layer) {
             var nomNettoye = formaterNomCoursDeau(f.properties.NomMasseDEau);
             layer.bindPopup(`<h4>${nomNettoye}</h4>`);
@@ -361,21 +364,19 @@
             var alpha = document.getElementById('sldBasemap').value / 100;
             planIGN.setOpacity(alpha);
             orthoIGN.setOpacity(alpha);
-            reliefIGN.setOpacity(alpha);
+            reliefEsri.setOpacity(alpha);
             osm.setOpacity(alpha);
         }
 
         function changerBasemap() {
-            // On retire toutes les couches de basemaps
             map.removeLayer(planIGN);
             map.removeLayer(orthoIGN);
-            map.removeLayer(reliefIGN);
+            map.removeLayer(reliefEsri);
             map.removeLayer(osm);
 
-            // On ajoute uniquement celle qui est cochée
             if(document.getElementById('rbPlanIGN').checked) map.addLayer(planIGN);
             if(document.getElementById('rbOrthoIGN').checked) map.addLayer(orthoIGN);
-            if(document.getElementById('rbReliefIGN').checked) map.addLayer(reliefIGN);
+            if(document.getElementById('rbRelief').checked) map.addLayer(reliefEsri);
             if(document.getElementById('rbOSM').checked) map.addLayer(osm);
 
             rafraichirOpaciteBasemap();
@@ -383,7 +384,7 @@
 
         document.getElementById('rbPlanIGN').addEventListener('change', changerBasemap);
         document.getElementById('rbOrthoIGN').addEventListener('change', changerBasemap);
-        document.getElementById('rbReliefIGN').addEventListener('change', changerBasemap);
+        document.getElementById('rbRelief').addEventListener('change', changerBasemap);
         document.getElementById('rbOSM').addEventListener('change', changerBasemap);
         document.getElementById('sldBasemap').addEventListener('input', rafraichirOpaciteBasemap);
 
@@ -419,7 +420,7 @@
         document.getElementById('chkVosgesOuest').addEventListener('change', function() { this.checked ? map.addLayer(coucheVosgesOuest) : map.removeLayer(coucheVosgesOuest); actualiserVisibiliteRiviere(); });
         document.getElementById('chkSDDV').addEventListener('change', function() { this.checked ? map.addLayer(coucheSDDV) : map.removeLayer(coucheSDDV); actualiserVisibiliteRiviere(); });
 
-        // Événements Cases Qualités Exclusives et Décochables
+        // Événements Cases Qualités Exclusives
         var listQualitesInputs = document.querySelectorAll('.chk-qualite');
         listQualitesInputs.forEach(function(checkbox) {
             checkbox.addEventListener('change', function() {
