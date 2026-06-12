@@ -13,7 +13,7 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            background-color: #121212; /* Mode sombre */
+            background-color: #121212; /* Mode sombre en arrière-plan */
             font-family: Arial, sans-serif;
         }
         #map {
@@ -98,20 +98,28 @@
             cursor: pointer;
         }
 
-        /* Alignement forcé à gauche pour les fonds de carte */
+        /* Style spécifique pour le bloc des fonds de carte */
+        .bloc-fonds {
+            padding-left: 4px;
+            margin-bottom: 10px;
+        }
         .bloc-fonds label {
             display: block;
             margin-bottom: 6px;
             cursor: pointer;
         }
-        .bloc-fonds input {
+        .bloc-fonds input[type="radio"] {
             margin-right: 8px;
             vertical-align: middle;
+        }
+        .bloc-fonds .slider-opacite {
+            margin-left: 4px;
+            width: 95%;
         }
 
         /* Décalage (Retrait à droite) pour l'arborescence des territoires */
         .decalage-sous-couche {
-            padding-left: 18px; /* Crée l'effet hiérarchique sous le Sud-Lorraine */
+            padding-left: 18px; 
         }
         .decalage-sous-couche .slider-opacite {
             width: 85%;
@@ -164,9 +172,10 @@
 
     <div id="controlPanel" class="custom-layer-control">
         <span class="titre-fond-carte">Fond de carte</span>
-        <div class="bloc-fonds" style="padding-left: 4px; margin-bottom: 10px;">
+        <div class="bloc-fonds">
             <label><input type="radio" name="basemap" id="rbPlanIGN" checked>Plan IGN (Officiel)</label>
             <label><input type="radio" name="basemap" id="rbOSM">OpenStreetMap</label>
+            <input type="range" class="slider-opacite" id="sldBasemap" min="0" max="100" value="100" title="Opacité du fond de carte">
         </div>
 
         <details class="tiroir-menu" open>
@@ -276,6 +285,7 @@
         // -------------------------------------------------------------
         const map = L.map('map').setView([48.5000, 6.2000], 8.5);
 
+        // Instanciation des Fonds de carte
         const planIGN = L.tileLayer('https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/png&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}', {
             attribution: '&copy; IGN'
         }).addTo(map);
@@ -284,7 +294,7 @@
             attribution: '&copy; OpenStreetMap'
         });
 
-        // Instanciation des Couches (Variables globales pour modifications dynamiques d'opacité)
+        // Instanciation des Couches Vecteurs
         let geojsonLimitesSL, geojsonSudMeuse, geojsonSud54, geojsonVosgesOuest, geojsonSDDV;
         let geojsonCEGlobale, geojsonCEEcologique, geojsonCEChimique;
 
@@ -299,10 +309,9 @@
         const coucheCEQualiteChimique = L.layerGroup();
 
         // -------------------------------------------------------------
-        // CHARGEMENT DES DONNÉES GEOJSON (STYLE NOUVEAU APPLIQUÉ)
+        // CHARGEMENT DES DONNÉES GEOJSON
         // -------------------------------------------------------------
         fetch('data/Limites SL.geojson').then(r => r.json()).then(data => {
-            // AJUSTEMENT DEMANDÉ : Trait noir, continu, un peu épais (sans tirets)
             geojsonLimitesSL = L.geoJSON(fixGeoJSONProjection(data), { 
                 style: { color: "#000000", weight: 4.0, fillOpacity: 0 } 
             }).addTo(coucheLimitesSL);
@@ -357,9 +366,24 @@
         L.DomEvent.disableClickPropagation(panel);
         L.DomEvent.disableScrollPropagation(panel);
 
-        // Fonds de carte
-        document.getElementById('rbPlanIGN').addEventListener('change', function() { if(this.checked) { map.addLayer(planIGN); map.removeLayer(osm); } });
-        document.getElementById('rbOSM').addEventListener('change', function() { if(this.checked) { map.addLayer(osm); map.removeLayer(planIGN); } });
+        // Appliquer l'opacité actuelle sur le fond de carte actif
+        function rafraichirOpaciteBasemap() {
+            const alpha = document.getElementById('sldBasemap').value / 100;
+            planIGN.setOpacity(alpha);
+            osm.setOpacity(alpha);
+        }
+
+        // Gestion du basculement des fonds de carte
+        document.getElementById('rbPlanIGN').addEventListener('change', function() { 
+            if(this.checked) { map.addLayer(planIGN); map.removeLayer(osm); rafraichirOpaciteBasemap(); } 
+        });
+        document.getElementById('rbOSM').addEventListener('change', function() { 
+            if(this.checked) { map.addLayer(osm); map.removeLayer(planIGN); rafraichirOpaciteBasemap(); } 
+        });
+
+        // Écouteur sur le curseur d'opacité du fond de carte
+        document.getElementById('sldBasemap').addEventListener('input', rafraichirOpaciteBasemap);
+
 
         // Territoires (Activation/Désactivation)
         document.getElementById('chkLimitesSL').addEventListener('change', function() { this.checked ? map.addLayer(coucheLimitesSL) : map.removeLayer(coucheLimitesSL); });
@@ -368,7 +392,7 @@
         document.getElementById('chkVosgesOuest').addEventListener('change', function() { this.checked ? map.addLayer(coucheVosgesOuest) : map.removeLayer(coucheVosgesOuest); });
         document.getElementById('chkSDDV').addEventListener('change', function() { this.checked ? map.addLayer(coucheSDDV) : map.removeLayer(coucheSDDV); });
 
-        // Logique d'interrupteur ON/OFF au re-clic pour les Cours d'eau
+        // Logique d'interrupteur ON/OFF pour les Cours d'eau
         let optionQualiteActive = "globale";
 
         document.querySelectorAll('input[name="qualiteCE"]').forEach(radio => {
@@ -396,45 +420,27 @@
         }
 
         // -------------------------------------------------------------
-        // LOGIQUE INTERACTIVE DE RÉGLAGE DE LA TRANSPARENCE (OPACITÉ)
+        // LOGIQUE INTERACTIVE DE RÉGLAGE DE LA TRANSPARENCE (VECTEURS)
         // -------------------------------------------------------------
         function appliquerOpaciteVecteur(geojsonObject, valeurPourcent, estUnPolygone = true) {
             if (!geojsonObject) return;
             const alpha = valeurPourcent / 100;
             
             geojsonObject.setStyle({
-                opacity: alpha,                    // Opacité de la bordure / ligne
-                fillOpacity: estUnPolygone ? alpha * 0.1 : 0 // Opacité de remplissage (proportionnelle)
+                opacity: alpha,                    
+                fillOpacity: estUnPolygone ? alpha * 0.1 : 0 
             });
         }
 
-        // Liaison des écouteurs "input" (mise à jour en temps réel lors de la glisse)
-        document.getElementById('sldLimitesSL').addEventListener('input', function() {
-            appliquerOpaciteVecteur(geojsonLimitesSL, this.value, false); // false = c'est une ligne
-        });
-        document.getElementById('sldSudMeuse').addEventListener('input', function() {
-            appliquerOpaciteVecteur(geojsonSudMeuse, this.value, true);
-        });
-        document.getElementById('sldSud54').addEventListener('input', function() {
-            appliquerOpaciteVecteur(geojsonSud54, this.value, true);
-        });
-        document.getElementById('sldVosgesOuest').addEventListener('input', function() {
-            appliquerOpaciteVecteur(geojsonVosgesOuest, this.value, true);
-        });
-        document.getElementById('sldSDDV').addEventListener('input', function() {
-            appliquerOpaciteVecteur(geojsonSDDV, this.value, true);
-        });
+        document.getElementById('sldLimitesSL').addEventListener('input', function() { appliquerOpaciteVecteur(geojsonLimitesSL, this.value, false); });
+        document.getElementById('sldSudMeuse').addEventListener('input', function() { appliquerOpaciteVecteur(geojsonSudMeuse, this.value, true); });
+        document.getElementById('sldSud54').addEventListener('input', function() { appliquerOpaciteVecteur(geojsonSud54, this.value, true); });
+        document.getElementById('sldVosgesOuest').addEventListener('input', function() { appliquerOpaciteVecteur(geojsonVosgesOuest, this.value, true); });
+        document.getElementById('sldSDDV').addEventListener('input', function() { appliquerOpaciteVecteur(geojsonSDDV, this.value, true); });
 
-        // Sliders pour les cours d'eau
-        document.getElementById('sldCEGlobale').addEventListener('input', function() {
-            appliquerOpaciteVecteur(geojsonCEGlobale, this.value, false);
-        });
-        document.getElementById('sldCEEcologique').addEventListener('input', function() {
-            appliquerOpaciteVecteur(geojsonCEEcologique, this.value, false);
-        });
-        document.getElementById('sldCEChimique').addEventListener('input', function() {
-            appliquerOpaciteVecteur(geojsonCEChimique, this.value, false);
-        });
+        document.getElementById('sldCEGlobale').addEventListener('input', function() { appliquerOpaciteVecteur(geojsonCEGlobale, this.value, false); });
+        document.getElementById('sldCEEcologique').addEventListener('input', function() { appliquerOpaciteVecteur(geojsonCEEcologique, this.value, false); });
+        document.getElementById('sldCEChimique').addEventListener('input', function() { appliquerOpaciteVecteur(geojsonCEChimique, this.value, false); });
 
         // -------------------------------------------------------------
         // CRÉATION DE LA LÉGENDE DYNAMIQUE
