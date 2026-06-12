@@ -7,8 +7,6 @@
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     
-    <link rel="stylesheet" href="https://davicorrea.github.io/leaflet-styledlayercontrol/css/styledLayerControl.css" />
-
     <style>
         /* Reset et plein écran */
         html, body {
@@ -22,7 +20,7 @@
             width: 100%;
             height: 100%;
         }
-        /* Popups */
+        /* Style fenêtres popups */
         .leaflet-popup-content h4 {
             margin: 0 0 8px 0;
             color: #3388ff;
@@ -34,21 +32,35 @@
             margin: 5px 0;
         }
         
-        /* Personnalisation du panneau de contrôle (Style Sombre Pro) */
-        .ac-container {
+        /* Personnalisation du Panneau de contrôle Natif (Style Sombre Pro) */
+        .leaflet-control-layers {
             background: #222222 !important;
             color: #ffffff !important;
             border: 2px solid #444444 !important;
             border-radius: 8px !important;
+            padding: 12px !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
         }
-        .ac-container label {
-            color: #00ffcc !important;
-            font-weight: bold !important;
+        
+        /* Styles pour simuler les catégories de groupe (Tiroirs) */
+        .menu-categorie-titre {
+            font-weight: bold;
+            color: #00ffcc;
+            margin: 10px 0 5px 0;
+            display: block;
+            border-bottom: 1px solid #444;
+            padding-bottom: 3px;
+            font-size: 13px;
         }
-        .ac-container article label {
-            color: #ffffff !important;
-            font-weight: normal !important;
+        .menu-categorie-titre:first-child {
+            margin-top: 0;
+        }
+        .leaflet-control-layers-overlays label {
+            padding-left: 5px;
+            margin-bottom: 3px;
+            display: block;
         }
 
         /* Style de la Légende Dynamique */
@@ -85,8 +97,6 @@
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    
-    <script src="https://davicorrea.github.io/leaflet-styledlayercontrol/src/styledLayerControl.js"></script>
 
     <script>
         // -------------------------------------------------------------
@@ -124,7 +134,7 @@
         }
 
         // -------------------------------------------------------------
-        // FONCTION DE COLORATION DE LA QUALITÉ SIVANT LES ATTRIBUTS SPECIFIQUES
+        // FONCTION DE COLORATION DE LA QUALITÉ (Règles strictes demandées)
         // -------------------------------------------------------------
         function getColorByQuality(valeur) {
             if (!valeur) return "#888888";
@@ -135,8 +145,8 @@
             if (v === "moyen" || v === "état moyen") return "#ffd000";      // Jaune
             if (v === "médiocre" || v === "médiocre état") return "#ff7700"; // Orange
             if (v === "mauvais" || v === "mauvais état") return "#ff0000";   // Rouge
-            if (v === "non atteint") return "#a020f0";                       // Violet (Spécifique chimie)
-            return "#888888"; // Gris pour "Inconnu" ou "Non renseigné"
+            if (v === "non atteint") return "#a020f0";                       // Violet
+            return "#888888"; // Gris pour "Inconnu"
         }
 
         // -------------------------------------------------------------
@@ -215,44 +225,52 @@
         }
 
         // -------------------------------------------------------------
-        // STRUCTURE DU PANNEAU DE CONTROLE (StyledLayerControl)
+        // CONTRÔLE DES COUCHES NATIF SÉCURISÉ & STYLISÉ
         // -------------------------------------------------------------
-        const baseMaps = [
-            { groupName: "Fonds de carte", layers: [{ name: "Plan IGN (Officiel)", layer: planIGN }, { name: "OpenStreetMap", layer: osm }] }
-        ];
+        const baseMaps = {
+            "Plan IGN (Officiel)": planIGN,
+            "OpenStreetMap": osm
+        };
 
-        const overlayMaps = [
-            { groupName: "Périmètre", layers: [{ name: "Limites Sud-Lorraine", layer: coucheLimitesSL }] },
-            { 
-                groupName: "Territoires", 
-                layers: [
-                    { name: "Sud Meuse", layer: coucheSudMeuse },
-                    { name: "Sud 54", layer: coucheSud54 },
-                    { name: "Vosges Ouest", layer: coucheVosgesOuest },
-                    { name: "Saint-Dié (SDDV)", layer: coucheSDDV }
-                ] 
-            },
-            { 
-                groupName: "Cours d'eau", 
-                layers: [
-                    { name: "Qualité globale", layer: coucheCEQualiteGlobale },
-                    { name: "Qualité écologique", layer: coucheCEQualiteEcologique },
-                    { name: "Qualité chimique", layer: coucheCEQualiteChimique }
-                ] 
-            }
-        ];
+        // On utilise des balises HTML spéciales dans les clés du tableau pour forcer l'affichage de séparateurs textuels
+        const overlayMaps = {
+            "<span class='menu-categorie-titre'>Périmètre</span>Limites Sud-Lorraine": coucheLimitesSL,
+            
+            "<span class='menu-categorie-titre'>Territoires</span>Sud Meuse": coucheSudMeuse,
+            "Sud 54": coucheSud54,
+            "Vosges Ouest": coucheVosgesOuest,
+            "Saint-Dié (SDDV)": coucheSDDV,
+            
+            "<span class='menu-categorie-titre'>Cours d'eau</span>Qualité globale": coucheCEQualiteGlobale,
+            "Qualité écologique": coucheCEQualiteEcologique,
+            "Qualité chimique": coucheCEQualiteChimique
+        };
 
-        // Rendu du menu principal
-        const controlOptions = { container_width: "280px", group_maxHeight: "200px", collapsed: false };
-        const menuControl = L.Control.styledLayerControl(baseMaps, overlayMaps, controlOptions).addTo(map);
+        // Rendu du menu officiel Leaflet (Fiabilité absolue)
+        const menuControl = L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
 
-        // Securisation anti-zoom / anti-propagation sur le menu
+        // Sécurisation anti-zoom / anti-propagation au clic sur le menu
         const containerHtml = menuControl.getContainer();
         L.DomEvent.disableClickPropagation(containerHtml);
         L.DomEvent.disableScrollPropagation(containerHtml);
 
+        // Logique d'exclusion pour les cours d'eau : décocher les autres quand on en choisit un
+        map.on('layeradd', function (event) {
+            const layer = event.layer;
+            if (layer === coucheCEQualiteGlobale) {
+                if (map.hasLayer(coucheCEQualiteEcologique)) map.removeLayer(coucheCEQualiteEcologique);
+                if (map.hasLayer(coucheCEQualiteChimique)) map.removeLayer(coucheCEQualiteChimique);
+            } else if (layer === coucheCEQualiteEcologique) {
+                if (map.hasLayer(coucheCEQualiteGlobale)) map.removeLayer(coucheCEQualiteGlobale);
+                if (map.hasLayer(coucheCEQualiteChimique)) map.removeLayer(coucheCEQualiteChimique);
+            } else if (layer === coucheCEQualiteChimique) {
+                if (map.hasLayer(coucheCEQualiteGlobale)) map.removeLayer(coucheCEQualiteGlobale);
+                if (map.hasLayer(coucheCEQualiteEcologique)) map.removeLayer(coucheCEQualiteEcologique);
+            }
+        });
+
         // -------------------------------------------------------------
-        // CREATION DE LA LEGENDE DYNAMIQUE
+        // CRÉATION DE LA LÉGENDE INTERACTIVE ET DYNAMIQUE
         // -------------------------------------------------------------
         const legende = L.control({ position: 'bottomright' });
 
@@ -266,7 +284,6 @@
             let typeQualite = "";
             let items = [];
 
-            // Détection de la couche active pour adapter les intitulés exacts demandés
             if (map.hasLayer(coucheCEQualiteGlobale)) {
                 typeQualite = "Qualité Globale";
                 items = [
@@ -294,7 +311,7 @@
                 ];
             }
 
-            // Si aucune couche de cours d'eau n'est active, on cache visuellement la légende
+            // Masquer la légende si aucun cours d'eau n'est coché
             if (!typeQualite) {
                 this._div.style.display = 'none';
                 return;
@@ -310,7 +327,7 @@
 
         legende.addTo(map);
 
-        // Événements pour mettre à jour la légende à la volée quand l'utilisateur coche/décoche le menu
+        // Demander la mise à jour de la légende dès qu'une couche change
         map.on('layeradd layerremove', function () {
             legende.update();
         });
