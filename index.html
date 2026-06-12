@@ -7,7 +7,7 @@
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-groupedlayercontrol/0.6.1/leaflet.groupedlayercontrol.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-plugins/3.4.0/control/L.Control.Layers.Tree.css" />
 
     <style>
         /* Reset et plein écran */
@@ -15,7 +15,7 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            background-color: #121212; /* Mode sombre par défaut pour l'interface */
+            background-color: #121212; /* Mode sombre */
             font-family: Arial, sans-serif;
         }
         #map {
@@ -33,24 +33,35 @@
             padding-left: 15px;
             margin: 5px 0;
         }
-        /* Ajustement esthétique pour le menu groupé style sombre */
+        
+        /* Personnalisation avancée du panneau de contrôle (Style Sombre Professionnel) */
         .leaflet-control-layers {
-            background: #222 !important;
-            color: #fff !important;
-            border: 1px solid #444 !important;
+            background: #222222 !important;
+            color: #ffffff !important;
+            border: 2px solid #444444 !important;
             border-radius: 8px !important;
-            padding: 10px !important;
+            padding: 12px !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
+            max-height: 85vh;
+            overflow-y: auto;
         }
-        .leaflet-groupedlayers-group {
-            margin-bottom: 8px !important;
-            border-bottom: 1px solid #444;
-            padding-bottom: 6px;
+        /* Style des lignes de l'arbre */
+        .leaflet-layerstree-header {
+            font-size: 14px;
+            padding: 2px 0;
         }
-        .leaflet-groupedlayers-title {
+        /* Mise en valeur des catégories parentes (Périmètre, Territoires, Cours d'eau) */
+        .leaflet-layerstree-header-name {
             font-weight: bold;
             color: #00ffcc;
-            margin-bottom: 4px;
-            display: block;
+        }
+        /* Style pour les vraies couches enfants */
+        .leaflet-layerstree-child {
+            padding-left: 15px !important;
+        }
+        .leaflet-layerstree-node .leaflet-layerstree-header-name {
+            color: #ffffff; /* Couches enfants en blanc */
+            font-weight: normal;
         }
     </style>
 </head>
@@ -60,7 +71,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-groupedlayercontrol/0.6.1/leaflet.groupedlayercontrol.min.js"></script>
+    <script src="https://img.webme.com/pic/e/estevez-sig/L.Control.Layers.Tree.js"></script>
 
     <script>
         // -------------------------------------------------------------
@@ -111,22 +122,22 @@
         }
 
         // -------------------------------------------------------------
-        // FONCTION DE COLORATION SUIVANT LA QUALITÉ (Du Rouge au Bleu)
+        // FONCTION DE COLORATION DE LA QUALITÉ (Du Rouge au Bleu)
         // -------------------------------------------------------------
         function getColorByQuality(valeur) {
             if (!valeur) return "#888888";
             const v = valeur.trim().toLowerCase();
             
             if (v.includes("très bon") || v === "bon" || v.includes("bon état") || v.includes("très bon état")) {
-                return "#0055ff"; // Bleu (Bon / Très bon)
+                return "#0055ff"; // Bleu
             } else if (v.includes("moyen") || v.includes("état moyen")) {
-                return "#ffd000"; // Jaune (Moyen)
+                return "#ffd000"; // Jaune
             } else if (v.includes("médiocre")) {
-                return "#ff7700"; // Orange (Médiocre)
+                return "#ff7700"; // Orange
             } else if (v.includes("mauvais")) {
-                return "#ff0000"; // Rouge (Mauvais)
+                return "#ff0000"; // Rouge
             }
-            return "#888888"; // Gris par défaut (Inconnu / Non concerné)
+            return "#888888"; // Gris
         }
 
         // -------------------------------------------------------------
@@ -145,19 +156,18 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         });
 
-        // Groupes de couches pour l'interface
+        // Instanciation des Groupes de couches
         const coucheLimitesSL = L.layerGroup().addTo(map);
         const coucheSudMeuse = L.layerGroup().addTo(map);
         const coucheSud54 = L.layerGroup().addTo(map);
         const coucheVosgesOuest = L.layerGroup().addTo(map);
         const coucheSDDV = L.layerGroup().addTo(map);
 
-        // Les 3 couches thématiques de cours d'eau
-        const coucheCEQualiteGlobale = L.layerGroup().addTo(map); // Activé par défaut
+        const coucheCEQualiteGlobale = L.layerGroup().addTo(map); // Activée par défaut
         const coucheCEQualiteEcologique = L.layerGroup();
         const coucheCEQualiteChimique = L.layerGroup();
 
-        // Styles de base
+        // Style limites SL
         const styleLimitesSL = { color: "#ff3333", weight: 3.5, fillOpacity: 0, dashArray: "6, 12" };
 
         // -------------------------------------------------------------
@@ -168,8 +178,7 @@
         fetch('data/Limites SL.geojson')
             .then(response => response.json())
             .then(data => {
-                const dataWGS84 = fixGeoJSONProjection(data);
-                L.geoJSON(dataWGS84, { style: styleLimitesSL }).addTo(coucheLimitesSL);
+                L.geoJSON(fixGeoJSONProjection(data), { style: styleLimitesSL }).addTo(coucheLimitesSL);
             });
 
         // 2. Les 4 Territoires
@@ -190,86 +199,101 @@
         fetch('data/Etats general - ecologique - chimique - masses eaux Sl-alleger.geojson')
             .then(response => response.json())
             .then(data => {
-                
-                // --- A. COUCHE QUALITÉ GLOBALE ---
+                // A. Qualité Globale
                 L.geoJSON(data, {
-                    style: function(feature) {
-                        return { color: getColorByQuality(feature.properties["Etat masse eau "]), weight: 2.5, opacity: 0.85 };
-                    },
+                    style: function(feature) { return { color: getColorByQuality(feature.properties["Etat masse eau "]), weight: 2.5, opacity: 0.85 }; },
                     onEachFeature: genererPopupCoursDEau
                 }).addTo(coucheCEQualiteGlobale);
 
-                // --- B. COUCHE QUALITÉ ÉCOLOGIQUE ---
+                // B. Qualité Écologique
                 L.geoJSON(data, {
-                    style: function(feature) {
-                        return { color: getColorByQuality(feature.properties["Etat ecologique"]), weight: 2.5, opacity: 0.85 };
-                    },
+                    style: function(feature) { return { color: getColorByQuality(feature.properties["Etat ecologique"]), weight: 2.5, opacity: 0.85 }; },
                     onEachFeature: genererPopupCoursDEau
                 }).addTo(coucheCEQualiteEcologique);
 
-                // --- C. COUCHE QUALITÉ CHIMIQUE ---
+                // C. Qualité Chimique
                 L.geoJSON(data, {
-                    style: function(feature) {
-                        return { color: getColorByQuality(feature.properties["Etat chimique"]), weight: 2.5, opacity: 0.85 };
-                    },
+                    style: function(feature) { return { color: getColorByQuality(feature.properties["Etat chimique"]), weight: 2.5, opacity: 0.85 }; },
                     onEachFeature: genererPopupCoursDEau
                 }).addTo(coucheCEQualiteChimique);
-            })
-            .catch(error => console.error("Erreur cours d'eau :", error));
+            });
 
-        // Fonction commune pour générer le contenu de la Popup au clic
         function genererPopupCoursDEau(feature, layer) {
             const props = feature.properties;
-            const nom = props.NomMasseDEau || "Inconnu";
-            const etatGeneral = props["Etat masse eau "] || "Non renseigné";
-            const etatEcologique = props["Etat ecologique"] || "Non renseigné";
-            const etatChimique = props["Etat chimique"] || "Non renseigné";
-
             const popupContenu = `
-                <h4>${nom}</h4>
+                <h4>${props.NomMasseDEau || "Inconnu"}</h4>
                 <ul>
-                    <li><b>Qualité Globale :</b> ${etatGeneral}</li>
-                    <li><b>Qualité Écologique :</b> ${etatEcologique}</li>
-                    <li><b>Qualité Chimique :</b> ${etatChimique}</li>
+                    <li><b>Qualité Globale :</b> ${props["Etat masse eau "] || "Non renseigné"}</li>
+                    <li><b>Qualité Écologique :</b> ${props["Etat ecologique"] || "Non renseigné"}</li>
+                    <li><b>Qualité Chimique :</b> ${props["Etat chimique"] || "Non renseigné"}</li>
                 </ul>
             `;
             layer.bindPopup(popupContenu);
         }
 
         // -------------------------------------------------------------
-        // CONTRÔLE DES COUCHES GROUPÉES (STRUCTURE À TIROIRS)
+        // CONFIGURATION DE L'ARBRE DE COUCHES CONTROLEES (L.Control.Layers.Tree)
         // -------------------------------------------------------------
-        const baseMaps = {
-            "Plan IGN (Officiel)": planIGN,
-            "OpenStreetMap": osm
+        
+        // Fonds de carte (Boutons radio standards)
+        const baseTree = {
+            label: '<b>Fonds de carte</b>',
+            children: [
+                { label: 'Plan IGN (Officiel)', layer: planIGN },
+                { label: 'OpenStreetMap', layer: osm }
+            ]
         };
 
-        // Organisation de la structure arborescente (Tiroirs)
-        const groupedOverlays = {
-            "Périmètre": {
-                "Limites Sud-Lorraine": coucheLimitesSL
-            },
-            "Territoires": {
-                "Sud Meuse": coucheSudMeuse,
-                "Sud 54": coucheSud54,
-                "Vosges Ouest": coucheVosgesOuest,
-                "Saint-Dié (SDDV)": coucheSDDV
-            },
-            "Cours d'eau": {
-                "Qualité globale": coucheCEQualiteGlobale,
-                "Qualité écologique": coucheCEQualiteEcologique,
-                "Qualité chimique": coucheCEQualiteChimique
-            }
+        // Couches de données structurées sous forme d'arbre imbriqué avec cases à cocher parentes
+        const overlaysTree = {
+            label: 'Données Sud-Lorraine',
+            selectAllCheckbox: true, // Bouton global optionnel
+            children: [
+                {
+                    label: '<span class="leaflet-layerstree-header-name">Périmètre</span>',
+                    selectAllCheckbox: false,
+                    children: [
+                        { label: 'Limites Sud-Lorraine', layer: coucheLimitesSL }
+                    ]
+                },
+                {
+                    label: '<span class="leaflet-layerstree-header-name">Territoires</span>',
+                    selectAllCheckbox: true, // Génère la case à cocher maîtresse devant "Territoires"
+                    children: [
+                        { label: 'Sud Meuse', layer: coucheSudMeuse },
+                        { label: 'Sud 54', layer: coucheSud54 },
+                        { label: 'Vosges Ouest', layer: coucheVosgesOuest },
+                        { label: 'Saint-Dié (SDDV)', layer: coucheSDDV }
+                    ]
+                },
+                {
+                    label: '<span class="leaflet-layerstree-header-name">Cours d\'eau</span>',
+                    selectAllCheckbox: false, // Pas de case globale ici car ce sont des boutons radio exclusifs
+                    children: [
+                        // RadioKey permet de transformer ces sous-couches en boutons radios exclusifs (une seule active à la fois)
+                        { label: 'Qualité globale', layer: coucheCEQualiteGlobale, radioKey: 'ce_radio' },
+                        { label: 'Qualité écologique', layer: coucheCEQualiteEcologique, radioKey: 'ce_radio' },
+                        { label: 'Qualité chimique', layer: coucheCEQualiteChimique, radioKey: 'ce_radio' }
+                    ]
+                }
+            ]
         };
 
-        // Options du menu à tiroir
-        const optionsMenu = {
-            collapsed: false, // Laisse le menu ouvert par défaut
-            exclusiveGroups: ["Cours d'eau"] // Permet de n'avoir qu'UNE SEULE analyse de cours d'eau cochée à la fois (évite la superposition brouillonne)
-        };
+        // Création et configuration du panneau de contrôle de l'arbre
+        const menuArbre = L.control.layers.tree(baseTree, overlaysTree, {
+            collapsed: false, // Reste déroulé à l'écran
+            namedToggle: false
+        }).addTo(map);
 
-        // Activation du plugin de contrôle groupé
-        L.control.groupedLayers(baseMaps, groupedOverlays, optionsMenu).addTo(map);
+        // -------------------------------------------------------------
+        // REGLAGE DU BUG DE CLIC TRANSPARENT (ANTI-PROPAGATION)
+        // -------------------------------------------------------------
+        const conteneurMenu = menuArbre.getContainer();
+        
+        // Bloque le clic, le double-clic, le scroll de souris et le mousedown pour empêcher la carte de réagir en arrière-plan
+        L.DomEvent.disableClickPropagation(conteneurMenu);
+        L.DomEvent.disableScrollPropagation(conteneurMenu);
+
     </script>
 </body>
 </html>
