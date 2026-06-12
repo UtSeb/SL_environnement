@@ -32,37 +32,64 @@
             margin: 5px 0;
         }
         
-        /* Personnalisation du Panneau de contrôle Natif (Style Sombre Pro) */
-        .leaflet-control-layers {
-            background: #222222 !important;
-            color: #ffffff !important;
-            border: 2px solid #444444 !important;
-            border-radius: 8px !important;
-            padding: 12px !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
+        /* Menu de contrôle latéral structuré (Style Sombre Pro) */
+        .custom-layer-control {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background: #222222;
+            color: #ffffff;
+            border: 2px solid #444444;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             font-size: 13px;
+            width: 250px;
+            max-height: 85vh;
+            overflow-y: auto;
         }
 
-        /* Injection propre des en-têtes de sections */
-        .menu-section-header {
+        /* Style des menus à tiroirs (Details/Summary natifs HTML5) */
+        .tiroir-menu {
+            margin-top: 8px;
+        }
+        .tiroir-menu summary {
             font-weight: bold;
             color: #00ffcc;
-            margin: 12px 0 6px 0;
-            display: block;
+            cursor: pointer;
+            padding: 6px 0;
             border-bottom: 1px solid #444;
-            padding-bottom: 3px;
-            font-size: 13px;
+            outline: none;
+            user-select: none;
             text-transform: uppercase;
+            font-size: 12px;
             letter-spacing: 0.5px;
         }
-        .menu-section-header:first-child {
-            margin-top: 0;
+        .tiroir-contenu {
+            padding: 6px 4px 4px 8px;
+        }
+        .tiroir-contenu label {
+            display: block;
+            margin-bottom: 6px;
+            cursor: pointer;
+        }
+        .tiroir-contenu input {
+            margin-right: 8px;
+            vertical-align: middle;
         }
 
-        .leaflet-control-layers-list label {
-            margin-bottom: 4px;
+        /* Titre fixe hors tiroir pour le fond de carte */
+        .titre-fond-carte {
+            font-weight: bold;
+            color: #00ffcc;
+            margin-bottom: 6px;
             display: block;
-            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 3px;
         }
 
         /* Style de la Légende Dynamique */
@@ -96,6 +123,41 @@
 <body>
 
     <div id="map"></div>
+
+    <div id="controlPanel" class="custom-layer-control">
+        <span class="titre-fond-carte">Fond de carte</span>
+        <div style="padding-left: 8px; margin-bottom: 10px;">
+            <label><input type="radio" name="basemap" id="rbPlanIGN" checked> Plan IGN (Officiel)</label>
+            <label><input type="radio" name="basemap" id="rbOSM"> OpenStreetMap</label>
+        </div>
+
+        <details class="tiroir-menu" open>
+            <summary>Périmètre</summary>
+            <div class="tiroir-contenu">
+                <label><input type="checkbox" id="chkLimitesSL" checked> Limites Sud-Lorraine</label>
+            </div>
+        </details>
+
+        <details class="tiroir-menu" open>
+            <summary>Territoires</summary>
+            <div class="tiroir-contenu">
+                <label><input type="checkbox" id="chkSudMeuse" checked> Sud Meuse</label>
+                <label><input type="checkbox" id="chkSud54" checked> Sud 54</label>
+                <label><input type="checkbox" id="chkVosgesOuest" checked> Vosges Ouest</label>
+                <label><input type="checkbox" id="chkSDDV" checked> Saint-Dié (SDDV)</label>
+            </div>
+        </details>
+
+        <details class="tiroir-menu" open>
+            <summary>Cours d'eau</summary>
+            <div class="tiroir-contenu">
+                <label><input type="radio" name="qualiteCE" id="rbCEGlobale" checked> Qualité globale</label>
+                <label><input type="radio" name="qualiteCE" id="rbCEEcologique"> Qualité écologique</label>
+                <label><input type="radio" name="qualiteCE" id="rbCEChimique"> Qualité chimique</label>
+                <label style="color: #aaa; margin-top: 5px;"><input type="radio" name="qualiteCE" id="rbCENone"> Masquer les cours d'eau</label>
+            </div>
+        </details>
+    </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
@@ -141,13 +203,13 @@
             if (!valeur) return "#888888";
             const v = valeur.trim().toLowerCase();
             
-            if (v === "très bon" || v === "très bon état") return "#0055ff"; // Bleu foncé
-            if (v === "bon" || v === "bon état") return "#33bbff";          // Bleu clair
-            if (v === "moyen" || v === "état moyen") return "#ffd000";      // Jaune
-            if (v === "médiocre" || v === "médiocre état") return "#ff7700"; // Orange
-            if (v === "mauvais" || v === "mauvais état") return "#ff0000";   // Rouge
-            if (v === "non atteint") return "#a020f0";                       // Violet
-            return "#888888"; // Gris pour "Inconnu"
+            if (v === "très bon" || v === "très bon état") return "#0055ff"; 
+            if (v === "bon" || v === "bon état") return "#33bbff";          
+            if (v === "moyen" || v === "état moyen") return "#ffd000";      
+            if (v === "médiocre" || v === "médiocre état") return "#ff7700"; 
+            if (v === "mauvais" || v === "mauvais état") return "#ff0000";   
+            if (v === "non atteint") return "#a020f0";                       
+            return "#888888"; 
         }
 
         // -------------------------------------------------------------
@@ -155,16 +217,16 @@
         // -------------------------------------------------------------
         const map = L.map('map').setView([48.5000, 6.2000], 8.5);
 
-        // Fonds de carte
+        // Instanciation des fonds de carte
         const planIGN = L.tileLayer('https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/png&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}', {
-            attribution: '&copy; <a href="https://www.ign.fr/">IGN</a>'
+            attribution: '&copy; IGN'
         }).addTo(map);
 
         const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
+            attribution: '&copy; OpenStreetMap'
         });
 
-        // Groupes de couches
+        // Instanciation des Groupes de couches de données
         const coucheLimitesSL = L.layerGroup().addTo(map);
         const coucheSudMeuse = L.layerGroup().addTo(map);
         const coucheSud54 = L.layerGroup().addTo(map);
@@ -196,17 +258,16 @@
         });
 
         fetch('data/Etats general - ecologique - chimique - masses eaux Sl-alleger.geojson').then(r => r.json()).then(data => {
-            // A. Globale
             L.geoJSON(data, {
                 style: function(f) { return { color: getColorByQuality(f.properties["Etat masse eau "]), weight: 2.5, opacity: 0.85 }; },
                 onEachFeature: genererPopup
             }).addTo(coucheCEQualiteGlobale);
-            // B. Écologique
+
             L.geoJSON(data, {
                 style: function(f) { return { color: getColorByQuality(f.properties["Etat ecologique"]), weight: 2.5, opacity: 0.85 }; },
                 onEachFeature: genererPopup
             }).addTo(coucheCEQualiteEcologique);
-            // C. Chimique
+
             L.geoJSON(data, {
                 style: function(f) { return { color: getColorByQuality(f.properties["Etat chimique"]), weight: 2.5, opacity: 0.85 }; },
                 onEachFeature: genererPopup
@@ -226,98 +287,45 @@
         }
 
         // -------------------------------------------------------------
-        // CONFIGURATION STANDARD DU MENU NATIF (SANS INJECTION HTML POLLUANTE)
+        // GESTIONNAIRE D'ÉVÉNEMENTS DU PANNEAU (BASCULEMENTS DIRECTS ET NETS)
         // -------------------------------------------------------------
-        const baseMaps = {
-            "Plan IGN (Officiel)": planIGN,
-            "OpenStreetMap": osm
-        };
+        const panel = document.getElementById('controlPanel');
+        L.DomEvent.disableClickPropagation(panel);
+        L.DomEvent.disableScrollPropagation(panel);
 
-        const overlayMaps = {
-            "Limites Sud-Lorraine": coucheLimitesSL,
-            "Sud Meuse": coucheSudMeuse,
-            "Sud 54": coucheSud54,
-            "Vosges Ouest": coucheVosgesOuest,
-            "Saint-Dié (SDDV)": coucheSDDV,
-            "Qualité globale": coucheCEQualiteGlobale,
-            "Qualité écologique": coucheCEQualiteEcologique,
-            "Qualité chimique": coucheCEQualiteChimique
-        };
+        // Gestion des Fonds de carte
+        document.getElementById('rbPlanIGN').addEventListener('change', function() { if(this.checked) { map.addLayer(planIGN); map.removeLayer(osm); } });
+        document.getElementById('rbOSM').addEventListener('change', function() { if(this.checked) { map.addLayer(osm); map.removeLayer(planIGN); } });
 
-        const menuControl = L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+        // Gestion des Périmètres et Territoires
+        document.getElementById('chkLimitesSL').addEventListener('change', function() { this.checked ? map.addLayer(coucheLimitesSL) : map.removeLayer(coucheLimitesSL); });
+        document.getElementById('chkSudMeuse').addEventListener('change', function() { this.checked ? map.addLayer(coucheSudMeuse) : map.removeLayer(coucheSudMeuse); });
+        document.getElementById('chkSud54').addEventListener('change', function() { this.checked ? map.addLayer(coucheSud54) : map.removeLayer(coucheSud54); });
+        document.getElementById('chkVosgesOuest').addEventListener('change', function() { this.checked ? map.addLayer(coucheVosgesOuest) : map.removeLayer(coucheVosgesOuest); });
+        document.getElementById('chkSDDV').addEventListener('change', function() { this.checked ? map.addLayer(coucheSDDV) : map.removeLayer(coucheSDDV); });
 
-        // Sécurisation anti-zoom / anti-propagation au clic sur le menu
-        const containerHtml = menuControl.getContainer();
-        L.DomEvent.disableClickPropagation(containerHtml);
-        L.DomEvent.disableScrollPropagation(containerHtml);
+        // LOGIQUE D'EXCLUSION INSTANTANÉE (Décoche et efface en 1 clic sans double manipulation)
+        function basculerQualiteEau() {
+            // Nettoyage complet préalable des couches sur la carte
+            map.removeLayer(coucheCEQualiteGlobale);
+            map.removeLayer(coucheCEQualiteEcologique);
+            map.removeLayer(coucheCEQualiteChimique);
 
-        // -------------------------------------------------------------
-        // INJECTION DYNAMIQUE DES TITRES DE RUBRIQUES PAR LE DOM (ZÉRO BUG DE DÉCALAGE)
-        // -------------------------------------------------------------
-        function structurerLeMenu() {
-            const labels = containerHtml.querySelectorAll('label');
+            // Activation de la couche unique demandée
+            if (document.getElementById('rbCEGlobale').checked) map.addLayer(coucheCEQualiteGlobale);
+            if (document.getElementById('rbCEEcologique').checked) map.addLayer(coucheCEQualiteEcologique);
+            if (document.getElementById('rbCEChimique').checked) map.addLayer(coucheCEQualiteChimique);
             
-            labels.forEach(label => {
-                const text = label.textContent.trim();
-                
-                // 1. Ajouter le titre "Fond de carte" juste avant Plan IGN
-                if (text === "Plan IGN (Officiel)") {
-                    const header = document.createElement('span');
-                    header.className = 'menu-section-header';
-                    header.innerText = "Fond de carte";
-                    label.parentNode.insertBefore(header, label);
-                }
-                // 2. Ajouter le titre "Périmètre" avant les limites globales
-                if (text === "Limites Sud-Lorraine") {
-                    const header = document.createElement('span');
-                    header.className = 'menu-section-header';
-                    header.innerText = "Périmètre";
-                    label.parentNode.insertBefore(header, label);
-                }
-                // 3. Ajouter le titre "Territoires" avant Sud Meuse
-                if (text === "Sud Meuse") {
-                    const header = document.createElement('span');
-                    header.className = 'menu-section-header';
-                    header.innerText = "Territoires";
-                    label.parentNode.insertBefore(header, label);
-                }
-                // 4. Ajouter le titre "Cours d'eau" avant la qualité globale
-                if (text === "Qualité globale") {
-                    const header = document.createElement('span');
-                    header.className = 'menu-section-header';
-                    header.innerText = "Cours d'eau";
-                    label.parentNode.insertBefore(header, label);
-                }
-            });
+            legende.update(); // Synchronisation de la légende
         }
-        
-        // Lancement de la structuration une fois le DOM chargé
-        structurerLeMenu();
+
+        document.getElementById('rbCEGlobale').addEventListener('change', basculerQualiteEau);
+        document.getElementById('rbCEEcologique').addEventListener('change', basculerQualiteEau);
+        document.getElementById('rbCEChimique').addEventListener('change', basculerQualiteEau);
+        document.getElementById('rbCENone').addEventListener('change', basculerQualiteEau);
 
         // -------------------------------------------------------------
-        // LOGIQUE D'EXCLUSION DES COURS D'EAU (DÉCOCHE AUTOMATIQUE)
-        // -------------------------------------------------------------
-        map.on('layeradd', function (event) {
-            const layer = event.layer;
-            
-            // Si on ajoute une des trois qualités, on désactive immédiatement les deux autres
-            if (layer === coucheCEQualiteGlobale) {
-                if (map.hasLayer(coucheCEQualiteEcologique)) map.removeLayer(coucheCEQualiteEcologique);
-                if (map.hasLayer(coucheCEQualiteChimique)) map.removeLayer(coucheCEQualiteChimique);
-            } else if (layer === coucheCEQualiteEcologique) {
-                if (map.hasLayer(coucheCEQualiteGlobale)) map.removeLayer(coucheCEQualiteGlobale);
-                if (map.hasLayer(coucheCEQualiteChimique)) map.removeLayer(coucheCEQualiteChimique);
-            } else if (layer === coucheCEQualiteChimique) {
-                if (map.hasLayer(coucheCEQualiteGlobale)) map.removeLayer(coucheCEQualiteGlobale);
-                if (map.hasLayer(coucheCEQualiteEcologique)) map.removeLayer(coucheCEQualiteEcologique);
-            }
-            
-            // On force Leaflet à mettre à jour les cases à cocher cochées/décochées du menu à l'écran
-            menuControl._update();
-        });
-
-        // -------------------------------------------------------------
-        // CRÉATION DE LA LÉGENDE INTERACTIVE ET DYNAMIQUE
+        // CRÉATION DE LA LÉGENDE DYNAMIQUE
         // -------------------------------------------------------------
         const legende = L.control({ position: 'bottomright' });
 
@@ -372,11 +380,6 @@
         };
 
         legende.addTo(map);
-
-        map.on('layeradd layerremove', function () {
-            legende.update();
-        });
-
     </script>
 </body>
 </html>
