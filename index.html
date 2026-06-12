@@ -67,16 +67,33 @@
             letter-spacing: 0.5px;
         }
         .tiroir-contenu {
-            padding: 6px 4px 4px 8px;
+            padding: 6px 4px 4px 4px;
         }
         .tiroir-contenu label {
             display: block;
             margin-bottom: 6px;
             cursor: pointer;
+            white-space: nowrap;
         }
         .tiroir-contenu input {
             margin-right: 8px;
             vertical-align: middle;
+        }
+
+        /* Alignement forcé à gauche pour les fonds de carte */
+        .bloc-fonds label {
+            display: block;
+            margin-bottom: 6px;
+            cursor: pointer;
+        }
+        .bloc-fonds input {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        /* Décalage (Retrait à droite) pour l'arborescence des territoires */
+        .decalage-sous-couche {
+            padding-left: 20px; /* Crée l'effet hiérarchique sous le Sud-Lorraine */
         }
 
         /* Titre fixe hors tiroir pour le fond de carte */
@@ -126,35 +143,31 @@
 
     <div id="controlPanel" class="custom-layer-control">
         <span class="titre-fond-carte">Fond de carte</span>
-        <div style="padding-left: 8px; margin-bottom: 10px;">
-            <label><input type="radio" name="basemap" id="rbPlanIGN" checked> Plan IGN (Officiel)</label>
-            <label><input type="radio" name="basemap" id="rbOSM"> OpenStreetMap</label>
+        <div class="bloc-fonds" style="padding-left: 4px; margin-bottom: 10px;">
+            <label><input type="radio" name="basemap" id="rbPlanIGN" checked>Plan IGN (Officiel)</label>
+            <label><input type="radio" name="basemap" id="rbOSM">OpenStreetMap</label>
         </div>
-
-        <details class="tiroir-menu" open>
-            <summary>Périmètre</summary>
-            <div class="tiroir-contenu">
-                <label><input type="checkbox" id="chkLimitesSL" checked> Limites Sud-Lorraine</label>
-            </div>
-        </details>
 
         <details class="tiroir-menu" open>
             <summary>Territoires</summary>
             <div class="tiroir-contenu">
-                <label><input type="checkbox" id="chkSudMeuse" checked> Sud Meuse</label>
-                <label><input type="checkbox" id="chkSud54" checked> Sud 54</label>
-                <label><input type="checkbox" id="chkVosgesOuest" checked> Vosges Ouest</label>
-                <label><input type="checkbox" id="chkSDDV" checked> Saint-Dié (SDDV)</label>
+                <label><input type="checkbox" id="chkLimitesSL" checked>Limites Sud-Lorraine</label>
+                
+                <div class="decalage-sous-couche">
+                    <label><input type="checkbox" id="chkSudMeuse" checked>Sud Meuse</label>
+                    <label><input type="checkbox" id="chkSud54" checked>Sud 54</label>
+                    <label><input type="checkbox" id="chkVosgesOuest" checked>Vosges Ouest</label>
+                    <label><input type="checkbox" id="chkSDDV" checked>Saint-Dié (SDDV)</label>
+                </div>
             </div>
         </details>
 
         <details class="tiroir-menu" open>
             <summary>Cours d'eau</summary>
             <div class="tiroir-contenu">
-                <label><input type="radio" name="qualiteCE" id="rbCEGlobale" checked> Qualité globale</label>
-                <label><input type="radio" name="qualiteCE" id="rbCEEcologique"> Qualité écologique</label>
-                <label><input type="radio" name="qualiteCE" id="rbCEChimique"> Qualité chimique</label>
-                <label style="color: #aaa; margin-top: 5px;"><input type="radio" name="qualiteCE" id="rbCENone"> Masquer les cours d'eau</label>
+                <label><input type="radio" name="qualiteCE" id="rbCEGlobale" value="globale" checked>Qualité globale</label>
+                <label><input type="radio" name="qualiteCE" id="rbCEEcologique" value="ecologique">Qualité écologique</label>
+                <label><input type="radio" name="qualiteCE" id="rbCEChimique" value="chimique">Qualité chimique</label>
             </div>
         </details>
     </div>
@@ -217,7 +230,6 @@
         // -------------------------------------------------------------
         const map = L.map('map').setView([48.5000, 6.2000], 8.5);
 
-        // Instanciation des fonds de carte
         const planIGN = L.tileLayer('https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/png&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}', {
             attribution: '&copy; IGN'
         }).addTo(map);
@@ -226,7 +238,7 @@
             attribution: '&copy; OpenStreetMap'
         });
 
-        // Instanciation des Groupes de couches de données
+        // Instanciation des Couches
         const coucheLimitesSL = L.layerGroup().addTo(map);
         const coucheSudMeuse = L.layerGroup().addTo(map);
         const coucheSud54 = L.layerGroup().addTo(map);
@@ -287,42 +299,55 @@
         }
 
         // -------------------------------------------------------------
-        // GESTIONNAIRE D'ÉVÉNEMENTS DU PANNEAU (BASCULEMENTS DIRECTS ET NETS)
+        // INTERACTION DU PANNEAU (ÉVÉNEMENTS & RE-ROUTAGES)
         // -------------------------------------------------------------
         const panel = document.getElementById('controlPanel');
         L.DomEvent.disableClickPropagation(panel);
         L.DomEvent.disableScrollPropagation(panel);
 
-        // Gestion des Fonds de carte
+        // Fonds de carte
         document.getElementById('rbPlanIGN').addEventListener('change', function() { if(this.checked) { map.addLayer(planIGN); map.removeLayer(osm); } });
         document.getElementById('rbOSM').addEventListener('change', function() { if(this.checked) { map.addLayer(osm); map.removeLayer(planIGN); } });
 
-        // Gestion des Périmètres et Territoires
+        // Territoires et Périmètres groupés
         document.getElementById('chkLimitesSL').addEventListener('change', function() { this.checked ? map.addLayer(coucheLimitesSL) : map.removeLayer(coucheLimitesSL); });
         document.getElementById('chkSudMeuse').addEventListener('change', function() { this.checked ? map.addLayer(coucheSudMeuse) : map.removeLayer(coucheSudMeuse); });
         document.getElementById('chkSud54').addEventListener('change', function() { this.checked ? map.addLayer(coucheSud54) : map.removeLayer(coucheSud54); });
         document.getElementById('chkVosgesOuest').addEventListener('change', function() { this.checked ? map.addLayer(coucheVosgesOuest) : map.removeLayer(coucheVosgesOuest); });
         document.getElementById('chkSDDV').addEventListener('change', function() { this.checked ? map.addLayer(coucheSDDV) : map.removeLayer(coucheSDDV); });
 
-        // LOGIQUE D'EXCLUSION INSTANTANÉE (Décoche et efface en 1 clic sans double manipulation)
-        function basculerQualiteEau() {
-            // Nettoyage complet préalable des couches sur la carte
+        // LOGIQUE D'INTERRUPTEUR AVANCÉE SUR BOUTONS RADIOS (ON / OFF AU RE-CLIC)
+        let optionQualiteActive = "globale"; // Initialement calé sur globale au chargement
+
+        document.querySelectorAll('input[name="qualiteCE"]').forEach(radio => {
+            radio.addEventListener('click', function() {
+                // Si l'utilisateur clique sur le bouton déjà actif : on décoche tout !
+                if (optionQualiteActive === this.value) {
+                    this.checked = false;
+                    optionQualiteActive = null;
+                } else {
+                    optionQualiteActive = this.value;
+                }
+                
+                // Exécution de la bascule graphique sur la carte
+                rafraichirQualiteCoursDeau();
+            });
+        });
+
+        function rafraichirQualiteCoursDeau() {
+            // Nettoyage systématique des 3 couches de cours d'eau
             map.removeLayer(coucheCEQualiteGlobale);
             map.removeLayer(coucheCEQualiteEcologique);
             map.removeLayer(coucheCEQualiteChimique);
 
-            // Activation de la couche unique demandée
-            if (document.getElementById('rbCEGlobale').checked) map.addLayer(coucheCEQualiteGlobale);
-            if (document.getElementById('rbCEEcologique').checked) map.addLayer(coucheCEQualiteEcologique);
-            if (document.getElementById('rbCEChimique').checked) map.addLayer(coucheCEQualiteChimique);
+            // Si un bouton est resté sélectionné, on monte sa couche associée
+            if (optionQualiteActive === "globale") map.addLayer(coucheCEQualiteGlobale);
+            if (optionQualiteActive === "ecologique") map.addLayer(coucheCEQualiteEcologique);
+            if (optionQualiteActive === "chimique") map.addLayer(coucheCEQualiteChimique);
             
-            legende.update(); // Synchronisation de la légende
+            // Mise à jour synchrone de la légende
+            legende.update();
         }
-
-        document.getElementById('rbCEGlobale').addEventListener('change', basculerQualiteEau);
-        document.getElementById('rbCEEcologique').addEventListener('change', basculerQualiteEau);
-        document.getElementById('rbCEChimique').addEventListener('change', basculerQualiteEau);
-        document.getElementById('rbCENone').addEventListener('change', basculerQualiteEau);
 
         // -------------------------------------------------------------
         // CRÉATION DE LA LÉGENDE DYNAMIQUE
