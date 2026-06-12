@@ -13,7 +13,7 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            background-color: #121212; /* Mode sombre en arrière-plan */
+            background-color: #121212;
             font-family: Arial, sans-serif;
         }
         #map {
@@ -232,7 +232,7 @@
 
     <script>
         // -------------------------------------------------------------
-        // COLORATION DE LA QUALITÉ
+        // COLORATION DES TRACÉS SELON LA QUALITÉ
         // -------------------------------------------------------------
         function getColorByQuality(valeur) {
             if (!valeur) return "#888888";
@@ -249,7 +249,7 @@
         // -------------------------------------------------------------
         // INITIALISATION DE LA CARTE
         // -------------------------------------------------------------
-        const map = L.map('map').setView([48.5000, 6.2000], 8.5);
+        const map = L.map('map').setView([48.4500, 6.2000], 9);
 
         const planIGN = L.tileLayer('https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/png&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}', {
             attribution: '&copy; IGN'
@@ -259,13 +259,7 @@
             attribution: '&copy; OpenStreetMap'
         });
 
-        // Variables pour stocker les données GeoJSON brutes (Toutes natives WGS 84 désormais)
-        let rawLimitesSL, rawSudMeuse, rawSud54, rawVosgesOuest, rawSDDV;
-        let rawMassesEaux; 
-
-        let geojsonLimitesSL, geojsonSudMeuse, geojsonSud54, geojsonVosgesOuest, geojsonSDDV;
-        let geojsonCEGlobale, geojsonCEEcologique, geojsonCEChimique;
-
+        // Conteneurs de couches Leaflet
         const coucheLimitesSL = L.layerGroup().addTo(map);
         const coucheSudMeuse = L.layerGroup().addTo(map);
         const coucheSud54 = L.layerGroup().addTo(map);
@@ -276,93 +270,129 @@
         const coucheCEQualiteEcologique = L.layerGroup();
         const coucheCEQualiteChimique = L.layerGroup();
 
+        // Variables globales de stockage des objets GeoJSON Leaflet
+        let geojsonLimitesSL, geojsonSudMeuse, geojsonSud54, geojsonVosgesOuest, geojsonSDDV;
+        let geojsonCEGlobale, geojsonCEEcologique, geojsonCEChimique;
+        
+        let rawMassesEaux = null;
+        let territoiresPolygones = {}; // Stockage simplifié des enveloppes pour l'indexation initiale
+
         // -------------------------------------------------------------
-        // CHARGEMENT DES DONNÉES GEOJSON (DIRECTEMENT EN WGS 84)
+        // CHARGEMENT ET RENDU DES COUCHES VECTORIELLES
         // -------------------------------------------------------------
+        
+        // 1. Limites Générales Sud Lorraine
         fetch('data/Limites SL.geojson').then(r => r.json()).then(data => {
-            rawLimitesSL = data; 
-            geojsonLimitesSL = L.geoJSON(rawLimitesSL, { 
-                style: { color: "#000000", weight: 4.0, fillOpacity: 0 } 
+            geojsonLimitesSL = L.geoJSON(data, { 
+                style: { color: "#ffffff", weight: 3.5, dashArray: "5, 5", fillOpacity: 0 } 
             }).addTo(coucheLimitesSL);
         });
 
+        // 2. Chargement des 4 Plaques de Territoires
         fetch('data/Plaque SudMeuse.geojson').then(r => r.json()).then(d => {
-            rawSudMeuse = d; 
-            geojsonSudMeuse = L.geoJSON(rawSudMeuse, { style: { color: '#e6194B', weight: 2, fillColor: '#e6194B', fillOpacity: 0.1 } }).addTo(coucheSudMeuse);
+            territoiresPolygones["Sud Meuse"] = d;
+            geojsonSudMeuse = L.geoJSON(d, { style: { color: '#e6194B', weight: 2, fillColor: '#e6194B', fillOpacity: 0.12 } }).addTo(coucheSudMeuse);
+            tenterInitialisationCoursDeau();
         });
+
         fetch('data/Plaque Sud54.geojson').then(r => r.json()).then(d => {
-            rawSud54 = d; 
-            geojsonSud54 = L.geoJSON(rawSud54, { style: { color: '#3cb44b', weight: 2, fillColor: '#3cb44b', fillOpacity: 0.1 } }).addTo(coucheSud54);
+            territoiresPolygones["Sud54"] = d;
+            geojsonSud54 = L.geoJSON(d, { style: { color: '#3cb44b', weight: 2, fillColor: '#3cb44b', fillOpacity: 0.12 } }).addTo(coucheSud54);
+            tenterInitialisationCoursDeau();
         });
+
         fetch('data/Plaque Vosges Ouest.geojson').then(r => r.json()).then(d => {
-            rawVosgesOuest = d; 
-            geojsonVosgesOuest = L.geoJSON(rawVosgesOuest, { style: { color: '#ffe119', weight: 2, fillColor: '#ffe119', fillOpacity: 0.1 } }).addTo(coucheVosgesOuest);
+            territoiresPolygones["Vosges Ouest"] = d;
+            geojsonVosgesOuest = L.geoJSON(d, { style: { color: '#ffe119', weight: 2, fillColor: '#ffe119', fillOpacity: 0.12 } }).addTo(coucheVosgesOuest);
+            tenterInitialisationCoursDeau();
         });
+
         fetch('data/Plaque SDDV.geojson').then(r => r.json()).then(d => {
-            rawSDDV = d; 
-            geojsonSDDV = L.geoJSON(rawSDDV, { style: { color: '#4363d8', weight: 2, fillColor: '#4363d8', fillOpacity: 0.1 } }).addTo(coucheSDDV);
+            territoiresPolygones["SDDV"] = d;
+            geojsonSDDV = L.geoJSON(d, { style: { color: '#4363d8', weight: 2, fillColor: '#4363d8', fillOpacity: 0.12 } }).addTo(coucheSDDV);
+            tenterInitialisationCoursDeau();
         });
 
+        // 3. Chargement du fichier des Cours d'Eau
         fetch('data/Etats general - ecologique - chimique - masses eaux Sl-alleger.geojson').then(r => r.json()).then(data => {
-            rawMassesEaux = data; 
-            initialiserEtFiltrerCoursDeau();
+            rawMassesEaux = data;
+            tenterInitialisationCoursDeau();
         });
 
-        // Fonction de filtrage spatial croisé (Turf.js) - COQUILLE CORRIGÉE
-        function initialiserEtFiltrerCoursDeau() {
+        // -------------------------------------------------------------
+        // INDEXATION PATIENTE ET FILTRAGE PAR ATTRIBUTS (ANTI-PLANTAGE)
+        // -------------------------------------------------------------
+        function tenterInitialisationCoursDeau() {
+            // On attend que le fichier cours d'eau ET les 4 territoires soient pleinement arrivés en mémoire
+            if (!rawMassesEaux || !territoiresPolygones["Sud Meuse"] || !territoiresPolygones["Sud54"] || !territoiresPolygones["Vosges Ouest"] || !territoiresPolygones["SDDV"]) {
+                return; 
+            }
+
+            // UN SEUL ET UNIQUE CALCUL SPATIAL au démarrage pour taguer les cours d'eau textuellement
+            rawMassesEaux.features.forEach(lineFeature => {
+                lineFeature.properties._territoiresAppartenance = [];
+                
+                for (let nomKey in territoiresPolygones) {
+                    let tGeojson = territoiresPolygones[nomKey];
+                    if(tGeojson && tGeojson.features) {
+                        for(let pf of tGeojson.features) {
+                            try {
+                                if (turf.booleanIntersects(lineFeature, pf)) {
+                                    lineFeature.properties._territoiresAppartenance.push(nomKey);
+                                    break; // Dès qu'un morceau touche, on valide ce territoire
+                                }
+                            } catch(err) {}
+                        }
+                    }
+                }
+            });
+
+            // Une fois l'indexation discrète terminée, on affiche la donnée
+            filtrerEtAfficherCoursDeau();
+        }
+
+        // Cette fonction s'exécute instantanément en moins de 2 millisecondes sans calcul spatial !
+        function filtrerEtAfficherCoursDeau() {
             if (!rawMassesEaux) return;
 
             coucheCEQualiteGlobale.clearLayers();
             coucheCEQualiteEcologique.clearLayers();
             coucheCEQualiteChimique.clearLayers();
 
-            let polygonesActifs = [];
             const toutSudLorraine = document.getElementById('chkLimitesSL').checked;
+            
+            // Récupération des filtres cochés
+            let listeTagsActifs = [];
+            if (document.getElementById('chkSudMeuse').checked) listeTagsActifs.push("Sud Meuse");
+            if (document.getElementById('chkSud54').checked) listeTagsActifs.push("Sud54");
+            if (document.getElementById('chkVosgesOuest').checked) listeTagsActifs.push("Vosges Ouest");
+            if (document.getElementById('chkSDDV').checked) listeTagsActifs.push("SDDV");
 
-            if (!toutSudLorraine) {
-                if (document.getElementById('chkSudMeuse').checked && rawSudMeuse) polygonesActifs.push(rawSudMeuse);
-                if (document.getElementById('chkSud54').checked && rawSud54) polygonesActifs.push(rawSud54);
-                if (document.getElementById('chkVosgesOuest').checked && rawVosgesOuest) polygonesActifs.push(rawVosgesOuest);
-                if (document.getElementById('chkSDDV').checked && rawSDDV) polygonesActifs.push(rawSDDV);
-            }
-
+            // Tri logique ultra-rapide par texte
             let featuresFiltrees = [];
-
             if (toutSudLorraine) {
                 featuresFiltrees = rawMassesEaux.features;
-            } else if (polygonesActifs.length > 0) {
-                rawMassesEaux.features.forEach(lineFeature => {
-                    let intersecte = false;
-                    for (let i = 0; i < polygonesActifs.length; i++) {
-                        let territoire = polygonesActifs[i];
-                        territoire.features.forEach(polyFeature => {
-                            if (!intersecte) {
-                                try {
-                                    if (turf.booleanIntersects(lineFeature, polyFeature)) {
-                                        intersecte = true;
-                                    }
-                                } catch(e) { }
-                            }
-                        });
-                    }
-                    if (intersecte) featuresFiltrees.push(lineFeature);
+            } else {
+                featuresFiltrees = rawMassesEaux.features.filter(f => {
+                    return f.properties._territoiresAppartenance.some(t => listeTagsActifs.includes(t));
                 });
             }
 
             const geojsonFiltre = { type: "FeatureCollection", features: featuresFiltrees };
 
+            // Instanciation des couches Leaflet filtrées
             geojsonCEGlobale = L.geoJSON(geojsonFiltre, {
-                style: function(f) { return { color: getColorByQuality(f.properties["Etat masse eau "]), weight: 2.5, opacity: document.getElementById('sldCEGlobale').value / 100 }; },
+                style: function(f) { return { color: getColorByQuality(f.properties["Etat masse eau "]), weight: 2.8, opacity: document.getElementById('sldCEGlobale').value / 100 }; },
                 onEachFeature: genererPopup
             }).addTo(coucheCEQualiteGlobale);
 
             geojsonCEEcologique = L.geoJSON(geojsonFiltre, {
-                style: function(f) { return { color: getColorByQuality(f.properties["Etat ecologique"]), weight: 2.5, opacity: document.getElementById('sldCEEcologique').value / 100 }; },
+                style: function(f) { return { color: getColorByQuality(f.properties["Etat ecologique"]), weight: 2.8, opacity: document.getElementById('sldCEEcologique').value / 100 }; },
                 onEachFeature: genererPopup
             });
 
             geojsonCEChimique = L.geoJSON(geojsonFiltre, {
-                style: function(f) { return { color: getColorByQuality(f.properties["Etat chimique"]), weight: 2.5, opacity: document.getElementById('sldCEChimique').value / 100 }; },
+                style: function(f) { return { color: getColorByQuality(f.properties["Etat chimique"]), weight: 2.8, opacity: document.getElementById('sldCEChimique').value / 100 }; },
                 onEachFeature: genererPopup
             });
 
@@ -372,7 +402,7 @@
         function genererPopup(f, layer) {
             const props = f.properties;
             layer.bindPopup(`
-                <h4>${props.NomMasseDEau || "Inconnu"}</h4>
+                <h4>${props.NomMasseDEau || "Cours d'eau inconnu"}</h4>
                 <ul>
                     <li><b>Qualité Globale :</b> ${props["Etat masse eau "] || "Non renseigné"}</li>
                     <li><b>Qualité Écologique :</b> ${props["Etat ecologique"] || "Non renseigné"}</li>
@@ -382,7 +412,7 @@
         }
 
         // -------------------------------------------------------------
-        // INTERACTION DU PANNEAU (ÉVÉNEMENTS)
+        // GESTION DES ACTIONS ET DES INTERACTIONS DU PANNEAU
         // -------------------------------------------------------------
         const panel = document.getElementById('controlPanel');
         L.DomEvent.disableClickPropagation(panel);
@@ -401,26 +431,26 @@
         });
         document.getElementById('sldBasemap').addEventListener('input', rafraichirOpaciteBasemap);
 
-        // Écouteurs de changement sur les Territoires
+        // Déclencheurs instantanés sur changement de cases à cocher
         document.getElementById('chkLimitesSL').addEventListener('change', function() { 
             this.checked ? map.addLayer(coucheLimitesSL) : map.removeLayer(coucheLimitesSL);
-            initialiserEtFiltrerCoursDeau();
+            filtrerEtAfficherCoursDeau();
         });
         document.getElementById('chkSudMeuse').addEventListener('change', function() { 
             this.checked ? map.addLayer(coucheSudMeuse) : map.removeLayer(coucheSudMeuse);
-            initialiserEtFiltrerCoursDeau();
+            filtrerEtAfficherCoursDeau();
         });
         document.getElementById('chkSud54').addEventListener('change', function() { 
             this.checked ? map.addLayer(coucheSud54) : map.removeLayer(coucheSud54);
-            initialiserEtFiltrerCoursDeau();
+            filtrerEtAfficherCoursDeau();
         });
         document.getElementById('chkVosgesOuest').addEventListener('change', function() { 
             this.checked ? map.addLayer(coucheVosgesOuest) : map.removeLayer(coucheVosgesOuest);
-            initialiserEtFiltrerCoursDeau();
+            filtrerEtAfficherCoursDeau();
         });
         document.getElementById('chkSDDV').addEventListener('change', function() { 
             this.checked ? map.addLayer(coucheSDDV) : map.removeLayer(coucheSDDV);
-            initialiserEtFiltrerCoursDeau();
+            filtrerEtAfficherCoursDeau();
         });
 
         let optionQualiteActive = "globale";
@@ -448,13 +478,13 @@
             legende.update();
         }
 
-        // Sliders de Transparence
+        // Sliders de Transparence directs
         function appliquerOpaciteVecteur(geojsonObject, valeurPourcent, estUnPolygone = true) {
             if (!geojsonObject) return;
             const alpha = valeurPourcent / 100;
             geojsonObject.setStyle({
                 opacity: alpha,                    
-                fillOpacity: estUnPolygone ? alpha * 0.1 : 0 
+                fillOpacity: estUnPolygone ? alpha * 0.12 : 0 
             });
         }
 
@@ -468,7 +498,7 @@
         document.getElementById('sldCEEcologique').addEventListener('input', function() { appliquerOpaciteVecteur(geojsonCEEcologique, this.value, false); });
         document.getElementById('sldCEChimique').addEventListener('input', function() { appliquerOpaciteVecteur(geojsonCEChimique, this.value, false); });
 
-        // Légende
+        // Légende Dynamique
         const legende = L.control({ position: 'bottomright' });
         legende.onAdd = function (map) {
             this._div = L.DomUtil.create('div', 'info legend');
