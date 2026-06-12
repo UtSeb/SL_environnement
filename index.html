@@ -20,14 +20,11 @@
             height: 100%;
         }
         .leaflet-popup-content h4 {
-            margin: 0 0 8px 0;
+            margin: 0;
             color: #3388ff;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 4px;
-        }
-        .leaflet-popup-content ul {
-            padding-left: 15px;
-            margin: 5px 0;
+            padding: 4px 2px;
+            font-size: 14px;
+            font-weight: bold;
         }
         
         /* Panneau de contrôle style sombre */
@@ -210,6 +207,27 @@
 
     <script>
         // -------------------------------------------------------------
+        // FONCTION DE NETTOYAGE ET FORMATAGE DES NOMS DE COURS D'EAU
+        // -------------------------------------------------------------
+        function formaterNomCoursDeau(nomBrut) {
+            if (!nomBrut) return "Cours d'eau inconnu";
+            
+            // 1. Enlever les chiffres (0-9)
+            var sansChiffres = nomBrut.toString().replace(/[0-9]/g, '');
+            
+            // 2. Convertir tout en minuscules pour repartir sur une base propre
+            var minuscules = sansChiffres.toLowerCase().trim();
+            
+            // 3. Mettre une majuscule au début de chaque mot
+            var nomFormate = minuscules.replace(/\b[a-z]/g, function(lettre) {
+                return lettre.toUpperCase();
+            });
+            
+            // Nettoyage final des espaces multiples potentiels
+            return nomFormate.replace(/\s+/g, ' ').trim();
+        }
+
+        // -------------------------------------------------------------
         // FONCTIONS DE COLORATION BASÉES SUR LES CODES COUCHE
         // -------------------------------------------------------------
         function getColorGlobal(valeur) {
@@ -263,7 +281,7 @@
         var coucheCEQualiteChimique = L.layerGroup();
 
         var listeElementsCoursDeau = [];
-        var optionQualiteActive = "aucune"; // Démarrage à blanc, aucune analyse cochée
+        var optionQualiteActive = "aucune"; // Démarrage à blanc
 
         // 1. Chargement des enveloppes de territoires
         fetch('data/Limites SL.geojson').then(function(r){ return r.json(); }).then(function(data) {
@@ -310,27 +328,10 @@
         chargerFichierTerritoireCE('Vosges_ouest_Etats general - ecologique - chimique - masses eaux Sl-alleger.geojson', 'chkVosgesOuest');
         chargerFichierTerritoireCE('SDDV_Etats general - ecologique - chimique - masses eaux Sl-alleger.geojson', 'chkSDDV');
 
+        // Génération de la popup propre au clic
         function genererPopup(f, layer) {
-            var props = f.properties;
-            var ecoTxt = "Inconnu";
-            if(props._swEcologicalStatusOrPotentialValue == "1") ecoTxt = "Très bon";
-            if(props._swEcologicalStatusOrPotentialValue == "2") ecoTxt = "Bon";
-            if(props._swEcologicalStatusOrPotentialValue == "3") ecoTxt = "Moyen";
-            if(props._swEcologicalStatusOrPotentialValue == "4") ecoTxt = "Médiocre";
-            if(props._swEcologicalStatusOrPotentialValue == "5") ecoTxt = "Mauvais";
-
-            var chimTxt = "Inconnu";
-            if(props._swChemicalStatusValue == "2") chimTxt = "Bon";
-            if(props._swChemicalStatusValue == "U" || props._swChemicalStatusValue == "3") chimTxt = "Non atteint";
-
-            layer.bindPopup(`
-                <h4>${props.NomMasseDEau || "Cours d'eau"}</h4>
-                <ul>
-                    <li><b>Qualité Globale :</b> ${props["Etat masse eau "] || "Non renseigné"}</li>
-                    <li><b>Qualité Écologique :</b> ${ecoTxt}</li>
-                    <li><b>Qualité Chimique :</b> ${chimTxt}</li>
-                </ul>
-            `);
+            var nomNettoye = formaterNomCoursDeau(f.properties.NomMasseDEau);
+            layer.bindPopup(`<h4>${nomNettoye}</h4>`);
         }
 
         // -------------------------------------------------------------
