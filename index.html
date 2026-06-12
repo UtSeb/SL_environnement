@@ -20,9 +20,16 @@
             width: 100%;
             height: 100%;
         }
-        /* Style personnalisé pour les popups */
-        .leaflet-popup-content-value {
-            font-weight: bold;
+        /* Style personnalisé pour les fenêtres popups */
+        .leaflet-popup-content h4 {
+            margin: 0 0 8px 0;
+            color: #3388ff;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 4px;
+        }
+        .leaflet-popup-content ul {
+            padding-left: 15px;
+            margin: 5px 0;
         }
     </style>
 </head>
@@ -33,131 +40,207 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     
     <script>
-        // 1. Initialisation de la carte centrée sur la Lorraine
+        // -------------------------------------------------------------
+        // FONCTION DE REPROJECTION LAMBERT-93 (EPSG:2154) -> WGS84 (EPSG:4326)
+        // Permet de lire tes GeoJSON en mètres directement dans le navigateur
+        // -------------------------------------------------------------
+        function reprojectLambert93ToWGS84(coords) {
+            const X = coords[0];
+            const Y = coords[1];
+            
+            // Constantes de la projection Lambert 93
+            const c = 11754255.426; 
+            const n = 0.725607765053267;
+            const xs = 700000;
+            const ys = 12655612.0493776;
+            const e = 0.0818191910428158;
+            
+            const dx = X - xs;
+            const dy = Y - ys;
+            const R = Math.sqrt(dx * dx + dy * dy);
+            const gamma = Math.atan(dx / -dy);
+            
+            const latIso = Math.log(c / R) / n;
+            let lat = 2 * Math.atan(Math.exp(latIso)) - Math.PI / 2;
+            
+            // Itérations pour la latitude précise
+            for (let i = 0; i < 5; i++) {
+                const sinLat = Math.sin(lat);
+                lat = 2 * Math.atan(Math.pow((1 + e * sinLat) / (1 - e * sinLat), e / 2) * Math.exp(latIso)) - Math.PI / 2;
+            }
+            
+            const lon = gamma / n + (3 * Math.PI / 180);
+            
+            // Retourne [Longitude, Latitude] attendu par GeoJSON / Leaflet
+            return [lon * 180 / Math.PI, lat * 180 / Math.PI];
+        }
+
+        // Fonction récursive pour appliquer la conversion sur toutes les géométries d'un GeoJSON Lambert-93
+        function fixGeoJSONProjection(geojson) {
+            if (!geojson || !geojson.crs || !geojson.crs.properties || !geojson.crs.properties.name.includes("2154")) {
+                return geojson; // Déjà en WGS84, pas besoin de modification
+            }
+            
+            const transformCoords = (coords, type) => {
+                if (type === "Point") return reprojectLambert93ToWGS84(coords);
+                if (type === "LineString" || type === "MultiPoint") return coords.map(reprojectLambert93ToWGS84);
+                if (type === "Polygon" || type === "MultiLineString") return coords.map(ring => ring.map(reprojectLambert93ToWGS84));
+                if (type === "MultiPolygon") return coords.map(poly => poly.map(ring => ring.map(reprojectLambert93ToWGS84)));
+                return coords;
+            };
+
+            geojson.features.forEach(feature => {
+                if (feature.geometry) {
+                    feature.geometry.coordinates = transformCoords(feature.geometry.coordinates, feature.geometry.type);
+                }
+            });
+            return geojson;
+        }
+
+        // -------------------------------------------------------------
+        // INITIALISATION DE LA CARTE
+        // -------------------------------------------------------------
         const map = L.map('map').setView([48.5000, 6.2000], 8.5);
 
-        // 2. Définition des fonds de carte
+        // Fonds de carte
         const planIGN = L.tileLayer('https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/png&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}', {
             attribution: '&copy; <a href="https://www.ign.fr/">IGN</a>',
             minZoom: 0,
             maxZoom: 19
-        }).addTo(map); // Activé par défaut
+        }).addTo(map);
 
         const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         });
 
-        // 3. Création des groupes de couches (LayerGroups) pour accueillir les GeoJSON
-        const coucheLimitesSL = L.layerGroup().addTo(map); // Activé par défaut
-        const coucheTerritoires = L.layerGroup().addTo(map); // Activé par défaut
-        const coucheCoursDEau = L.layerGroup().addTo(map); // Activé par défaut
+        // Groupes de couches (LayerGroups) principaux
+        const coucheLimitesSL = L.layerGroup().addTo(map);
+        const coucheCoursDEau = L.layerGroup().addTo(map);
 
-        // 4. Styles pour les entités vectorielles
+        // Groupes de couches individuels pour chacun des 4 territoires
+        const coucheSudMeuse = L.layerGroup().addTo(map);
+        const coucheSud54 = L.layerGroup().addTo(map);
+        const coucheVosgesOuest = L.layerGroup().addTo(map);
+        const coucheSDDV = L.layerGroup().addTo(map);
 
-        // Style des limites globales du Sud-Lorraine
+        // Styles graphiques
         const styleLimitesSL = {
             color: "#ff3333",
-            weight: 3,
+            weight: 3.5,
             fillOpacity: 0,
-            dashArray: "5, 10"
+            dashArray: "6, 12"
         };
 
-        // Fonction de style pour différencier les 4 territoires (plaques)
-        function styleTerritoires(feature) {
-            // Attribution d'une couleur aléatoire ou fixe par territoire si un champ nom existe.
-            // Par défaut, on applique une couleur selon le fichier. Ici on applique un style global transparent avec bordure fine.
-            return {
-                color: "#ffffff",
-                weight: 1.5,
-                fillColor: "#00ffcc",
-                fillOpacity: 0.15
-            };
-        }
-
-        // Style des cours d'eau
         const styleCoursDEau = {
             color: "#3388ff",
-            weight: 2,
-            opacity: 0.8
+            weight: 2.5,
+            opacity: 0.85
         };
 
-        // 5. Chargement des fichiers GeoJSON via l'API Fetch
+        // -------------------------------------------------------------
+        // CHARGEMENT DES DONNÉES GEOJSON (FETCH API)
+        // -------------------------------------------------------------
 
-        // Chargement 1 : Limites Sud-Lorraine
+        // 1. Limites Globales Sud-Lorraine
         fetch('data/Limites SL.geojson')
             .then(response => response.json())
             .then(data => {
-                L.geoJSON(data, {
-                    style: styleLimitesSL
-                }).addTo(coucheLimitesSL);
+                const dataWGS84 = fixGeoJSONProjection(data);
+                L.geoJSON(dataWGS84, { style: styleLimitesSL }).addTo(coucheLimitesSL);
             })
-            .catch(error => console.error("Erreur de chargement du fichier Limites SL :", error));
+            .catch(error => console.error("Erreur de chargement de Limites SL :", error));
 
-        // Chargement 2 : Les 4 territoires (Plaques)
-        const fichiersTerritoires = [
-            { chemin: 'data/Plaque SudMeuse.geojson', couleur: '#e6194B' },
-            { chemin: 'data/Plaque Sud54.geojson', couleur: '#3cb44b' },
-            { chemin: 'data/Plaque Vosges Ouest.geojson', couleur: '#ffe119' },
-            { chemin: 'data/Plaque SDDV.geojson', couleur: '#4363d8' }
-        ];
+        // 2. Les 4 Territoires (Chacun chargé indépendamment dans son groupe dédié)
+        
+        // Plaque Sud Meuse
+        fetch('data/Plaque SudMeuse.geojson')
+            .then(response => response.json())
+            .then(data => {
+                const dataWGS84 = fixGeoJSONProjection(data);
+                L.geoJSON(dataWGS84, {
+                    style: { color: '#e6194B', weight: 2, fillColor: '#e6194B', fillOpacity: 0.12 }
+                }).addTo(coucheSudMeuse);
+            });
 
-        fichiersTerritoires.forEach(t => {
-            fetch(t.chemin)
-                .then(response => response.json())
-                .then(data => {
-                    L.geoJSON(data, {
-                        style: {
-                            color: t.couleur,
-                            weight: 2,
-                            fillColor: t.couleur,
-                            fillOpacity: 0.1
-                        }
-                    }).addTo(coucheTerritoires);
-                })
-                .catch(error => console.error("Erreur de chargement de " + t.chemin + " :", error));
-        });
+        // Plaque Sud 54
+        fetch('data/Plaque Sud54.geojson')
+            .then(response => response.json())
+            .then(data => {
+                const dataWGS84 = fixGeoJSONProjection(data);
+                L.geoJSON(dataWGS84, {
+                    style: { color: '#3cb44b', weight: 2, fillColor: '#3cb44b', fillOpacity: 0.12 }
+                }).addTo(coucheSud54);
+            });
 
-        // Chargement 3 : Cours d'eau et leurs attributs de qualité
+        // Plaque Vosges Ouest
+        fetch('data/Plaque Vosges Ouest.geojson')
+            .then(response => response.json())
+            .then(data => {
+                const dataWGS84 = fixGeoJSONProjection(data);
+                L.geoJSON(dataWGS84, {
+                    style: { color: '#ffe119', weight: 2, fillColor: '#ffe119', fillOpacity: 0.12 }
+                }).addTo(coucheVosgesOuest);
+            });
+
+        // Plaque Saint-Dié-des-Vosges (SDDV)
+        fetch('data/Plaque SDDV.geojson')
+            .then(response => response.json())
+            .then(data => {
+                const dataWGS84 = fixGeoJSONProjection(data);
+                L.geoJSON(dataWGS84, {
+                    style: { color: '#4363d8', weight: 2, fillColor: '#4363d8', fillOpacity: 0.12 }
+                }).addTo(coucheSDDV);
+            });
+
+        // 3. Cours d'eau (Lecture des attributs exacts)
         fetch('data/Etats general - ecologique - chimique - masses eaux Sl-alleger.geojson')
             .then(response => response.json())
             .then(data => {
+                // Ce fichier est déjà en WGS84 d'après ses métadonnées, pas besoin de fixGeoJSONProjection
                 L.geoJSON(data, {
                     style: styleCoursDEau,
                     onEachFeature: function (feature, layer) {
-                        // Récupération des attributs (ajuste les clés si tes colonnes diffèrent dans ton SIG)
                         const props = feature.properties;
-                        let popupContenu = `<h4>Cours d'eau</h4>`;
                         
-                        // Détection automatique des attributs disponibles pour la popup
-                        if (props.nom_masse_eau || props.NOM_COURS_DEAU || props.nom) {
-                            popupContenu += `<b>Nom :</b> ${props.nom_masse_eau || props.NOM_COURS_DEAU || props.nom}<br>`;
-                        }
-                        
-                        popupContenu += `<ul>`;
-                        if (props.etat_general || props.ETAT_GEN) popupContenu += `<li><b>État Général :</b> ${props.etat_general || props.ETAT_GEN}</li>`;
-                        if (props.etat_ecologique || props.ECO_STAT) popupContenu += `<li><b>État Écologique :</b> ${props.etat_ecologique || props.ECO_STAT}</li>`;
-                        if (props.etat_chimique || props.CHIM_STAT) popupContenu += `<li><b>État Chimique :</b> ${props.etat_chimique || props.CHIM_STAT}</li>`;
-                        popupContenu += `</ul>`;
-                        
+                        // Récupération des attributs exacts
+                        const nom = props.NomMasseDEau || "Inconnu";
+                        const etatGeneral = props["Etat masse eau "] || "Non renseigné"; // Espace inclus obligatoire
+                        const etatEcologique = props["Etat ecologique"] || "Non renseigné";
+                        const etatChimique = props["Etat chimique"] || "Non renseigné";
+
+                        const popupContenu = `
+                            <h4>${nom}</h4>
+                            <ul>
+                                <li><b>État de la Masse d'Eau :</b> ${etatGeneral}</li>
+                                <li><b>État Écologique :</b> ${etatEcologique}</li>
+                                <li><b>État Chimique :</b> ${etatChimique}</li>
+                            </ul>
+                        `;
                         layer.bindPopup(popupContenu);
                     }
                 }).addTo(coucheCoursDEau);
             })
             .catch(error => console.error("Erreur de chargement des cours d'eau :", error));
 
-
-        // 6. Gestionnaire de couches (Contrôle d'affichage de l'interface)
+        // -------------------------------------------------------------
+        // CONTRÔLE DES COUCHES (INTERFACE UTILISATEUR)
+        // -------------------------------------------------------------
         const baseMaps = {
             "Plan IGN (Officiel)": planIGN,
             "OpenStreetMap": osm
         };
 
+        // Liste mise à jour pour permettre de cocher/décocher chaque territoire indépendamment
         const overlayMaps = {
             "Limites Sud-Lorraine": coucheLimitesSL,
-            "Les 4 Territoires": coucheTerritoires,
+            "Territoire : Sud Meuse": coucheSudMeuse,
+            "Territoire : Sud 54": coucheSud54,
+            "Territoire : Vosges Ouest": coucheVosgesOuest,
+            "Territoire : Saint-Dié (SDDV)": coucheSDDV,
             "Cours d'eau (Qualité)": coucheCoursDEau
         };
 
+        // L'option collapsed: false laisse le menu ouvert pour une meilleure ergonomie professionnelle
         L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
     </script>
 </body>
