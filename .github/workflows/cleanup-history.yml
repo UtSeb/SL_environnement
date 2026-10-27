@@ -1,0 +1,28 @@
+name: Nettoyer les anciens déploiements
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/cleanup-history.yml"]
+permissions:
+  contents: read
+  actions: write
+jobs:
+  cleanup:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Supprimer les exécutions des anciennes versions
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import os, urllib.request
+          repo = os.environ["GH_REPO"]
+          for run_id in [40492695304, 40492399580, 40472981760, 40472806800, 40334621908]:
+              req = urllib.request.Request(
+                  f"https://api.github.com/repos/{repo}/actions/runs/{run_id}",
+                  method="DELETE",
+                  headers={"Authorization": "Bearer " + os.environ["GH_TOKEN"], "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"})
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  print(f"Exécution {run_id}: {response.status}")
+          PY
