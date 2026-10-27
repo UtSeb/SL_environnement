@@ -61,3 +61,11 @@ Reproduire les intersections (Python et Shapely >= 2) :
 ```sh
 python scripts/prepare_protections.py /chemin/vers/les/21/geojson
 ```
+
+### Présentation
+
+Interface sobre en bleu ardoise, bleu-vert et corail. La typographie utilise
+DM Sans avec une police système de secours. La méthode
+[Hallmark](https://github.com/nutlope/hallmark) guide la hiérarchie, les contrôles,
+les états de focus et l’adaptation mobile, sans dépendance d’exécution ajoutée.
+Ce portail est un projet personnel indépendant.

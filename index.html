@@ -4,9 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Démonstrateur cartographique biodiversité du Sud-Lorraine : explorer les cours d’eau, analyser un territoire et exporter les résultats pour QGIS.">
-  <title>Biodiversité · Sud-Lorraine</title>
+  <title>Biodiversité / Sud-Lorraine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=0.2">
+  <link rel="stylesheet" href="styles.css?v=0.3">
   <script defer src="vendor/leaflet.js"></script>
   <script defer src="spatial.js"></script>
   <script defer src="geopackage.js?v=0.2"></script>
@@ -15,34 +18,33 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="./" aria-label="Biodiversité Sud-Lorraine, accueil"><span class="brand-symbol" aria-hidden="true">◒</span><span>Biodiversité <small>SUD-LORRAINE</small></span></a>
+    <a class="brand" href="./" aria-label="Biodiversité Sud-Lorraine, accueil"><span class="brand-title">Biodiversité<span>Sud-Lorraine</span></span></a>
     <div class="header-note">Observer les milieux. Éclairer les décisions.</div>
-    <div class="header-end"><span class="pill">Démonstrateur · v0.2</span><span class="personal">Projet personnel</span></div>
+    <div class="header-end"><span class="pill">Démonstrateur v0.3</span></div>
   </header>
   <main class="workspace">
     <aside class="sidebar" aria-label="Territoire et analyse">
-      <div class="eyebrow">L’EXPLORATEUR TERRITORIAL</div>
-      <h1>Explorer la biodiversité.<br>Éclairer vos projets.</h1>
-      <p class="intro">Un territoire, des données réunies et des résultats à emporter dans QGIS.</p>
+      <h1>La biodiversité<br>du Sud-Lorraine</h1>
+      <p class="intro">Explorez les milieux et emportez vos données dans QGIS.</p>
       <section class="step">
-        <h2><span class="step-number">01</span> Choisir un territoire</h2>
+        <h2>Choisir un territoire</h2>
         <label for="territory">Périmètre d’étude</label>
         <select id="territory" disabled>
           <option value="sl">Tout le Sud-Lorraine</option>
           <option value="sud54">Sud 54</option>
           <option value="meuse">Sud Meuse</option>
           <option value="vosges">Vosges Ouest</option>
-          <option value="sddv">Saint-Dié — périmètre fourni</option>
+          <option value="sddv">Saint-Dié : périmètre fourni</option>
         </select>
         <p class="hint">Limites déjà présentes dans le dépôt. Les communes, EPCI, SCoT et PETR seront ajoutés avec leurs référentiels.</p>
       </section>
       <section class="step">
-        <h2><span class="step-number">02</span> Explorer les cours d’eau</h2>
+        <h2>Explorer les cours d’eau</h2>
         <label for="mode">Indicateur représenté</label>
-        <select id="mode"><option value="ecologique">État écologique</option><option value="chimique">État chimique</option><option value="global">État global — champ fourni</option></select>
+        <select id="mode"><option value="ecologique">État écologique</option><option value="chimique">État chimique</option><option value="global">État global : champ fourni</option></select>
         <label for="stateFilter">Filtrer les résultats par état</label>
         <select id="stateFilter"><option value="all">Tous les états</option></select>
-        <button id="analyze" class="primary" disabled>Découper au territoire <span aria-hidden="true">↗</span></button>
+        <button id="analyze" class="primary" disabled>Découper au territoire</button>
         <p class="hint">Intersection géographique réelle entre les lignes des cours d’eau et le périmètre choisi.</p>
       </section>
       <section class="summary" aria-labelledby="summaryTitle">
@@ -51,13 +53,13 @@
         <div id="distribution" aria-label="Répartition des masses d’eau selon leur état"></div>
         <p class="hint">Les kilomètres décrivent uniquement les géométries fournies et découpées ; ils ne constituent pas un inventaire exhaustif du réseau.</p>
       </section>
-      <div class="export-area"><button id="export" class="primary export" disabled>Télécharger le GeoPackage <span aria-hidden="true">↓</span></button><p class="hint">Cours d’eau filtrés + zonages cochés + périmètre + provenance · EPSG:4326</p></div>
-      <button id="sources" class="text-button">Sources et précautions de lecture ↗</button>
+      <div class="export-area"><button id="export" class="primary export" disabled>Télécharger le GeoPackage</button><p class="hint">Cours d’eau filtrés + zonages cochés + périmètre + provenance / EPSG:4326</p></div>
+      <button id="sources" class="text-button">Sources et précautions de lecture</button>
     </aside>
     <section class="map-workspace" aria-label="Carte interactive">
       <div id="map" aria-label="Carte des cours d’eau du Sud-Lorraine"></div>
-      <div class="map-caption"><span class="live-dot"></span><span id="mapTitle">Sud-Lorraine</span><span class="caption-divider">/</span><span id="indicatorTitle">État écologique</span></div>
-      <button id="toggleLayers" class="map-button layers-toggle" aria-controls="layerPanel" aria-expanded="true">Couches ☷</button>
+      <div class="map-caption"><span id="mapTitle">Sud-Lorraine</span><span class="caption-divider">/</span><span id="indicatorTitle">État écologique</span></div>
+      <button id="toggleLayers" class="map-button layers-toggle" aria-controls="layerPanel" aria-expanded="true">Couches</button>
       <aside id="layerPanel" class="layer-panel" aria-label="Couches et légende">
         <div class="section-heading"><h2>Couches de la carte</h2><span class="small-badge">23 disponibles</span></div>
         <label class="layer-row"><input id="showWater" type="checkbox" checked><span><b>Cours d’eau</b><small>État des masses d’eau</small></span><i class="water-symbol" aria-hidden="true"></i></label>
@@ -66,10 +68,10 @@
         <label class="layer-row territory-row"><input id="showBoundary" type="checkbox" checked><span><b>Périmètre d’étude</b><small id="boundaryName">Sud-Lorraine</small></span><i class="boundary-symbol" aria-hidden="true"></i></label>
         <section class="protection-controls"><h3>Protections, classements et inventaires</h3><p class="hint">Cocher les couches à afficher et exporter. Les inventaires ne sont pas tous des protections réglementaires.</p><label for="protectionOpacity">Opacité des surfaces <input id="protectionOpacity" type="range" min="0" max="70" value="20"></label><div id="protectionLayers"></div><button type="button" id="exportProtections" class="primary" disabled>Exporter les zonages cochés</button><p id="protectionStatus" class="hint" role="status" aria-live="polite"></p></section><label for="basemap" class="basemap-label">Fond de carte</label>
         <select id="basemap"><option value="ign">Plan IGN</option><option value="ortho">Photographies aériennes IGN</option><option value="osm">OpenStreetMap</option><option value="relief">Relief Esri</option></select>
-        <button id="fit" class="text-button">Recentrer sur le territoire ⤢</button>
+        <button id="fit" class="text-button">Recentrer sur le territoire</button>
       </aside>
       <div id="status" class="map-status" role="status" aria-live="polite">Chargement des données du dépôt…</div>
-      <div class="map-bottom"><span class="map-note">Données de démonstration · millésime à documenter</span><button id="toggleTable" class="map-button" aria-controls="tablePanel" aria-expanded="false">Voir les résultats <span id="tableCount">0</span> ↑</button></div>
+      <div class="map-bottom"><span class="map-note">Données de démonstration / millésime à documenter</span><button id="toggleTable" class="map-button" aria-controls="tablePanel" aria-expanded="false">Voir les résultats <span id="tableCount">0</span></button></div>
       <section id="tablePanel" class="table-panel" hidden aria-label="Table des résultats">
         <div class="table-toolbar"><div><h2>Masses d’eau de la sélection</h2><p>Cliquer sur une ligne pour la localiser.</p></div><label class="search-label" for="search">Rechercher <input type="search" id="search" placeholder="Nom ou code de masse d’eau"></label><button id="closeTable" class="icon-button" aria-label="Fermer la table">×</button></div>
         <div class="table-scroll"><table><thead><tr><th>Code</th><th>Masse d’eau</th><th id="stateHeading">État écologique</th><th>Longueur cartographiée</th></tr></thead><tbody id="tableBody"></tbody></table></div>
@@ -78,7 +80,7 @@
     </section>
   </main>
   <dialog id="sourceDialog" aria-labelledby="sourceTitle">
-    <div class="dialog-heading"><div><div class="eyebrow">COMPRENDRE LES DONNÉES</div><h2 id="sourceTitle">Sources et méthode</h2></div><button id="closeSources" class="icon-button" aria-label="Fermer les sources">×</button></div>
+    <div class="dialog-heading"><div><h2 id="sourceTitle">Sources et méthode</h2></div><button id="closeSources" class="icon-button" aria-label="Fermer les sources">×</button></div>
     <h3>Un premier jeu de données réel</h3><p>Les géométries et attributs proviennent des fichiers déjà présents dans le dépôt <a href="https://github.com/UtSeb/SL_environnement/tree/main/data" target="_blank" rel="noopener">UtSeb/SL_environnement</a>. Le producteur initial, le millésime d’évaluation, la licence et l’échelle de validité restent à renseigner avant une diffusion opérationnelle.</p>
     <dl><dt>Cours d’eau</dt><dd>Etats general - ecologique - chimique - masses eaux Sl-alleger.geojson</dd><dt>Territoires</dt><dd>Limites SL.geojson et quatre fichiers « Plaque ». Ces sous-ensembles ne sont pas assimilés automatiquement à des EPCI ou à des PETR.</dd></dl>
     <h3>Ce que fait l’analyse</h3><p>Les lignes sont découpées aux limites du territoire, y compris ses parties disjointes et ses trous. Les états restent ceux des masses d’eau dans le fichier source : ils ne sont pas réévalués localement. La longueur est calculée sur les géométries découpées, par distances géodésiques approchées sur une sphère.</p>
