@@ -1,6 +1,6 @@
 # Biodiversité · Sud-Lorraine
 
-Projet personnel de démonstrateur cartographique, destiné à explorer les données biodiversité et à préparer leur utilisation dans QGIS. Site statique compatible GitHub Pages, sans compilation ni serveur de calcul.
+Projet personnel de démonstrateur cartographique destiné à explorer les données biodiversité et à préparer leur utilisation dans QGIS. Site statique compatible GitHub Pages, sans compilation ni serveur de calcul.
 
 ## Première version
 

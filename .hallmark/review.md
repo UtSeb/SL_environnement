@@ -1,6 +1,6 @@
 # Vérification de la présentation, 27 octobre 2026
 
-Écran applicatif cartographique, identité Projet personnel issue de sources officielles.
+Écran applicatif cartographique, présentation de projet personnel.
 Relecture dans le même fil, sans sous-agent, conformément à la branche Codex.
 Vérification navigateur : 1363 pixels ; mobile dans un cadre de 390 pixels.
 Carte et données chargées, panneau de familles et ouverture mobile vérifiés.

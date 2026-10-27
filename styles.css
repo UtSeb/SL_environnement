@@ -1,8 +1,7 @@
-/* Hallmark v2.0.0 | redesign: full | shape: app screen | genre: modern-minimal | theme: brand | brand: Projet personnel (sources 2026-10-27) | signature: interactive Sud-Lorraine map
- * critique: retain map and data wiring; replace miniature green chrome with Projet personnel slate, teal and coral; review: in-thread.
- * waived: 24b retained legacy geometry and app density; 7b official Projet personnel white surfaces; third-party Leaflet styles and categorical data colours are maintained by their own systems.
+/* Hallmark v2.0.0 | redesign: full | shape: app screen | genre: modern-minimal | theme: personal | signature: interactive Sud-Lorraine map
+ * critique: retain map and data wiring; replace miniature green chrome with slate, teal and coral; review: in-thread.
+ * waived: 24b retained legacy geometry and app density; 7b light panel surfaces; third-party Leaflet styles and categorical data colours are maintained by their own systems.
  */
-
 :root{--font-body:"DM Sans","Segoe UI",Arial,sans-serif;--font-display:"DM Sans","Segoe UI",sans-serif;--ink:#333e5b;--muted:#53617a;--green:#215f69;--deep:#184b53;--lime:#d2ebef;--paper:#f5f6f9;--line:#d8dce9;--white:#fdfefe;--soft:#eaf2f4;--coral:#ff5f4e;--focus:#215f69;--disabled-bg:#e6e9ef;--disabled-ink:#5c667c;--error:#9e3028;--error-bg:#fff1ee;--shade:#1c22361a;--backdrop:#1c223670;--shadow:0 4px 16px var(--shade);}
 *{box-sizing:border-box}
 body{margin:0;color:var(--ink);background:var(--paper);font-family:var(--font-body);font-size:14px}
@@ -188,13 +187,13 @@ button,input,select,summary{touch-action:manipulation}
 button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:3px;transition:none}
 .topbar{height:88px;padding:0 32px;max-width:1920px;margin:auto;border-bottom:3px solid var(--coral)}
 .brand{gap:24px;font-size:20px;letter-spacing:0;font-weight:600}
-.personal-logo{width:105px;height:40px;object-fit:contain;flex-shrink:0}
-.brand-title{padding-left:24px;border-left:1px solid var(--line);line-height:1.25}
+
+.brand-title{padding-left:0;line-height:1.25}
 .brand-title>span{display:block;font-size:13px;font-weight:400;margin-top:4px;color:var(--muted)}
 .header-note{font-size:13px;color:var(--ink)}
 .header-end{gap:20px}
 .pill{border-radius:4px;background:var(--paper);color:var(--muted);font-size:12px;padding:8px 12px}
-.agency-link{font-size:13px;text-underline-offset:4px;text-decoration-thickness:1px}
+
 .workspace{height:calc(100dvh - 88px);min-height:680px;grid-template-columns:336px minmax(0,1fr);max-width:1920px;margin:0 auto}
 .sidebar{background:var(--paper);padding:28px 24px 24px}
 h1{font-family:var(--font-display);font-size:32px;line-height:1.15;letter-spacing:0;font-weight:400;margin:0 0 16px}
@@ -260,7 +259,9 @@ dialog{border-radius:4px;padding:28px}dialog p,dialog dd{font-size:14px}dialog d
 .dialog-heading h2{font-family:var(--font-display);font-size:28px;font-weight:400;letter-spacing:0}
 .callout{border-radius:0;border-left:3px solid var(--green);font-size:14px}
 @media(min-width:1600px){.workspace{grid-template-columns:360px minmax(0,1fr)}.sidebar{padding:32px}.layer-panel{width:312px}.map-caption{max-width:calc(100% - 412px)}}
-@media(max-width:1150px){.topbar{padding:0 24px}.workspace{grid-template-columns:304px minmax(0,1fr)}.sidebar{padding:24px 20px}.agency-link{display:none}.layer-panel{width:272px;right:16px;top:80px}.map-caption{left:16px;max-width:calc(100% - 140px)}.layers-toggle{right:16px}.map-status{left:16px;max-width:calc(100% - 32px)}.map-note{display:none}.map-bottom{right:16px}.table-toolbar{padding:16px}}
-@media(max-width:720px){.topbar{height:80px;padding:0 16px;gap:12px}.brand{gap:12px;font-size:16px}.brand-title{padding-left:12px}.brand-title>span{font-size:12px}.personal-logo{width:90px;height:36px}.pill{font-size:10px;padding:6px 8px}.header-end{gap:0}.workspace{height:auto;min-height:0;display:flex}.sidebar{padding:24px 20px}.sidebar h1{font-size:32px}.intro{max-width:100%}.map-workspace{height:82dvh;min-height:600px}.map-caption{font-size:12px;max-width:calc(100% - 140px);padding:12px}.map-caption #mapTitle{max-width:130px}.layer-panel{max-width:calc(100% - 32px);max-height:calc(100% - 168px)}.map-status{font-size:11px;bottom:88px}.table-panel{height:380px}.metrics span{max-width:none}}
+@media(max-width:1150px){.topbar{padding:0 24px}.workspace{grid-template-columns:304px minmax(0,1fr)}.sidebar{padding:24px 20px}.layer-panel{width:272px;right:16px;top:80px}.map-caption{left:16px;max-width:calc(100% - 140px)}.layers-toggle{right:16px}.map-status{left:16px;max-width:calc(100% - 32px)}.map-note{display:none}.map-bottom{right:16px}.table-toolbar{padding:16px}}
+@media(max-width:720px){.topbar{height:80px;padding:0 16px;gap:12px}.brand{gap:12px;font-size:16px}.brand-title{padding-left:0}.brand-title>span{font-size:12px}.pill{font-size:10px;padding:6px 8px}.header-end{gap:0}.workspace{height:auto;min-height:0;display:flex}.sidebar{padding:24px 20px}.sidebar h1{font-size:32px}.intro{max-width:100%}.map-workspace{height:82dvh;min-height:600px}.map-caption{font-size:12px;max-width:calc(100% - 140px);padding:12px}.map-caption #mapTitle{max-width:130px}.layer-panel{max-width:calc(100% - 32px);max-height:calc(100% - 168px)}.map-status{font-size:11px;bottom:88px}.table-panel{height:380px}.metrics span{max-width:none}}
 @media(max-width:380px){.pill{display:none}.map-caption{font-size:11px}.layers-toggle{min-width:88px}.map-caption #mapTitle{max-width:104px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+h1,.sidebar h1{font-size:30px;font-weight:600;letter-spacing:-.5px}
