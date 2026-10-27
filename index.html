@@ -9,12 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=0.3.1">
+  <link rel="stylesheet" href="styles.css?v=0.4">
   <script defer src="vendor/leaflet.js"></script>
   <script defer src="spatial.js"></script>
+  <script defer src="vendor/polygon-clipping.min.js"></script>
+  <script defer src="territorial.js?v=0.4"></script>
   <script defer src="geopackage.js?v=0.2"></script>
-  <script defer src="protections.js?v=0.2"></script>
-  <script defer src="app.js?v=0.2"></script>
+  <script defer src="protections.js?v=0.4"></script>
+  <script defer src="app.js?v=0.4"></script>
 </head>
 <body>
   <header class="topbar">
@@ -28,6 +30,11 @@
       <p class="intro">Explorez les milieux et emportez vos données dans QGIS.</p>
       <section class="step">
         <h2>Choisir un territoire</h2>
+        <label for="territoryType">Échelle du périmètre</label>
+        <select id="territoryType" disabled><option value="areas">Grands périmètres</option><option value="epci">EPCI</option><option value="commune">Commune</option><option value="group">Regroupements fournis</option></select>
+        <label for="territorySearch">Rechercher un territoire</label>
+        <input id="territorySearch" type="search" placeholder="Nom ou code INSEE / SIREN" disabled aria-describedby="territoryMatches">
+        <p id="territoryMatches" class="hint" role="status" aria-live="polite"></p>
         <label for="territory">Périmètre d’étude</label>
         <select id="territory" disabled>
           <option value="sl">Tout le Sud-Lorraine</option>
@@ -36,7 +43,7 @@
           <option value="vosges">Vosges Ouest</option>
           <option value="sddv">Saint-Dié : périmètre fourni</option>
         </select>
-        <p class="hint">Limites déjà présentes dans le dépôt. Les communes, EPCI, SCoT et PETR seront ajoutés avec leurs référentiels.</p>
+        <p id="territoryHint" class="hint">32 EPCI, 1 172 communes et deux regroupements fournis. Rechercher un nom ou un code après avoir choisi l’échelle. SCoT et PETR à intégrer.</p>
       </section>
       <section class="step">
         <h2>Explorer les cours d’eau</h2>
@@ -82,11 +89,11 @@
   <dialog id="sourceDialog" aria-labelledby="sourceTitle">
     <div class="dialog-heading"><div><h2 id="sourceTitle">Sources et méthode</h2></div><button id="closeSources" class="icon-button" aria-label="Fermer les sources">×</button></div>
     <h3>Un premier jeu de données réel</h3><p>Les géométries et attributs proviennent des fichiers déjà présents dans le dépôt <a href="https://github.com/UtSeb/SL_environnement/tree/main/data" target="_blank" rel="noopener">UtSeb/SL_environnement</a>. Le producteur initial, le millésime d’évaluation, la licence et l’échelle de validité restent à renseigner avant une diffusion opérationnelle.</p>
-    <dl><dt>Cours d’eau</dt><dd>Etats general - ecologique - chimique - masses eaux Sl-alleger.geojson</dd><dt>Territoires</dt><dd>Limites SL.geojson et quatre fichiers « Plaque ». Ces sous-ensembles ne sont pas assimilés automatiquement à des EPCI ou à des PETR.</dd></dl>
+    <dl><dt>Cours d’eau</dt><dd>Etats general - ecologique - chimique - masses eaux Sl-alleger.geojson</dd><dt>Territoires</dt><dd>Limites SL.geojson et quatre fichiers « Plaque », plus les deux référentiels administratifs fournis : 32 EPCI (SIREN) et 1 172 communes (INSEE), plus deux regroupements fournis (Métropole Grand Nancy et Pôle Épinal) dont les codes 111 et 222 ne sont pas des codes INSEE et les attributs ne sont pas des statistiques agrégées, en WGS84. Les périmètres sont ceux des fichiers transmis ; leur millésime administratif reste à préciser. Les données environnementales conservent leur couverture source, y compris si un périmètre s’étend au-delà.</dd></dl>
     <h3>Ce que fait l’analyse</h3><p>Les lignes sont découpées aux limites du territoire, y compris ses parties disjointes et ses trous. Les états restent ceux des masses d’eau dans le fichier source : ils ne sont pas réévalués localement. La longueur est calculée sur les géométries découpées, par distances géodésiques approchées sur une sphère.</p>
     <h3>Lire les indicateurs</h3><p>Une masse d’eau est comptée une fois par code européen. Les pourcentages du graphique portent sur le nombre de masses d’eau de la sélection filtrée. « Inconnu » reste distinct d’un mauvais état. Le champ « État global » est repris tel quel sans reconstituer son mode de calcul.</p>
     <h3>Emporter les résultats</h3><p>Le GeoPackage contient les géométries 2D en WGS84 (EPSG:4326), les attributs d’origine, la longueur calculée, le territoire et une table de provenance. Les traitements sont exécutés dans votre navigateur.</p>
-    <div class="callout"><b>Protections, classements et inventaires</b><p>21 couches fournies ont été intégrées, avec intersections réelles aux cinq périmètres. Les fichiers sources sont conservés ; leurs surfaces attributaires ne sont pas recalculées après découpe. Les variantes ZNIEFF restent distinctes et peuvent se recouvrir, comme les SIC et ZSC. Les comptages par couche ne doivent pas être additionnés pour obtenir un nombre de sites uniques. Les sites chiroptères sont des points, sans périmètre surfacique inventé. Les TVB restent à intégrer.</p></div>
+    <div class="callout"><b>Protections, classements et inventaires</b><p>21 couches fournies ont été intégrées, avec intersections réelles aux cinq périmètres. Les fichiers sources sont conservés ; leurs surfaces attributaires ne sont pas recalculées après découpe. Les variantes ZNIEFF restent distinctes et peuvent se recouvrir, comme les SIC et ZSC. Les comptages par couche ne doivent pas être additionnés pour obtenir un nombre de sites uniques. Les sites chiroptères sont des points, sans périmètre surfacique inventé. Pour les communes et EPCI, les intersections sont calculées à la demande dans le navigateur à partir des couches Sud-Lorraine déjà préparées. Les contacts de dimension inférieure des surfaces ne sont pas conservés. Les TVB restent à intégrer.</p></div>
   </dialog>
   <dialog id="protectionDialog" aria-labelledby="protectionTableTitle"><div class="dialog-heading"><h2 id="protectionTableTitle">Zonages</h2><button id="closeProtectionTable" class="icon-button" aria-label="Fermer">×</button></div><p class="hint">Attributs source conservés. Les surfaces indiquées dans ces champs ne sont pas les surfaces découpées.</p><div class="table-scroll"><table id="protectionTable"></table></div></dialog>
   <noscript><div class="noscript">Activez JavaScript pour afficher la carte et effectuer les analyses.</div></noscript>

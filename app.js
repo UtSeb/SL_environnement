@@ -1,4 +1,4 @@
-/* Browser-local demonstrator: existing repository datasets only. */
+/* Browser-local demonstrator with supplied environmental and administrative datasets. */
 'use strict';
 const $=id=>document.getElementById(id);
 const territoryFiles={sl:['Sud-Lorraine','Limites SL.geojson'],sud54:['Sud 54','Plaque Sud54.geojson'],meuse:['Sud Meuse','Plaque SudMeuse.geojson'],vosges:['Vosges Ouest','Plaque Vosges Ouest.geojson'],sddv:['Saint-Dié — périmètre fourni','Plaque SDDV.geojson']};
@@ -10,6 +10,11 @@ const number=(v,digits=0)=>new Intl.NumberFormat('fr-FR',{maximumFractionDigits:
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const collection=features=>({type:'FeatureCollection',features});
 let map,boundaryLayer,waterLayer,baseLayer;
+let activeTerritory='sl',adminLoading=false,analysisReady=false;
+const communeSources=["administratif/communes-01.geojson", "administratif/communes-02.geojson", "administratif/communes-03.geojson", "administratif/communes-04.geojson", "administratif/communes-05.geojson", "administratif/communes-06.geojson", "administratif/communes-07.geojson", "administratif/communes-08.geojson"];
+const adminSources={epci:['administratif/epci.geojson'],commune:communeSources,group:communeSources};
+const adminDatasets={};
+const territoryLists={areas:Object.keys(territoryFiles).map(key=>({key,name:territoryFiles[key][0],code:''}))};
 let allWater=null,territories={},clipped=[],visible=[],busy=false,exporting=false,sqlPromise=null;
 const cache=new Map();
 function status(text,error=false){$('status').textContent=text;$('status').classList.toggle('error',error);}
@@ -58,7 +63,7 @@ function refresh(){
   $('tableCount').textContent=number(ids.size);
   $('distribution').innerHTML=classes[$('mode').value].map(s=>{const n=counts[s].size,pct=ids.size?100*n/ids.size:0;return `<div class="bar-row" title="${n} masse(s) d’eau — ${number(pct,1)} %"><span>${escape(s)}</span><div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${colors[s]}"></div></div><span class="bar-value">${number(n)}</span></div>`;}).join('');
   waterLayer.clearLayers();waterLayer.addData(collection(visible));
-  $('export').disabled=busy||exporting||!visible.length;
+  $('export').disabled=busy||exporting||!analysisReady;
   renderTable();
 }
 function renderTable(){
@@ -69,13 +74,15 @@ function renderTable(){
 }
 function tableOpen(open){$('tablePanel').hidden=!open;$('toggleTable').setAttribute('aria-expanded',String(open));}
 async function analyze(){
-  if(!allWater||busy)return;
-  busy=true;const key=$('territory').value;
-  Protections.setTerritory(key);
+  if(!allWater||busy||!territories[$('territory').value])return;
+  busy=true;analysisReady=false;const key=$('territory').value;activeTerritory=key;
+  $('territoryType').disabled=true;$('territorySearch').disabled=true;
+  Protections.setTerritory(key).catch(e=>status('Zonages : '+e.message,true));
   $('territory').disabled=true;$('analyze').disabled=true;$('export').disabled=true;
   $('selectionBadge').textContent='Calcul en cours';status('Découpe des géométries au périmètre…');
   try{
     const fc=territories[key];boundaryLayer.clearLayers();boundaryLayer.addData(fc);
+    $('territoryHint').textContent=(key.startsWith('commune_')?'Code INSEE : '+key.slice(8)+'. ':key.startsWith('epci_')?'Code SIREN : '+key.slice(5)+'. ':key.startsWith('group_')?'Regroupement fourni : attributs source non agrégés. ':'')+'Périmètre fourni ; les données environnementales restent limitées à leur couverture source.';
     $('mapTitle').textContent=territoryFiles[key][0];$('boundaryName').textContent=territoryFiles[key][0];
     if(!cache.has(key)){
       const mask=Spatial.prepareMask(fc),result=[];
@@ -86,13 +93,13 @@ async function analyze(){
       }
       cache.set(key,result);
     }
-    clipped=cache.get(key);$('selectionBadge').textContent='Découpe réalisée';
+    clipped=cache.get(key);analysisReady=true;$('selectionBadge').textContent='Découpe réalisée';
     busy=false;refresh();fit();
     status('Découpe réalisée · les filtres et l’export portent sur les géométries du territoire.');
   }catch(error){clipped=[];busy=false;refresh();$('selectionBadge').textContent='Échec';status('Analyse impossible : '+error.message,true);console.error(error);}
-  finally{busy=false;$('territory').disabled=false;$('analyze').disabled=false;$('export').disabled=exporting||!visible.length;}
+  finally{busy=false;$('territoryType').disabled=false;$('territorySearch').disabled=$('territoryType').value==='areas';$('territory').disabled=false;$('analyze').disabled=false;$('export').disabled=exporting||!analysisReady;}
 }
-async function loadJson(file){const r=await fetch('data/'+encodeURIComponent(file));if(!r.ok)throw Error(file+' — HTTP '+r.status);const data=await r.json();if(data.type!=='FeatureCollection')throw Error(file+' : GeoJSON invalide');return data;}
+async function loadJson(file){const r=await fetch('data/'+file.split('/').map(encodeURIComponent).join('/'));if(!r.ok)throw Error(file+' — HTTP '+r.status);const data=await r.json();if(data.type!=='FeatureCollection')throw Error(file+' : GeoJSON invalide');return data;}
 function getSQL(){
   if(!sqlPromise)sqlPromise=(async()=>{
     if(!window.initSqlJs)await new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='vendor/sql-wasm.js';script.onload=resolve;script.onerror=()=>reject(Error('Le moteur GeoPackage n’a pas pu être chargé.'));document.head.append(script);});
@@ -101,23 +108,53 @@ function getSQL(){
   return sqlPromise;
 }
 async function exportGpkg(){
-  if(!visible.length||busy||exporting)return;
-  exporting=true;$('export').disabled=true;const snapshot=visible.slice(),key=$('territory').value,mode=$('mode').value,filter=$('stateFilter').value;
+  if(!analysisReady||busy||exporting)return;
+  exporting=true;$('export').disabled=true;const snapshot=visible.slice(),key=activeTerritory,mode=$('mode').value,filter=$('stateFilter').value;
   const oldText=$('export').innerHTML;$('export').textContent='Préparation du GeoPackage…';status('Création du GeoPackage dans votre navigateur…');
   try{
     const protectionSources=Protections.provenance(),protectionSets=await Protections.snapshot(key);
     const SQL=await getSQL();
     const perimeter=territories[key].features.map(f=>({...f,properties:{...f.properties,nom_perimetre:territoryFiles[key][0]}}));
     const bytes=GeoPackage.create(SQL,[{name:'cours_eau_decoupes',features:snapshot,description:'Lignes du fichier fourni, découpées au périmètre et filtrées.'},{name:'perimetre_analyse',features:perimeter,description:'Périmètre territorial utilisé pour la découpe.'},...protectionSets],{
-      zonages:protectionSources,traitement_zonages:'Intersection Shapely 2 avec les périmètres fournis ; réparation si nécessaire ; sans simplification ; surfaces source non recalculées.',
-      depot:'https://github.com/UtSeb/SL_environnement',fichier_cours_eau:'data/'+waterFile,fichier_perimetre:'data/'+territoryFiles[key][1],producteur_initial:'À renseigner',millesime_evaluation:'À renseigner',licence_donnees:'À renseigner',date_export:new Date().toISOString(),territoire:territoryFiles[key][0],indicateur:titles[mode],filtre_etat:filter==='all'?'Tous les états':filter,traitement:'Intersection des lignes avec les polygones du périmètre ; géométries 2D ; états repris de la source sans réévaluation.',longueur:'Kilomètres sur les lignes découpées ; distance sphérique, rayon 6371,0088 km ; réseau fourni non exhaustif.',crs:'EPSG:4326',version_portail:'0.2'
+      zonages:protectionSources,traitement_zonages:'Intersection aux limites fournies. Cinq périmètres initiaux : Shapely 2. Communes et EPCI : polygon-clipping pour les surfaces, Spatial pour les lignes et points, dans le navigateur. Surfaces attributaires source non recalculées.',
+      depot:'https://github.com/UtSeb/SL_environnement',fichier_cours_eau:'data/'+waterFile,fichier_perimetre:territoryFiles[key][1].split(' ; ').map(path=>'data/'+path).join(' ; '),producteur_initial:'À renseigner',millesime_evaluation:'À renseigner',licence_donnees:'À renseigner',date_export:new Date().toISOString(),territoire:territoryFiles[key][0],indicateur:titles[mode],filtre_etat:filter==='all'?'Tous les états':filter,traitement:'Intersection des lignes avec les polygones du périmètre ; géométries 2D ; états repris de la source sans réévaluation.',longueur:'Kilomètres sur les lignes découpées ; distance sphérique, rayon 6371,0088 km ; réseau fourni non exhaustif.',crs:'EPSG:4326',version_portail:'0.4',identifiant_perimetre:key,attributs_perimetre:key.startsWith('group_')?'Regroupement fourni : attributs source non agrégés.':'Attributs source conservés.'
     });
     const blob=new Blob([bytes],{type:'application/geopackage+sqlite3'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='biodiversite_'+key+'_'+mode+'_'+new Date().toISOString().slice(0,10)+'.gpkg';a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);
     status('GeoPackage téléchargé · cours d’eau, zonages cochés, périmètre et provenance, prêts à ouvrir dans QGIS.');
   }catch(error){status('Export impossible : '+error.message,true);console.error(error);}
-  finally{exporting=false;$('export').innerHTML=oldText;$('export').disabled=busy||!visible.length;}
+  finally{exporting=false;$('export').innerHTML=oldText;$('export').disabled=busy||!analysisReady;}
+}
+function filterTerritories(){
+  const type=$('territoryType').value,term=Territorial.normalize($('territorySearch').value);
+  const items=(territoryLists[type]||[]).filter(x=>Territorial.normalize(x.name+' '+x.code).includes(term));
+  const previous=$('territory').value;
+  $('territory').replaceChildren(...items.map(x=>new Option(x.name+(x.code&&type!=='group'?' ('+x.code+')':''),x.key)));
+  if(items.some(x=>x.key===previous))$('territory').value=previous;
+  else {const option=new Option(items.length?'Choisir dans les résultats':'Aucun résultat','',true,true);option.disabled=true;$('territory').prepend(option);}
+  $('territory').disabled=!items.length||busy||adminLoading;
+  $('analyze').disabled=busy||adminLoading||!$('territory').value;
+  $('territoryMatches').textContent=type==='areas'?'':number(items.length)+' résultat(s)';
+}
+async function changeTerritoryType(){
+  if(busy||adminLoading)return;
+  const type=$('territoryType').value;$('territorySearch').value='';
+  adminLoading=true;$('territoryType').disabled=true;$('territory').disabled=true;$('analyze').disabled=true;$('territorySearch').disabled=true;
+  try{
+    if(!territoryLists[type]){
+      $('territoryMatches').textContent='Chargement du référentiel…';
+      const paths=adminSources[type],cacheKey=paths.join(';');
+      const fc=adminDatasets[cacheKey]||(adminDatasets[cacheKey]=collection((await Promise.all(paths.map(loadJson))).flatMap(fc=>fc.features)));const items=Territorial.catalog(fc,type);
+      for(const item of items){territories[item.key]=collection([item.feature]);territoryFiles[item.key]=[item.name,adminSources[type].join(' ; ')];}
+      territoryLists[type]=items;
+    }
+    adminLoading=false;filterTerritories();
+    if(territoryLists[type].some(x=>x.key===activeTerritory)){$('territory').value=activeTerritory;$('analyze').disabled=false;}
+    $('territoryHint').textContent='Rechercher un nom ou un code, puis sélectionner un périmètre. La carte conserve la dernière analyse jusqu’à la sélection.';
+  }catch(e){$('territoryMatches').textContent='Chargement impossible : '+e.message;}
+  finally{adminLoading=false;$('territoryType').disabled=false;$('territorySearch').disabled=type==='areas';}
 }
 function bindEvents(){
+  $('territoryType').addEventListener('change',changeTerritoryType);$('territorySearch').addEventListener('input',filterTerritories);
   $('territory').addEventListener('change',analyze);$('analyze').addEventListener('click',analyze);
   $('mode').addEventListener('change',()=>{populateStates();if(map)refresh();});
   $('stateFilter').addEventListener('change',()=>{if(map)refresh();});

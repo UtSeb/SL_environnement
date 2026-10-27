@@ -69,3 +69,31 @@ DM Sans avec une police système de secours. La méthode
 [Hallmark](https://github.com/nutlope/hallmark) guide la hiérarchie, les contrôles,
 les états de focus et l’adaptation mobile, sans dépendance d’exécution ajoutée.
 Ce portail est un projet personnel indépendant.
+
+## Périmètres administratifs (v0.4)
+
+- 32 EPCI fournis, sélection par nom ou SIREN.
+- 1 172 communes dont les codes INSEE comportent cinq chiffres.
+- Deux regroupements fournis séparément : « Métropole Grand Nancy » et
+  « Pôle Épinal ». Les codes source 111 et 222 ne sont pas des codes INSEE.
+  Leurs champs population, superficie cadastrale et autres attributs source ne
+  doivent pas être interprétés comme des statistiques agrégées.
+- Recherche insensible aux accents ; les référentiels se chargent à la demande.
+- Sources : fichiers transmis « EPCI Sud-Lorraine(1).geojson » et
+  « Communes Sud-Lorraine(1).geojson », en WGS84. Aucun millésime administratif
+  n’est déduit du millésime de population 2022 présent dans les attributs.
+- Les géométries et attributs fournis sont conservés sans simplification ni
+  reprojection. Le référentiel communal est réparti en huit GeoJSON pour
+  faciliter le transfert ; `data/administratif/catalogue.json` les recense.
+- Les cours d’eau et les zonages cochés sont intersectés avec le périmètre
+  choisi. Les zonages utilisent les couches Sud-Lorraine déjà préparées ; leur
+  couverture ne s’étend pas au-delà des données fournies. Les contacts de
+  dimension inférieure des surfaces ne sont pas conservés. Aucun champ de
+  surface source n’est recalculé.
+- Le GeoPackage contient le périmètre et sa provenance, même en l’absence de
+  cours d’eau. Le moteur polygon-clipping 0.15.7 est distribué localement sous
+  licence MIT dans `vendor/`.
+
+Validation : `node --test tests/*.test.cjs`, puis
+`python tests/verify_administrative.py` avec Shapely 2 pour une comparaison GEOS
+indépendante et la relecture des GeoPackages produits par le test administratif.

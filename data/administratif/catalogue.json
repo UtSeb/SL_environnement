@@ -1,0 +1,15 @@
+{
+  "epci": [
+    "administratif/epci.geojson"
+  ],
+  "commune": [
+    "administratif/communes-01.geojson",
+    "administratif/communes-02.geojson",
+    "administratif/communes-03.geojson",
+    "administratif/communes-04.geojson",
+    "administratif/communes-05.geojson",
+    "administratif/communes-06.geojson",
+    "administratif/communes-07.geojson",
+    "administratif/communes-08.geojson"
+  ]
+}
