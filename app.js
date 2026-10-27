@@ -17,7 +17,7 @@ const adminDatasets={};
 const territoryLists={areas:Object.keys(territoryFiles).map(key=>({key,name:territoryFiles[key][0],code:''}))};
 let allWater=null,territories={},clipped=[],visible=[],busy=false,exporting=false,sqlPromise=null;
 const cache=new Map();
-function status(text,error=false){$('status').textContent=text;$('status').classList.toggle('error',error);}
+function status(text,error=false){$('status').textContent=text;$('status').classList.toggle('error',error);WorkspaceUI.feedback(text,error);}
 function state(feature,mode=$('mode').value){
   const p=feature.properties,raw=p[{ecologique:'Etat ecologique',chimique:'Etat chimique',global:'Etat masse eau '}[mode]];
   if(raw&&classes[mode].includes(String(raw).trim()))return String(raw).trim();
@@ -47,7 +47,7 @@ function setBasemap(){
   const [url,attribution,maxNativeZoom]=definitions[$('basemap').value];
   baseLayer=L.tileLayer(url,{attribution,maxNativeZoom,maxZoom:19}).addTo(map);baseLayer.bringToBack();baseLayer.setOpacity($('basemap').value==='ign'?.65:1);
 }
-function fit(){if(boundaryLayer?.getBounds().isValid())map.fitBounds(boundaryLayer.getBounds(),{paddingTopLeft:[35,80],paddingBottomRight:[window.innerWidth>1150?310:45,100]});}
+function fit(){if(boundaryLayer?.getBounds().isValid())map.fitBounds(boundaryLayer.getBounds(),{paddingTopLeft:[36,72],paddingBottomRight:[36,84]});}
 function populateStates(){
   $('stateFilter').replaceChildren(new Option('Tous les états','all'),...classes[$('mode').value].map(s=>new Option(s,s)));
   $('indicatorTitle').textContent=titles[$('mode').value];$('stateHeading').textContent=titles[$('mode').value];
@@ -83,7 +83,7 @@ async function analyze(){
   try{
     const fc=territories[key];boundaryLayer.clearLayers();boundaryLayer.addData(fc);LandUse.setTerritory(key);
     $('territoryHint').textContent=(key.startsWith('commune_')?'Code INSEE : '+key.slice(8)+'. ':key.startsWith('epci_')?'Code SIREN : '+key.slice(5)+'. ':key.startsWith('group_')?'Regroupement fourni : attributs source non agrégés. ':'')+'Périmètre fourni ; les données environnementales restent limitées à leur couverture source.';
-    $('mapTitle').textContent=territoryFiles[key][0];$('boundaryName').textContent=territoryFiles[key][0];
+    $('mapTitle').textContent=territoryFiles[key][0];$('boundaryName').textContent=territoryFiles[key][0];WorkspaceUI.setTerritory(territoryFiles[key][0]);
     if(!cache.has(key)){
       const mask=Spatial.prepareMask(fc),result=[];
       for(let i=0;i<allWater.features.length;i++){
@@ -117,7 +117,7 @@ async function exportGpkg(){
     const perimeter=territories[key].features.map(f=>({...f,properties:{...f.properties,nom_perimetre:territoryFiles[key][0]}}));
     const bytes=GeoPackage.create(SQL,[{name:'cours_eau_decoupes',features:snapshot,description:'Lignes du fichier fourni, découpées au périmètre et filtrées.'},{name:'perimetre_analyse',features:perimeter,description:'Périmètre territorial utilisé pour la découpe.'},...protectionSets],{
       zonages:protectionSources,traitement_zonages:'Intersection aux limites fournies. Cinq périmètres initiaux : Shapely 2. Communes et EPCI : polygon-clipping pour les surfaces, Spatial pour les lignes et points, dans le navigateur. Surfaces attributaires source non recalculées.',
-      depot:'https://github.com/UtSeb/SL_environnement',fichier_cours_eau:'data/'+waterFile,fichier_perimetre:territoryFiles[key][1].split(' ; ').map(path=>'data/'+path).join(' ; '),producteur_initial:'À renseigner',millesime_evaluation:'À renseigner',licence_donnees:'À renseigner',date_export:new Date().toISOString(),territoire:territoryFiles[key][0],indicateur:titles[mode],filtre_etat:filter==='all'?'Tous les états':filter,traitement:'Intersection des lignes avec les polygones du périmètre ; géométries 2D ; états repris de la source sans réévaluation.',longueur:'Kilomètres sur les lignes découpées ; distance sphérique, rayon 6371,0088 km ; réseau fourni non exhaustif.',crs:'EPSG:4326',version_portail:'0.5',identifiant_perimetre:key,attributs_perimetre:key.startsWith('group_')?'Regroupement fourni : attributs source non agrégés.':'Attributs source conservés.'
+      depot:'https://github.com/UtSeb/SL_environnement',fichier_cours_eau:'data/'+waterFile,fichier_perimetre:territoryFiles[key][1].split(' ; ').map(path=>'data/'+path).join(' ; '),producteur_initial:'À renseigner',millesime_evaluation:'À renseigner',licence_donnees:'À renseigner',date_export:new Date().toISOString(),territoire:territoryFiles[key][0],indicateur:titles[mode],filtre_etat:filter==='all'?'Tous les états':filter,traitement:'Intersection des lignes avec les polygones du périmètre ; géométries 2D ; états repris de la source sans réévaluation.',longueur:'Kilomètres sur les lignes découpées ; distance sphérique, rayon 6371,0088 km ; réseau fourni non exhaustif.',crs:'EPSG:4326',version_portail:'0.6',identifiant_perimetre:key,attributs_perimetre:key.startsWith('group_')?'Regroupement fourni : attributs source non agrégés.':'Attributs source conservés.'
     });
     const blob=new Blob([bytes],{type:'application/geopackage+sqlite3'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='biodiversite_'+key+'_'+mode+'_'+new Date().toISOString().slice(0,10)+'.gpkg';a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);
     status('GeoPackage téléchargé · cours d’eau, zonages cochés, périmètre et provenance, prêts à ouvrir dans QGIS.');
@@ -137,7 +137,7 @@ function filterTerritories(){
 }
 async function changeTerritoryType(){
   if(busy||adminLoading)return;
-  const type=$('territoryType').value;$('territorySearch').value='';
+  const type=$('territoryType').value;$('territorySearchRow').hidden=type==='areas';$('territorySearch').value='';
   adminLoading=true;$('territoryType').disabled=true;$('territory').disabled=true;$('analyze').disabled=true;$('territorySearch').disabled=true;
   try{
     if(!territoryLists[type]){
@@ -162,18 +162,17 @@ function bindEvents(){
   $('showWater').addEventListener('change',()=>{if(map)$('showWater').checked?waterLayer.addTo(map):map.removeLayer(waterLayer);});
   $('showBoundary').addEventListener('change',()=>{if(map)$('showBoundary').checked?boundaryLayer.addTo(map):map.removeLayer(boundaryLayer);});
   $('waterOpacity').addEventListener('input',()=>waterLayer?.setStyle(waterStyle));
-  $('toggleLayers').addEventListener('click',()=>{const open=$('layerPanel').hidden;$('layerPanel').hidden=!open;$('toggleLayers').setAttribute('aria-expanded',String(open));});
+  $('toggleLayers').addEventListener('click',()=>WorkspaceUI.show('layers'));
   $('toggleTable').addEventListener('click',()=>tableOpen($('tablePanel').hidden));$('closeTable').addEventListener('click',()=>tableOpen(false));
   $('search').addEventListener('input',renderTable);
   $('tableBody').addEventListener('click',e=>{const button=e.target.closest('button[data-feature]');if(!button)return;const f=visible[Number(button.dataset.feature)];let target;waterLayer.eachLayer(l=>{if(l.feature===f)target=l;});if(target){tableOpen(false);map.fitBounds(target.getBounds(),{padding:[65,65],maxZoom:13});target.openPopup();}});
   $('sources').addEventListener('click',()=>$('sourceDialog').showModal());$('closeSources').addEventListener('click',()=>$('sourceDialog').close());
-  if(window.innerWidth<=1150){$('layerPanel').hidden=true;$('toggleLayers').setAttribute('aria-expanded','false');}
 }
 async function start(){
-  populateStates();bindEvents();
+  WorkspaceUI.init();populateStates();bindEvents();
   try{
     if(typeof L==='undefined')throw Error('Le composant cartographique n’a pas pu être chargé. Vérifiez votre connexion puis rechargez la page.');
-    initMap();await Protections.init(map);LandUse.init(map);
+    initMap();await Protections.init(map);WorkspaceUI.layersReady();LandUse.init(map);
     const keys=Object.keys(territoryFiles);
     const datasets=await Promise.all([loadJson(waterFile),...keys.map(k=>loadJson(territoryFiles[k][1]))]);
     allWater=datasets[0];keys.forEach((k,i)=>territories[k]=datasets[i+1]);

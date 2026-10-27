@@ -7,17 +7,17 @@
   <title>Biodiversité du Sud-Lorraine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=0.5">
+  <link rel="stylesheet" href="styles.css?v=0.6">
   <script defer src="vendor/leaflet.js"></script>
   <script defer src="spatial.js"></script>
   <script defer src="vendor/polygon-clipping.min.js"></script>
-  <script defer src="territorial.js?v=0.5"></script>
+  <script defer src="territorial.js?v=0.6"></script>
   <script defer src="geopackage.js?v=0.2"></script>
-  <script defer src="protections.js?v=0.5"></script>
-  <script defer src="land-use.js?v=0.5"></script>
-  <script defer src="app.js?v=0.5"></script>
+  <script defer src="protections.js?v=0.6"></script>
+  <script defer src="land-use.js?v=0.6"></script>
+  <script defer src="workspace-ui.js?v=0.6"></script><script defer src="app.js?v=0.6"></script>
 </head>
 <body>
   <header class="topbar">
@@ -25,18 +25,15 @@
     <div class="header-note">Explorer, comparer, exporter.</div>
     <div class="header-end"><span class="pill">Projet personnel</span></div>
   </header>
-  <main class="workspace">
-    <aside class="sidebar" aria-label="Territoire et analyse">
-      <h1>La biodiversité<br>du Sud-Lorraine</h1>
-      <p class="intro">Explorez les milieux et emportez vos données dans QGIS.</p>
-      <section class="step">
-        <h2>Choisir un territoire</h2>
+  <nav class="workspace-nav" role="tablist" aria-label="Fonctions du portail"><button type="button" role="tab" id="tab-territory" aria-controls="panel-territory" aria-selected="true" tabindex="0" data-panel="territory"><svg viewbox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z"></path><path d="M9 3v15M15 6v15"></path></svg><span>Territoire</span></button><button type="button" role="tab" id="tab-layers" aria-controls="panel-layers" aria-selected="false" tabindex="-1" data-panel="layers"><svg viewbox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 10 5-10 5L2 8Z"></path><path d="m3 12 9 5 9-5M3 16l9 5 9-5"></path></svg><span>Couches</span><span class="nav-badge" id="layersBadge" hidden></span></button><button type="button" role="tab" id="tab-water" aria-controls="panel-water" aria-selected="false" tabindex="-1" data-panel="water"><svg viewbox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3C9 7 5 11 5 15a7 7 0 0 0 14 0c0-4-4-8-7-12Z"></path><path d="M9 16a3 3 0 0 0 3 3"></path></svg><span>Cours d’eau</span></button><button type="button" role="tab" id="tab-cross" aria-controls="panel-cross" aria-selected="false" tabindex="-1" data-panel="cross"><svg viewbox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="6"></circle><circle cx="15" cy="12" r="6"></circle></svg><span>Croisement foncier</span></button><button type="button" role="tab" id="tab-results" aria-controls="panel-results" aria-selected="false" tabindex="-1" data-panel="results"><svg viewbox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3v17h17M8 16v-5M13 16V7M18 16v-8"></path></svg><span>Résultats</span><span class="nav-badge" id="resultsBadge" hidden>Prêts</span></button><button type="button" role="tab" id="tab-exports" aria-controls="panel-exports" aria-selected="false" tabindex="-1" data-panel="exports"><svg viewbox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 15v6h16v-6"></path></svg><span>Exports</span></button></nav><main class="workspace">
+    <aside class="sidebar" aria-label="Panneau de navigation">
+      <div class="territory-context"><div><span>Territoire actif</span><strong id="activeTerritoryLabel">Sud-Lorraine</strong></div><button type="button" data-panel-target="territory" class="context-edit">Modifier</button></div><div class="panel-stack"><section id="panel-territory" class="workspace-panel" role="tabpanel" aria-labelledby="tab-territory" tabindex="0"><h1>Choisir votre territoire</h1><p class="panel-intro">Définissez le périmètre commun à la carte, aux analyses et aux exports.</p><section class="territory-form">
         <label for="territoryType">Échelle du périmètre</label>
         <select id="territoryType" disabled><option value="areas">Grands périmètres</option><option value="epci">EPCI</option><option value="commune">Commune</option><option value="group">Regroupements fournis</option></select>
-        <label for="territorySearch">Rechercher un territoire</label>
+        <div id="territorySearchRow" hidden=""><label for="territorySearch">Rechercher un territoire</label>
         <input id="territorySearch" type="search" placeholder="Nom ou code INSEE / SIREN" disabled aria-describedby="territoryMatches">
         <p id="territoryMatches" class="hint" role="status" aria-live="polite"></p>
-        <label for="territory">Périmètre d’étude</label>
+        </div><label for="territory">Périmètre d’étude</label>
         <select id="territory" disabled>
           <option value="sl">Tout le Sud-Lorraine</option>
           <option value="sud54">Sud 54</option>
@@ -46,26 +43,15 @@
         </select>
         <p id="territoryHint" class="hint">32 EPCI, 1 172 communes et deux regroupements fournis. Rechercher un nom ou un code après avoir choisi l’échelle. SCoT et PETR à intégrer.</p>
       </section>
-      <section class="step land-analysis" aria-labelledby="landHeading">
-        <h2 id="landHeading">Foncier × biodiversité</h2>
-        <p class="land-intro">Où la consommation foncière recoupe-t-elle les espaces d’intérêt écologique ?</p>
-        <label for="landScope">Espaces à comparer</label>
-        <select id="landScope"><option value="znieff">ZNIEFF de types 1 et 2</option><option value="natura">Natura 2000 : ZSC et ZPS</option><option value="reglementaires">Protections réglementaires disponibles</option><option value="checked">Couches cochées dans « Couches »</option></select>
-        <button id="landRun" class="primary" disabled>Révéler les intersections</button>
-        <p id="landStatus" class="hint" role="status" aria-live="polite">Choisir un territoire, puis lancer le croisement.</p>
-        <div id="landResults" hidden>
-          <h3 id="landResultTitle"></h3>
-          <div class="land-metrics"><div><strong id="landTotal">—</strong><span>ha consommés dans le territoire</span></div><div class="land-key-metric"><strong id="landInside">—</strong><span>ha dans les espaces retenus</span></div><div><strong id="landPercent">—</strong><span>de la consommation du territoire</span></div></div>
-          <p id="landCount" class="hint"></p><button id="landViewMap" class="text-button">Voir la carte des intersections</button>
-          <details><summary>Destinations en 2021 (cinq premières)</summary><table aria-label="Destinations des surfaces consommées dans les espaces retenus"><thead><tr><th>Occupation en 2021</th><th>Surface croisée</th></tr></thead><tbody id="landBreakdown"></tbody></table></details>
-          <details><summary>Localiser les plus grandes intersections</summary><div id="landHotspots"></div></details>
-          <button id="landExport" class="primary">Exporter ce croisement pour QGIS</button><button id="landCsv" class="text-button">Télécharger le bilan CSV</button>
-        </div>
-        <p class="hint">OCS Grand Est, millésime 2021 / évolution 2010–2021. Surfaces recalculées en Lambert-93, sans doubles comptes entre zonages. Les périmètres fournis ne permettent pas d’établir leur présence à la date de l’aménagement.</p>
-      </section>
-      <details class="water-tools"><summary>Cours d’eau : filtres et indicateurs</summary>
-      <section class="step">
-        <h2>Explorer les cours d’eau</h2>
+      <div><button type="button" class="primary" data-panel-target="cross">Passer au croisement foncier</button><button type="button" class="text-button" data-panel-target="layers">Choisir les couches de la carte</button></div></section><section id="panel-layers" class="workspace-panel" role="tabpanel" aria-labelledby="tab-layers" tabindex="0" hidden=""><div><h2>Composer votre carte</h2><p class="panel-intro">Activez les couches et ajustez leur affichage.</p><label class="field-label" for="layerSearch">Rechercher un zonage</label><input id="layerSearch" type="search" placeholder="ZNIEFF, Natura 2000, zones humides…" disabled><p id="layerSearchStatus" class="hint" role="status" aria-live="polite"></p></div><div id="layerPanel" class="layer-panel" aria-label="Couches et légende">
+        <section class="protection-controls"><h3>Protections, classements et inventaires</h3><p class="hint">Cocher les couches à afficher et exporter. Les inventaires ne sont pas tous des protections réglementaires.</p><div id="protectionLayers"></div><p id="protectionStatus" class="hint" role="status" aria-live="polite"></p></section><details class="layer-settings"><summary>Affichage et fond de carte</summary><div class="section-heading"><h2>Couches de fond et périmètre</h2><span class="small-badge">23 disponibles</span></div>
+        <label class="layer-row"><input id="showWater" type="checkbox" checked><span><b>Cours d’eau</b><small>État des masses d’eau</small></span><i class="water-symbol" aria-hidden="true"></i></label>
+        <label class="opacity-label" for="waterOpacity">Opacité <input id="waterOpacity" type="range" min="10" max="100" value="95"></label>
+        <label class="layer-row territory-row"><input id="showBoundary" type="checkbox" checked><span><b>Périmètre d’étude</b><small id="boundaryName">Sud-Lorraine</small></span><i class="boundary-symbol" aria-hidden="true"></i></label>
+        <label for="basemap" class="basemap-label">Fond de carte</label>
+        <select id="basemap"><option value="ign">Plan IGN</option><option value="ortho">Photographies aériennes IGN</option><option value="osm">OpenStreetMap</option><option value="relief">Relief Esri</option></select>
+        <label for="protectionOpacity">Opacité des surfaces <input id="protectionOpacity" type="range" min="0" max="70" value="20"></label></details></div>
+      <button id="useCheckedLayers" type="button" class="primary">Croiser les couches cochées</button></section><section id="panel-water" class="workspace-panel" role="tabpanel" aria-labelledby="tab-water" tabindex="0" hidden=""><div><h2>Explorer les cours d’eau</h2><p class="panel-intro">Consultez les états écologique et chimique à l’intérieur du territoire actif.</p><button id="showWaterFromTab" type="button" class="secondary">Afficher les cours d’eau sur la carte</button></div><section class="step">
         <label for="mode">Indicateur représenté</label>
         <select id="mode"><option value="ecologique">État écologique</option><option value="chimique">État chimique</option><option value="global">État global : champ fourni</option></select>
         <label for="stateFilter">Filtrer les résultats par état</label>
@@ -79,33 +65,41 @@
         <div id="distribution" aria-label="Répartition des masses d’eau selon leur état"></div>
         <p class="hint">Les kilomètres décrivent uniquement les géométries fournies et découpées ; ils ne constituent pas un inventaire exhaustif du réseau.</p>
       </section>
-      </details>
-      <div class="export-area"><button id="export" class="primary export" disabled>Exporter eau et zonages</button><p class="hint">Cours d’eau filtrés + zonages cochés + périmètre + provenance / EPSG:4326</p></div>
-      <button id="sources" class="text-button">Sources et précautions de lecture</button>
-    </aside>
+      <button id="openWaterTable" class="secondary" type="button">Ouvrir la table des cours d’eau</button></section><section id="panel-cross" class="workspace-panel" role="tabpanel" aria-labelledby="tab-cross" tabindex="0" hidden=""><section class="land-analysis" aria-labelledby="landHeading">
+        <h2 id="landHeading">Foncier × biodiversité</h2>
+        <p class="land-intro">Où la consommation foncière recoupe-t-elle les espaces d’intérêt écologique ?</p>
+        <label for="landScope">Espaces à comparer</label>
+        <select id="landScope"><option value="znieff">ZNIEFF de types 1 et 2</option><option value="natura">Natura 2000 : ZSC et ZPS</option><option value="reglementaires">Protections réglementaires disponibles</option><option value="checked">Couches cochées dans « Couches »</option></select>
+        <button id="landRun" class="primary" disabled>Révéler les intersections</button>
+        <p id="landStatus" class="hint" role="status" aria-live="polite">Choisir un territoire, puis lancer le croisement.</p>
+        <p class="hint">OCS Grand Est, millésime 2021 / évolution 2010–2021. Surfaces recalculées en Lambert-93, sans doubles comptes entre zonages. Les périmètres fournis ne permettent pas d’établir leur présence à la date de l’aménagement.</p>
+      </section>
+      <button type="button" class="text-button" data-panel-target="layers">Personnaliser les couches à croiser</button></section><section id="panel-results" class="workspace-panel" role="tabpanel" aria-labelledby="tab-results" tabindex="0" hidden=""><div><h2>Résultats du croisement</h2><p id="resultsScope" class="panel-intro">Consommation foncière 2010–2021 et espaces d’intérêt écologique.</p><div id="resultsEmpty" class="empty-results"><p>Aucun croisement calculé pour ce territoire.</p><button type="button" class="primary" data-panel-target="cross">Préparer un croisement</button></div></div><div id="landResults" hidden class="land-analysis">
+          <h3 id="landResultTitle"></h3>
+          <div class="land-metrics"><div><strong id="landTotal">—</strong><span>ha consommés dans le territoire</span></div><div class="land-key-metric"><strong id="landInside">—</strong><span>ha dans les espaces retenus</span></div><div><strong id="landPercent">—</strong><span>de la consommation du territoire</span></div></div>
+          <p id="landCount" class="hint"></p><button id="landViewMap" class="text-button">Voir la carte des intersections</button>
+          <details><summary>Destinations en 2021 (cinq premières)</summary><table aria-label="Destinations des surfaces consommées dans les espaces retenus"><thead><tr><th>Occupation en 2021</th><th>Surface croisée</th></tr></thead><tbody id="landBreakdown"></tbody></table></details>
+          <details><summary>Localiser les plus grandes intersections</summary><div id="landHotspots"></div></details>
+          <div><button type="button" class="primary" data-panel-target="exports">Accéder aux exports</button><button type="button" class="text-button" data-panel-target="cross">Modifier le croisement</button></div></div>
+        </section><section id="panel-exports" class="workspace-panel" role="tabpanel" aria-labelledby="tab-exports" tabindex="0" hidden=""><div><h2>Emporter vos résultats</h2><p class="panel-intro">Retrouvez ici les téléchargements pour QGIS et Excel.</p><section class="export-group" id="landExportGroup"><h3>Croisement foncier</h3><p id="landExportHint" class="hint">Lancer un croisement pour activer ces téléchargements.</p><button id="landExport" class="primary" disabled>Exporter ce croisement pour QGIS</button><button id="landCsv" class="text-button" disabled>Télécharger le bilan CSV</button>
+        </section></div><section class="export-group" id="waterExportGroup"><h3>Eau et zonages</h3><p class="hint">Export du territoire actif et des couches sélectionnées.</p><div class="export-area"><button id="export" class="primary export" disabled>Exporter eau et zonages</button><p class="hint">Cours d’eau filtrés + zonages cochés + périmètre + provenance / EPSG:4326</p></div>
+      <button type="button" id="exportProtections" class="primary" disabled>Exporter les zonages cochés</button></section></section></div><div class="sidebar-footer"><p id="workspaceFeedback" class="workspace-feedback"></p><button id="sources" class="text-button">Sources et précautions de lecture</button>
+    </div></aside>
     <section class="map-workspace" aria-label="Carte interactive">
       <div id="map" aria-label="Carte des cours d’eau du Sud-Lorraine"></div>
       <div class="map-caption"><span id="mapTitle">Sud-Lorraine</span><span class="caption-divider">/</span><span id="indicatorTitle">État écologique</span></div>
-      <button id="toggleLayers" class="map-button layers-toggle" aria-controls="layerPanel" aria-expanded="true">Couches</button>
-      <aside id="layerPanel" class="layer-panel" aria-label="Couches et légende">
-        <div id="landLegend" hidden><h2>Consommation 2010–2021</h2><label class="land-legend-entry"><input type="checkbox" id="landShowZones" checked><i class="land-zone-symbol"></i>Espaces comparés</label><span class="land-legend-entry"><i class="land-red"></i>Dans les espaces retenus</span><label class="land-legend-entry"><input type="checkbox" id="landShowAll" checked><i class="land-amber"></i>Toute la consommation du territoire</label></div>
-        <div class="section-heading"><h2>Couches de la carte</h2><span class="small-badge">23 disponibles</span></div>
-        <label class="layer-row"><input id="showWater" type="checkbox" checked><span><b>Cours d’eau</b><small>État des masses d’eau</small></span><i class="water-symbol" aria-hidden="true"></i></label>
-        <label class="opacity-label" for="waterOpacity">Opacité <input id="waterOpacity" type="range" min="10" max="100" value="95"></label>
-        <div id="legend" class="legend"></div>
-        <label class="layer-row territory-row"><input id="showBoundary" type="checkbox" checked><span><b>Périmètre d’étude</b><small id="boundaryName">Sud-Lorraine</small></span><i class="boundary-symbol" aria-hidden="true"></i></label>
-        <section class="protection-controls"><h3>Protections, classements et inventaires</h3><p class="hint">Cocher les couches à afficher et exporter. Les inventaires ne sont pas tous des protections réglementaires.</p><label for="protectionOpacity">Opacité des surfaces <input id="protectionOpacity" type="range" min="0" max="70" value="20"></label><div id="protectionLayers"></div><button type="button" id="exportProtections" class="primary" disabled>Exporter les zonages cochés</button><p id="protectionStatus" class="hint" role="status" aria-live="polite"></p></section><label for="basemap" class="basemap-label">Fond de carte</label>
-        <select id="basemap"><option value="ign">Plan IGN</option><option value="ortho">Photographies aériennes IGN</option><option value="osm">OpenStreetMap</option><option value="relief">Relief Esri</option></select>
-        <button id="fit" class="text-button">Recentrer sur le territoire</button>
-      </aside>
-      <div id="status" class="map-status" role="status" aria-live="polite">Chargement des données du dépôt…</div>
+      <details class="map-key" id="mapLegend" open><summary>Légende de la carte</summary><div id="landLegend" hidden><h2>Consommation 2010–2021</h2><label class="land-legend-entry"><input type="checkbox" id="landShowZones" checked><i class="land-zone-symbol"></i>Espaces comparés</label><span class="land-legend-entry"><i class="land-red"></i>Dans les espaces retenus</span><label class="land-legend-entry"><input type="checkbox" id="landShowAll" checked><i class="land-amber"></i>Toute la consommation du territoire</label></div>
+        <div id="waterLegend"><div id="legend" class="legend"></div>
+        </div></details><div class="map-actions"><button id="toggleLayers" class="map-button layers-toggle" aria-controls="panel-layers" aria-expanded="false">Couches</button>
+      <button id="fit" class="map-button">Recentrer</button>
+      </div><div id="status" class="map-status" role="status" aria-live="polite">Chargement des données du dépôt…</div>
       <div class="map-bottom"><span class="map-note">Données de démonstration / millésime à documenter</span><button id="toggleTable" class="map-button" aria-controls="tablePanel" aria-expanded="false">Table des cours d’eau <span id="tableCount">0</span></button></div>
       <section id="tablePanel" class="table-panel" hidden aria-label="Table des résultats">
         <div class="table-toolbar"><div><h2>Masses d’eau de la sélection</h2><p>Cliquer sur une ligne pour la localiser.</p></div><label class="search-label" for="search">Rechercher <input type="search" id="search" placeholder="Nom ou code de masse d’eau"></label><button id="closeTable" class="icon-button" aria-label="Fermer la table">×</button></div>
         <div class="table-scroll"><table><thead><tr><th>Code</th><th>Masse d’eau</th><th id="stateHeading">État écologique</th><th>Longueur cartographiée</th></tr></thead><tbody id="tableBody"></tbody></table></div>
         <p id="tableEmpty" class="empty" hidden>Aucun résultat ne correspond à cette recherche.</p>
       </section>
-    </section>
+    <button class="map-jump" id="jumpToMap" type="button">Afficher la carte</button></section>
   </main>
   <dialog id="sourceDialog" aria-labelledby="sourceTitle">
     <div class="dialog-heading"><div><h2 id="sourceTitle">Sources et méthode</h2></div><button id="closeSources" class="icon-button" aria-label="Fermer les sources">×</button></div>

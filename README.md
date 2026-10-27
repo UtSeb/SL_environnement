@@ -143,3 +143,21 @@ et pyproj. Vérification : `node --test tests/*.test.cjs`, puis
 `python tests/verify_land.py ORIGINAL.geojson` avec ces mêmes dépendances.
 Le contrôle indépendant GEOS / PROJ compare les hectares au fichier original,
 vérifie les chevauchements, la projection et les géométries des GeoPackages.
+
+## Navigation (v0.6)
+
+Six onglets donnent accès aux fonctions : Territoire, Couches, Cours d’eau,
+Croisement foncier, Résultats et Exports. Un seul panneau de commandes est
+visible à la fois ; le territoire actif reste affiché et la carte conserve
+ses couches lors des changements d’onglet.
+
+Les zonages sont recherchables par nom, avec ouverture des familles
+correspondantes. Un raccourci prépare le croisement des couches cochées.
+Après calcul, l’onglet Résultats s’ouvre automatiquement ; les téléchargements
+sont regroupés dans Exports et restent désactivés sans résultat disponible.
+La légende reste sur la carte. Les réglages d’affichage et de fond de carte
+sont accessibles dans Couches.
+
+Les onglets prennent en charge les flèches gauche/droite et Début/Fin. Sur
+mobile, les six entrées restent visibles sur deux rangées, avec un accès
+à la carte depuis le panneau.
