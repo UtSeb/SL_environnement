@@ -9,15 +9,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=0.6">
+  <link rel="stylesheet" href="styles.css?v=0.6.1">
   <script defer src="vendor/leaflet.js"></script>
   <script defer src="spatial.js"></script>
   <script defer src="vendor/polygon-clipping.min.js"></script>
-  <script defer src="territorial.js?v=0.6"></script>
+  <script defer src="territorial.js?v=0.6.1"></script>
   <script defer src="geopackage.js?v=0.2"></script>
-  <script defer src="protections.js?v=0.6"></script>
-  <script defer src="land-use.js?v=0.6"></script>
-  <script defer src="workspace-ui.js?v=0.6"></script><script defer src="app.js?v=0.6"></script>
+  <script defer src="protections.js?v=0.6.1"></script>
+  <script defer src="land-use.js?v=0.6.1"></script>
+  <script defer src="workspace-ui.js?v=0.6.1"></script><script defer src="app.js?v=0.6.1"></script>
 </head>
 <body>
   <header class="topbar">
@@ -44,13 +44,7 @@
         <p id="territoryHint" class="hint">32 EPCI, 1 172 communes et deux regroupements fournis. Rechercher un nom ou un code après avoir choisi l’échelle. SCoT et PETR à intégrer.</p>
       </section>
       <div><button type="button" class="primary" data-panel-target="cross">Passer au croisement foncier</button><button type="button" class="text-button" data-panel-target="layers">Choisir les couches de la carte</button></div></section><section id="panel-layers" class="workspace-panel" role="tabpanel" aria-labelledby="tab-layers" tabindex="0" hidden=""><div><h2>Composer votre carte</h2><p class="panel-intro">Activez les couches et ajustez leur affichage.</p><label class="field-label" for="layerSearch">Rechercher un zonage</label><input id="layerSearch" type="search" placeholder="ZNIEFF, Natura 2000, zones humides…" disabled><p id="layerSearchStatus" class="hint" role="status" aria-live="polite"></p></div><div id="layerPanel" class="layer-panel" aria-label="Couches et légende">
-        <section class="protection-controls"><h3>Protections, classements et inventaires</h3><p class="hint">Cocher les couches à afficher et exporter. Les inventaires ne sont pas tous des protections réglementaires.</p><div id="protectionLayers"></div><p id="protectionStatus" class="hint" role="status" aria-live="polite"></p></section><details class="layer-settings"><summary>Affichage et fond de carte</summary><div class="section-heading"><h2>Couches de fond et périmètre</h2><span class="small-badge">23 disponibles</span></div>
-        <label class="layer-row"><input id="showWater" type="checkbox" checked><span><b>Cours d’eau</b><small>État des masses d’eau</small></span><i class="water-symbol" aria-hidden="true"></i></label>
-        <label class="opacity-label" for="waterOpacity">Opacité <input id="waterOpacity" type="range" min="10" max="100" value="95"></label>
-        <label class="layer-row territory-row"><input id="showBoundary" type="checkbox" checked><span><b>Périmètre d’étude</b><small id="boundaryName">Sud-Lorraine</small></span><i class="boundary-symbol" aria-hidden="true"></i></label>
-        <label for="basemap" class="basemap-label">Fond de carte</label>
-        <select id="basemap"><option value="ign">Plan IGN</option><option value="ortho">Photographies aériennes IGN</option><option value="osm">OpenStreetMap</option><option value="relief">Relief Esri</option></select>
-        <label for="protectionOpacity">Opacité des surfaces <input id="protectionOpacity" type="range" min="0" max="70" value="20"></label></details></div>
+        <section class="protection-controls"><h3>Protections, classements et inventaires</h3><p class="hint">Cocher les couches à afficher et exporter. Les inventaires ne sont pas tous des protections réglementaires.</p><div id="protectionLayers"></div><p id="protectionStatus" class="hint" role="status" aria-live="polite"></p></section></div>
       <button id="useCheckedLayers" type="button" class="primary">Croiser les couches cochées</button></section><section id="panel-water" class="workspace-panel" role="tabpanel" aria-labelledby="tab-water" tabindex="0" hidden=""><div><h2>Explorer les cours d’eau</h2><p class="panel-intro">Consultez les états écologique et chimique à l’intérieur du territoire actif.</p><button id="showWaterFromTab" type="button" class="secondary">Afficher les cours d’eau sur la carte</button></div><section class="step">
         <label for="mode">Indicateur représenté</label>
         <select id="mode"><option value="ecologique">État écologique</option><option value="chimique">État chimique</option><option value="global">État global : champ fourni</option></select>
@@ -88,9 +82,15 @@
     <section class="map-workspace" aria-label="Carte interactive">
       <div id="map" aria-label="Carte des cours d’eau du Sud-Lorraine"></div>
       <div class="map-caption"><span id="mapTitle">Sud-Lorraine</span><span class="caption-divider">/</span><span id="indicatorTitle">État écologique</span></div>
-      <details class="map-key" id="mapLegend" open><summary>Légende de la carte</summary><div id="landLegend" hidden><h2>Consommation 2010–2021</h2><label class="land-legend-entry"><input type="checkbox" id="landShowZones" checked><i class="land-zone-symbol"></i>Espaces comparés</label><span class="land-legend-entry"><i class="land-red"></i>Dans les espaces retenus</span><label class="land-legend-entry"><input type="checkbox" id="landShowAll" checked><i class="land-amber"></i>Toute la consommation du territoire</label></div>
+      <aside class="map-tools" aria-label="Légende, affichage et fond de carte"><details class="map-key" id="mapLegend" open><summary>Légende de la carte</summary><div id="landLegend" hidden><h2>Consommation 2010–2021</h2><label class="land-legend-entry"><input type="checkbox" id="landShowZones" checked><i class="land-zone-symbol"></i>Espaces comparés</label><span class="land-legend-entry"><i class="land-red"></i>Dans les espaces retenus</span><label class="land-legend-entry"><input type="checkbox" id="landShowAll" checked><i class="land-amber"></i>Toute la consommation du territoire</label></div>
         <div id="waterLegend"><div id="legend" class="legend"></div>
-        </div></details><div class="map-actions"><button id="toggleLayers" class="map-button layers-toggle" aria-controls="panel-layers" aria-expanded="false">Couches</button>
+        </div></details><details class="layer-settings" id="mapDisplaySettings" open=""><summary>Affichage et fond de carte</summary><div class="section-heading"><h2>Visibilité et opacité</h2></div>
+        <label class="layer-row"><input id="showWater" type="checkbox" checked><span><b>Cours d’eau</b><small>État des masses d’eau</small></span><i class="water-symbol" aria-hidden="true"></i></label>
+        <label class="opacity-label" for="waterOpacity">Opacité <input id="waterOpacity" type="range" min="10" max="100" value="95"></label>
+        <label class="layer-row territory-row"><input id="showBoundary" type="checkbox" checked><span><b>Périmètre d’étude</b><small id="boundaryName">Sud-Lorraine</small></span><i class="boundary-symbol" aria-hidden="true"></i></label>
+        <label for="basemap" class="basemap-label">Fond de carte</label>
+        <select id="basemap"><option value="ign">Plan IGN</option><option value="ortho">Photographies aériennes IGN</option><option value="osm">OpenStreetMap</option><option value="relief">Relief Esri</option></select>
+        <label for="protectionOpacity">Opacité des zonages <input id="protectionOpacity" type="range" min="0" max="70" value="20"></label></details></aside><div class="map-actions"><button id="toggleLayers" class="map-button layers-toggle" aria-controls="panel-layers" aria-expanded="false">Couches</button>
       <button id="fit" class="map-button">Recentrer</button>
       </div><div id="status" class="map-status" role="status" aria-live="polite">Chargement des données du dépôt…</div>
       <div class="map-bottom"><span class="map-note">Données de démonstration / millésime à documenter</span><button id="toggleTable" class="map-button" aria-controls="tablePanel" aria-expanded="false">Table des cours d’eau <span id="tableCount">0</span></button></div>

@@ -43,6 +43,7 @@ const WorkspaceUI=(()=>{
   el('openWaterTable').addEventListener('click',()=>{if(el('tablePanel').hidden)el('toggleTable').click();});
   el('showWater').addEventListener('change',updateLegend);
   el('jumpToMap').addEventListener('click',()=>document.querySelector('.map-workspace').scrollIntoView({block:'start',behavior:'auto'}));
+  if(window.innerWidth<=720)el('mapDisplaySettings').open=false;
   show('territory');updateLegend();invalidate();initialized=true;
   const observer=new IntersectionObserver(entries=>{el('jumpToMap').hidden=entries[0].intersectionRatio>.25;},{threshold:[0,.25,.5]});observer.observe(document.querySelector('.map-workspace'));
  }
