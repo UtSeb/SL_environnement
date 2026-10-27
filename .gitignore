@@ -1,0 +1,5 @@
+.openai/
+node_modules/
+*.gpkg
+*.zip
+dist/
