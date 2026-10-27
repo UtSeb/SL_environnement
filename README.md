@@ -20,7 +20,7 @@ Le comptage porte sur les codes de masses d'eau présents après découpe et fil
 
 La découpe s'effectue dans le plan longitude/latitude sur des segments GeoJSON. La longueur est une approximation sphérique adaptée à la démonstration, pas une mesure réglementaire en projection locale. Les géométries source sont allégées. Le navigateur travaille par lots et met en cache chaque territoire ; cette architecture est à réévaluer pour les jeux volumineux.
 
-Les couches TVB, protections et zonages PLU(i), ainsi que les référentiels communes/EPCI/SCoT/PETR, ne sont pas encore intégrés. Aucun résultat de croisement entre ces couches n'est simulé.
+Les couches TVB et zonages PLU(i), ainsi que les référentiels communes/EPCI/SCoT/PETR, ne sont pas encore intégrés. Aucun résultat de croisement entre ces couches n'est simulé.
 
 ## Affichage et déploiement
 
@@ -35,6 +35,7 @@ Pour une reprise dans le CRT, les fichiers HTML/CSS/JS et `data/`, `vendor/` peu
 ```sh
 node tests/spatial.test.cjs
 node tests/export.test.cjs
+node tests/protections.test.cjs
 python tests/verify_export.py
 ```
 
@@ -44,3 +45,19 @@ Le second test génère un GeoPackage temporaire hors du dépôt. Le troisième 
 
 - Leaflet 1.9.4, BSD-2-Clause, dans `vendor/` ; voir `vendor/LEAFLET-LICENSE`.
 - sql.js 1.13.0, MIT, incluant SQLite (domaine public), dans `vendor/` ; voir `vendor/SQLJS-LICENSE`.
+
+## Protections, classements et inventaires (v0.2)
+
+21 couches transmises le 26 octobre 2026 : protections de biotope, réserves biologiques et naturelles régionales, sites classés/inscrits, Natura 2000 SIC/ZSC/ZPS et chiroptères ponctuels, ENS et variantes géologiques/rivières/superposés, PNR, paysages remarquables, ZNIEFF 1/2 et variantes ZE, ZICO et ZHR.
+
+Le panneau Couches permet de les activer par famille, régler l’opacité, consulter tous les attributs et exporter les couches cochées seules ou avec les cours d’eau. Chargement à la demande ; le changement de territoire retire immédiatement les anciennes géométries. Une couche vide n’est pas exportée.
+
+Les sources sont conservées sans modification dans `data/protections/sources/`. `manifest.json` donne leurs noms et comptages. Les intersections pour chaque périmètre sont précalculées en EPSG:4326 avec Shapely 2 (`make_valid` pour les géométries invalides), sans simplification. Les géométries mixtes et les éléments ponctuels/linéaires sont conservés, y compris dans le GeoPackage. Les champs de surface/longueur de la source ne sont pas recalculés et ne mesurent donc pas nécessairement la partie découpée. Aucun total de surface protégée sans double compte n’est calculé. Inventaire et protection réglementaire sont distingués dans les familles ; aucun statut actuel n’est déduit des seuls noms de fichiers.
+
+Les variantes ZNIEFF et les couches SIC/ZSC sont maintenues séparément : recouvrements possibles, comptages non additionnables. Métadonnées producteur, date et licence à compléter à partir des sources officielles.
+
+Reproduire les intersections (Python et Shapely >= 2) :
+
+```sh
+python scripts/prepare_protections.py /chemin/vers/les/21/geojson
+```

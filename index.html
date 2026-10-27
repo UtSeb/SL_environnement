@@ -10,13 +10,14 @@
   <script defer src="vendor/leaflet.js"></script>
   <script defer src="spatial.js"></script>
   <script defer src="geopackage.js"></script>
+  <script defer src="protections.js"></script>
   <script defer src="app.js"></script>
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="./" aria-label="Biodiversité Sud-Lorraine, accueil"><span class="brand-symbol" aria-hidden="true">◒</span><span>Biodiversité <small>SUD-LORRAINE</small></span></a>
     <div class="header-note">Observer les milieux. Éclairer les décisions.</div>
-    <div class="header-end"><span class="pill">Démonstrateur · v0.1</span><span class="personal">Projet personnel</span></div>
+    <div class="header-end"><span class="pill">Démonstrateur · v0.2</span><span class="personal">Projet personnel</span></div>
   </header>
   <main class="workspace">
     <aside class="sidebar" aria-label="Territoire et analyse">
@@ -50,7 +51,7 @@
         <div id="distribution" aria-label="Répartition des masses d’eau selon leur état"></div>
         <p class="hint">Les kilomètres décrivent uniquement les géométries fournies et découpées ; ils ne constituent pas un inventaire exhaustif du réseau.</p>
       </section>
-      <div class="export-area"><button id="export" class="primary export" disabled>Télécharger le GeoPackage <span aria-hidden="true">↓</span></button><p class="hint">Cours d’eau filtrés + périmètre + provenance · EPSG:4326</p></div>
+      <div class="export-area"><button id="export" class="primary export" disabled>Télécharger le GeoPackage <span aria-hidden="true">↓</span></button><p class="hint">Cours d’eau filtrés + zonages cochés + périmètre + provenance · EPSG:4326</p></div>
       <button id="sources" class="text-button">Sources et précautions de lecture ↗</button>
     </aside>
     <section class="map-workspace" aria-label="Carte interactive">
@@ -58,12 +59,12 @@
       <div class="map-caption"><span class="live-dot"></span><span id="mapTitle">Sud-Lorraine</span><span class="caption-divider">/</span><span id="indicatorTitle">État écologique</span></div>
       <button id="toggleLayers" class="map-button layers-toggle" aria-controls="layerPanel" aria-expanded="true">Couches ☷</button>
       <aside id="layerPanel" class="layer-panel" aria-label="Couches et légende">
-        <div class="section-heading"><h2>Couches de la carte</h2><span class="small-badge">2 disponibles</span></div>
+        <div class="section-heading"><h2>Couches de la carte</h2><span class="small-badge">23 disponibles</span></div>
         <label class="layer-row"><input id="showWater" type="checkbox" checked><span><b>Cours d’eau</b><small>État des masses d’eau</small></span><i class="water-symbol" aria-hidden="true"></i></label>
         <label class="opacity-label" for="waterOpacity">Opacité <input id="waterOpacity" type="range" min="10" max="100" value="95"></label>
         <div id="legend" class="legend"></div>
         <label class="layer-row territory-row"><input id="showBoundary" type="checkbox" checked><span><b>Périmètre d’étude</b><small id="boundaryName">Sud-Lorraine</small></span><i class="boundary-symbol" aria-hidden="true"></i></label>
-        <label for="basemap" class="basemap-label">Fond de carte</label>
+        <section class="protection-controls"><h3>Protections, classements et inventaires</h3><p class="hint">Cocher les couches à afficher et exporter. Les inventaires ne sont pas tous des protections réglementaires.</p><label for="protectionOpacity">Opacité des surfaces <input id="protectionOpacity" type="range" min="0" max="70" value="20"></label><div id="protectionLayers"></div><button type="button" id="exportProtections" class="primary" disabled>Exporter les zonages cochés</button><p id="protectionStatus" class="hint" role="status" aria-live="polite"></p></section><label for="basemap" class="basemap-label">Fond de carte</label>
         <select id="basemap"><option value="ign">Plan IGN</option><option value="ortho">Photographies aériennes IGN</option><option value="osm">OpenStreetMap</option><option value="relief">Relief Esri</option></select>
         <button id="fit" class="text-button">Recentrer sur le territoire ⤢</button>
       </aside>
@@ -83,8 +84,9 @@
     <h3>Ce que fait l’analyse</h3><p>Les lignes sont découpées aux limites du territoire, y compris ses parties disjointes et ses trous. Les états restent ceux des masses d’eau dans le fichier source : ils ne sont pas réévalués localement. La longueur est calculée sur les géométries découpées, par distances géodésiques approchées sur une sphère.</p>
     <h3>Lire les indicateurs</h3><p>Une masse d’eau est comptée une fois par code européen. Les pourcentages du graphique portent sur le nombre de masses d’eau de la sélection filtrée. « Inconnu » reste distinct d’un mauvais état. Le champ « État global » est repris tel quel sans reconstituer son mode de calcul.</p>
     <h3>Emporter les résultats</h3><p>Le GeoPackage contient les géométries 2D en WGS84 (EPSG:4326), les attributs d’origine, la longueur calculée, le territoire et une table de provenance. Les traitements sont exécutés dans votre navigateur.</p>
-    <div class="callout"><b>Prochaine étape</b><p>Ajouter les TVB et les périmètres de protection, puis leurs intersections. Ces couches ne sont pas encore présentes dans ce démonstrateur.</p></div>
+    <div class="callout"><b>Protections, classements et inventaires</b><p>21 couches fournies ont été intégrées, avec intersections réelles aux cinq périmètres. Les fichiers sources sont conservés ; leurs surfaces attributaires ne sont pas recalculées après découpe. Les variantes ZNIEFF restent distinctes et peuvent se recouvrir, comme les SIC et ZSC. Les comptages par couche ne doivent pas être additionnés pour obtenir un nombre de sites uniques. Les sites chiroptères sont des points, sans périmètre surfacique inventé. Les TVB restent à intégrer.</p></div>
   </dialog>
+  <dialog id="protectionDialog" aria-labelledby="protectionTableTitle"><div class="dialog-heading"><h2 id="protectionTableTitle">Zonages</h2><button id="closeProtectionTable" class="icon-button" aria-label="Fermer">×</button></div><p class="hint">Attributs source conservés. Les surfaces indiquées dans ces champs ne sont pas les surfaces découpées.</p><div class="table-scroll"><table id="protectionTable"></table></div></dialog>
   <noscript><div class="noscript">Activez JavaScript pour afficher la carte et effectuer les analyses.</div></noscript>
 </body>
 </html>

@@ -9,10 +9,11 @@
     const line=c=>{u32(c.length);c.forEach(point);};
     const polygon=c=>{u32(c.length);c.forEach(line);};
     const write=g=>{
-      const types={Point:1,LineString:2,Polygon:3,MultiPoint:4,MultiLineString:5,MultiPolygon:6};
+      const types={Point:1,LineString:2,Polygon:3,MultiPoint:4,MultiLineString:5,MultiPolygon:6,GeometryCollection:7};
       if(!types[g.type])throw Error('Géométrie non prise en charge : '+g.type);
       bytes.push(1);u32(types[g.type]);
-      if(g.type==='Point')point(g.coordinates);
+      if(g.type==='GeometryCollection'){u32(g.geometries.length);g.geometries.forEach(write);}
+      else if(g.type==='Point')point(g.coordinates);
       else if(g.type==='LineString')line(g.coordinates);
       else if(g.type==='Polygon')polygon(g.coordinates);
       else {u32(g.coordinates.length);const type={MultiPoint:'Point',MultiLineString:'LineString',MultiPolygon:'Polygon'}[g.type];g.coordinates.forEach(c=>write({type,coordinates:c}));}
@@ -39,7 +40,8 @@
         let geom='geom';while(props.includes(geom)||geom===pk)geom='_'+geom;
         const types=props.map(p=>features.every(f=>f.properties[p]==null||typeof f.properties[p]==='number')?'REAL':'TEXT');
         db.run(`CREATE TABLE ${quote(name)} (${quote(pk)} INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,${quote(geom)} GEOMETRY${props.map((p,i)=>','+quote(p)+' '+types[i]).join('')})`);
-        const box=root.Spatial.bounds(features.map(f=>f.geometry.coordinates));
+        const coordinates=g=>g.type==='GeometryCollection'?g.geometries.map(coordinates):g.coordinates;
+        const box=root.Spatial.bounds(features.map(f=>coordinates(f.geometry)));
         db.run('INSERT INTO gpkg_contents(table_name,data_type,identifier,description,min_x,min_y,max_x,max_y,srs_id) VALUES (?,?,?,?,?,?,?,?,?)',[name,'features',name,description||'',...box,4326]);
         const geometryTypes=new Set(features.map(f=>f.geometry.type.toUpperCase()));
         db.run('INSERT INTO gpkg_geometry_columns VALUES (?,?,?,?,?,?)',[name,geom,geometryTypes.size===1?[...geometryTypes][0]:'GEOMETRY',4326,0,0]);

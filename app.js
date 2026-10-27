@@ -71,6 +71,7 @@ function tableOpen(open){$('tablePanel').hidden=!open;$('toggleTable').setAttrib
 async function analyze(){
   if(!allWater||busy)return;
   busy=true;const key=$('territory').value;
+  Protections.setTerritory(key);
   $('territory').disabled=true;$('analyze').disabled=true;$('export').disabled=true;
   $('selectionBadge').textContent='Calcul en cours';status('Découpe des géométries au périmètre…');
   try{
@@ -104,13 +105,15 @@ async function exportGpkg(){
   exporting=true;$('export').disabled=true;const snapshot=visible.slice(),key=$('territory').value,mode=$('mode').value,filter=$('stateFilter').value;
   const oldText=$('export').innerHTML;$('export').textContent='Préparation du GeoPackage…';status('Création du GeoPackage dans votre navigateur…');
   try{
+    const protectionSources=Protections.provenance(),protectionSets=await Protections.snapshot(key);
     const SQL=await getSQL();
     const perimeter=territories[key].features.map(f=>({...f,properties:{...f.properties,nom_perimetre:territoryFiles[key][0]}}));
-    const bytes=GeoPackage.create(SQL,[{name:'cours_eau_decoupes',features:snapshot,description:'Lignes du fichier fourni, découpées au périmètre et filtrées.'},{name:'perimetre_analyse',features:perimeter,description:'Périmètre territorial utilisé pour la découpe.'}],{
-      depot:'https://github.com/UtSeb/SL_environnement',fichier_cours_eau:'data/'+waterFile,fichier_perimetre:'data/'+territoryFiles[key][1],producteur_initial:'À renseigner',millesime_evaluation:'À renseigner',licence_donnees:'À renseigner',date_export:new Date().toISOString(),territoire:territoryFiles[key][0],indicateur:titles[mode],filtre_etat:filter==='all'?'Tous les états':filter,traitement:'Intersection des lignes avec les polygones du périmètre ; géométries 2D ; états repris de la source sans réévaluation.',longueur:'Kilomètres sur les lignes découpées ; distance sphérique, rayon 6371,0088 km ; réseau fourni non exhaustif.',crs:'EPSG:4326',version_portail:'0.1'
+    const bytes=GeoPackage.create(SQL,[{name:'cours_eau_decoupes',features:snapshot,description:'Lignes du fichier fourni, découpées au périmètre et filtrées.'},{name:'perimetre_analyse',features:perimeter,description:'Périmètre territorial utilisé pour la découpe.'},...protectionSets],{
+      zonages:protectionSources,traitement_zonages:'Intersection Shapely 2 avec les périmètres fournis ; réparation si nécessaire ; sans simplification ; surfaces source non recalculées.',
+      depot:'https://github.com/UtSeb/SL_environnement',fichier_cours_eau:'data/'+waterFile,fichier_perimetre:'data/'+territoryFiles[key][1],producteur_initial:'À renseigner',millesime_evaluation:'À renseigner',licence_donnees:'À renseigner',date_export:new Date().toISOString(),territoire:territoryFiles[key][0],indicateur:titles[mode],filtre_etat:filter==='all'?'Tous les états':filter,traitement:'Intersection des lignes avec les polygones du périmètre ; géométries 2D ; états repris de la source sans réévaluation.',longueur:'Kilomètres sur les lignes découpées ; distance sphérique, rayon 6371,0088 km ; réseau fourni non exhaustif.',crs:'EPSG:4326',version_portail:'0.2'
     });
     const blob=new Blob([bytes],{type:'application/geopackage+sqlite3'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='biodiversite_'+key+'_'+mode+'_'+new Date().toISOString().slice(0,10)+'.gpkg';a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);
-    status('GeoPackage téléchargé · 2 couches et une table de provenance, prêts à ouvrir dans QGIS.');
+    status('GeoPackage téléchargé · cours d’eau, zonages cochés, périmètre et provenance, prêts à ouvrir dans QGIS.');
   }catch(error){status('Export impossible : '+error.message,true);console.error(error);}
   finally{exporting=false;$('export').innerHTML=oldText;$('export').disabled=busy||!visible.length;}
 }
@@ -133,7 +136,7 @@ async function start(){
   populateStates();bindEvents();
   try{
     if(typeof L==='undefined')throw Error('Le composant cartographique n’a pas pu être chargé. Vérifiez votre connexion puis rechargez la page.');
-    initMap();
+    initMap();await Protections.init(map);
     const keys=Object.keys(territoryFiles);
     const datasets=await Promise.all([loadJson(waterFile),...keys.map(k=>loadJson(territoryFiles[k][1]))]);
     allWater=datasets[0];keys.forEach((k,i)=>territories[k]=datasets[i+1]);

@@ -1,0 +1,317 @@
+[
+  {
+    "id": "zonage_01",
+    "label": "Zones humides remarquables",
+    "group": "Inventaires",
+    "color": "#318a9e",
+    "source": "SL_Zones_Humides_Remarquables_ZHR__decoupe_4326.geojson",
+    "counts": {
+      "sl": 401,
+      "sud54": 89,
+      "meuse": 46,
+      "vosges": 116,
+      "sddv": 171
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_02",
+    "label": "ENS géologiques",
+    "group": "Espaces naturels sensibles",
+    "color": "#b47b45",
+    "source": "SL_ENS_geologiques_ZE_V2_decoupe_4326.geojson",
+    "counts": {
+      "sl": 13,
+      "sud54": 0,
+      "meuse": 0,
+      "vosges": 0,
+      "sddv": 13
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_03",
+    "label": "Aires de protection de biotope",
+    "group": "Protections réglementaires",
+    "color": "#b84366",
+    "source": "SL_Aire_de_Protection_de_Biotope_decoupe_4326.geojson",
+    "counts": {
+      "sl": 24,
+      "sud54": 7,
+      "meuse": 8,
+      "vosges": 1,
+      "sddv": 8
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_04",
+    "label": "Natura 2000 — ZSC",
+    "group": "Natura 2000",
+    "color": "#8164aa",
+    "source": "SL__Zone_Speciale_de_Conservation_ZSC__decoupe_4326.geojson",
+    "counts": {
+      "sl": 9,
+      "sud54": 1,
+      "meuse": 0,
+      "vosges": 0,
+      "sddv": 9
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_05",
+    "label": "Espaces naturels sensibles",
+    "group": "Espaces naturels sensibles",
+    "color": "#c18532",
+    "source": "SL_Espace_Naturel_Sensible_ENS__decoupe_4326.geojson",
+    "counts": {
+      "sl": 56,
+      "sud54": 1,
+      "meuse": 0,
+      "vosges": 2,
+      "sddv": 56
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_06",
+    "label": "ENS superposés",
+    "group": "Espaces naturels sensibles",
+    "color": "#9b7434",
+    "source": "SL_ENS_superpose_ZE_V2_decoupe_4326.geojson",
+    "counts": {
+      "sl": 6,
+      "sud54": 0,
+      "meuse": 0,
+      "vosges": 0,
+      "sddv": 6
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_07",
+    "label": "ENS rivières",
+    "group": "Espaces naturels sensibles",
+    "color": "#21928d",
+    "source": "SL_ENS_riviere_ZE_V2_decoupe_4326.geojson",
+    "counts": {
+      "sl": 8,
+      "sud54": 0,
+      "meuse": 0,
+      "vosges": 1,
+      "sddv": 8
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_08",
+    "label": "Natura 2000 — SIC (fichier fourni)",
+    "group": "Natura 2000",
+    "color": "#b16f9c",
+    "source": "SL_Natura2000_SIC_decoupe_4326.geojson",
+    "counts": {
+      "sl": 64,
+      "sud54": 18,
+      "meuse": 16,
+      "vosges": 13,
+      "sddv": 28
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_09",
+    "label": "Parcs naturels régionaux",
+    "group": "Parcs et paysages",
+    "color": "#648b34",
+    "source": "SL_Parc_Narurel_Regional_PNR__decoupe_4326.geojson",
+    "counts": {
+      "sl": 2,
+      "sud54": 1,
+      "meuse": 1,
+      "vosges": 1,
+      "sddv": 1
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_10",
+    "label": "Réserves naturelles régionales",
+    "group": "Protections réglementaires",
+    "color": "#c94f4a",
+    "source": "SL_RNR_Reserves_naturelles_Lorraine_decoupe_4326.geojson",
+    "counts": {
+      "sl": 4,
+      "sud54": 0,
+      "meuse": 0,
+      "vosges": 0,
+      "sddv": 4
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_11",
+    "label": "Paysages remarquables",
+    "group": "Parcs et paysages",
+    "color": "#b29328",
+    "source": "SL_Paysage_Remarquable_de_Lorraine_decoupe_4326.geojson",
+    "counts": {
+      "sl": 19,
+      "sud54": 10,
+      "meuse": 6,
+      "vosges": 6,
+      "sddv": 5
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_12",
+    "label": "ZNIEFF de type 1",
+    "group": "Inventaires",
+    "color": "#3a945f",
+    "source": "SL_znieff1_decoupe_4326.geojson",
+    "counts": {
+      "sl": 580,
+      "sud54": 175,
+      "meuse": 126,
+      "vosges": 136,
+      "sddv": 177
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_13",
+    "label": "Sites classés",
+    "group": "Protections réglementaires",
+    "color": "#c45c31",
+    "source": "SL_Sites_classes_decoupe_4326.geojson",
+    "counts": {
+      "sl": 56,
+      "sud54": 17,
+      "meuse": 17,
+      "vosges": 1,
+      "sddv": 21
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_14",
+    "label": "Réserves biologiques",
+    "group": "Protections réglementaires",
+    "color": "#8a4f38",
+    "source": "SL_Reserves_biologiques_decoupe_4326.geojson",
+    "counts": {
+      "sl": 21,
+      "sud54": 4,
+      "meuse": 2,
+      "vosges": 1,
+      "sddv": 16
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_15",
+    "label": "Sites inscrits",
+    "group": "Parcs et paysages",
+    "color": "#b89155",
+    "source": "SL_Sites_inscrits_decoupe_4326.geojson",
+    "counts": {
+      "sl": 41,
+      "sud54": 19,
+      "meuse": 4,
+      "vosges": 5,
+      "sddv": 13
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_16",
+    "label": "ZNIEFF de type 2",
+    "group": "Inventaires",
+    "color": "#83a851",
+    "source": "SL_znieff2_decoupe_4326.geojson",
+    "counts": {
+      "sl": 39,
+      "sud54": 14,
+      "meuse": 14,
+      "vosges": 15,
+      "sddv": 11
+    },
+    "repaired": 1
+  },
+  {
+    "id": "zonage_17",
+    "label": "Zones importantes pour les oiseaux (ZICO)",
+    "group": "Inventaires",
+    "color": "#5693b0",
+    "source": "SL_Zone_Importante_pour_la_Conservation_des_Oiseaux_ZICO__decoupe_4326.geojson",
+    "counts": {
+      "sl": 1,
+      "sud54": 0,
+      "meuse": 0,
+      "vosges": 0,
+      "sddv": 1
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_18",
+    "label": "ZNIEFF de type 1 — variante ZE V2",
+    "group": "Inventaires",
+    "color": "#28794b",
+    "source": "SL_ZNIEFF_1_ZE_V2_decoupe_4326.geojson",
+    "counts": {
+      "sl": 42,
+      "sud54": 5,
+      "meuse": 0,
+      "vosges": 1,
+      "sddv": 42
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_19",
+    "label": "Natura 2000 — ZPS",
+    "group": "Natura 2000",
+    "color": "#9361b7",
+    "source": "SL_Zone_de_Protection_Speciale_ZPS__decoupe_4326.geojson",
+    "counts": {
+      "sl": 3,
+      "sud54": 1,
+      "meuse": 0,
+      "vosges": 1,
+      "sddv": 3
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_20",
+    "label": "Natura 2000 — ZSC chiroptères (points)",
+    "group": "Natura 2000",
+    "color": "#663e9d",
+    "source": "SL_Zone_Speciale_de_Conservation_ZSC_-_Chiros_decoupe_4326.geojson",
+    "counts": {
+      "sl": 5,
+      "sud54": 0,
+      "meuse": 0,
+      "vosges": 0,
+      "sddv": 5
+    },
+    "repaired": 0
+  },
+  {
+    "id": "zonage_21",
+    "label": "ZNIEFF de type 2 — variante ZE",
+    "group": "Inventaires",
+    "color": "#497a39",
+    "source": "SL_ZNIEFF_2_ZE_decoupe_4326.geojson",
+    "counts": {
+      "sl": 3,
+      "sud54": 2,
+      "meuse": 0,
+      "vosges": 1,
+      "sddv": 3
+    },
+    "repaired": 0
+  }
+]
