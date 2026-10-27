@@ -58,5 +58,5 @@ const Protections=(()=>{
       el('exportProtections').addEventListener('click',exportOnly);el('closeProtectionTable').addEventListener('click',()=>el('protectionDialog').close());ready=true;
     }catch(e){el('protectionStatus').textContent='Chargement des zonages impossible : '+e.message;}
   }
-  return {init,setTerritory,snapshot,provenance};
+  return {init,setTerritory,snapshot,provenance,selectedIds:()=>[...selected],forIds:(ids,key)=>Promise.all(definitions.filter(d=>ids.includes(d.id)).map(async d=>({id:d.id,label:d.label,features:(await data(d,key)).features})))};
 })();

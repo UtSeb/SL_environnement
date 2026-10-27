@@ -97,3 +97,49 @@ Ce portail est un projet personnel indépendant.
 Validation : `node --test tests/*.test.cjs`, puis
 `python tests/verify_administrative.py` avec Shapely 2 pour une comparaison GEOS
 indépendante et la relecture des GeoPackages produits par le test administratif.
+
+## Croisement foncier × biodiversité (v0.5)
+
+Le module « Foncier × biodiversité » révèle les intersections entre la
+consommation foncière 2010–2021 et les ZNIEFF de types 1 et 2, les ZSC et ZPS
+Natura 2000, les protections réglementaires disponibles, ou les couches cochées.
+Les périmètres territoriaux existants restent utilisables. Les calculs lourds
+s’exécutent dans un Web Worker, à la demande ; seules les parties de données
+recoupant l’emprise du territoire sont chargées.
+
+Source transmise : **OCS Grand Est, millésime 2021**, fichier
+`SL_Artificialisation-2010_2021.geojson`. Ses 33 042 polygones correspondent à la
+règle de consommation fournie. Après intersection avec le périmètre Sud-Lorraine,
+33 036 ont une composante surfacique non vide. Les six autres sont hors calcul.
+Le SHA-256 du fichier transmis figure dans `data/foncier/manifest.json`.
+
+Les fichiers préparés conservent la précision des géométries, sans
+simplification. Ils retiennent les identifiants, les codes et libellés de niveau
+3 en 2010 et 2021, et la surface source distincte des surfaces recalculées.
+Les champs 2019, les chemins locaux et les autres champs non utilisés ne sont
+pas republiés. Les intersections de dimension inférieure sont exclues du bilan
+surfacique. Les intersections avec les zonages fournis sont préparées par GEOS
+pour rendre la consultation fluide ; elles sont redécoupées au territoire et
+fusionnées selon le scénario choisi dans le navigateur.
+
+Les hectares sont recalculés en **Lambert-93 / EPSG:2154** après chaque découpe.
+Le bilan global fusionne les chevauchements des zonages pour chaque objet OCS.
+L’absence de chevauchement surfacique entre les objets OCS source a été vérifiée.
+Les lignes par couche du CSV restent non additionnables entre elles.
+
+La carte distingue la consommation totale et les intersections, affiche les
+espaces comparés et permet de consulter le changement 2010 → 2021 au clic.
+Les cinq plus grandes intersections sont localisables. Le bilan CSV et le
+GeoPackage (consommation, intersections disponibles, périmètre, provenance)
+sont téléchargeables. Les géométries exportées restent en EPSG:4326.
+
+Ce résultat est une **consommation selon la règle transmise**, pas un indicateur
+réglementaire d’artificialisation nette. Le millésime historique des zonages
+n’est pas établi : une intersection ne prouve pas que le zonage existait au
+moment de l’aménagement, ni une infraction ou un effet écologique.
+
+Préparation : `python scripts/prepare_land.py ORIGINAL.geojson` avec Shapely 2
+et pyproj. Vérification : `node --test tests/*.test.cjs`, puis
+`python tests/verify_land.py ORIGINAL.geojson` avec ces mêmes dépendances.
+Le contrôle indépendant GEOS / PROJ compare les hectares au fichier original,
+vérifie les chevauchements, la projection et les géométries des GeoPackages.

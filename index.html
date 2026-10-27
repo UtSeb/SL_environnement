@@ -9,14 +9,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="vendor/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=0.4">
+  <link rel="stylesheet" href="styles.css?v=0.5">
   <script defer src="vendor/leaflet.js"></script>
   <script defer src="spatial.js"></script>
   <script defer src="vendor/polygon-clipping.min.js"></script>
-  <script defer src="territorial.js?v=0.4"></script>
+  <script defer src="territorial.js?v=0.5"></script>
   <script defer src="geopackage.js?v=0.2"></script>
-  <script defer src="protections.js?v=0.4"></script>
-  <script defer src="app.js?v=0.4"></script>
+  <script defer src="protections.js?v=0.5"></script>
+  <script defer src="land-use.js?v=0.5"></script>
+  <script defer src="app.js?v=0.5"></script>
 </head>
 <body>
   <header class="topbar">
@@ -45,6 +46,24 @@
         </select>
         <p id="territoryHint" class="hint">32 EPCI, 1 172 communes et deux regroupements fournis. Rechercher un nom ou un code après avoir choisi l’échelle. SCoT et PETR à intégrer.</p>
       </section>
+      <section class="step land-analysis" aria-labelledby="landHeading">
+        <h2 id="landHeading">Foncier × biodiversité</h2>
+        <p class="land-intro">Où la consommation foncière recoupe-t-elle les espaces d’intérêt écologique ?</p>
+        <label for="landScope">Espaces à comparer</label>
+        <select id="landScope"><option value="znieff">ZNIEFF de types 1 et 2</option><option value="natura">Natura 2000 : ZSC et ZPS</option><option value="reglementaires">Protections réglementaires disponibles</option><option value="checked">Couches cochées dans « Couches »</option></select>
+        <button id="landRun" class="primary" disabled>Révéler les intersections</button>
+        <p id="landStatus" class="hint" role="status" aria-live="polite">Choisir un territoire, puis lancer le croisement.</p>
+        <div id="landResults" hidden>
+          <h3 id="landResultTitle"></h3>
+          <div class="land-metrics"><div><strong id="landTotal">—</strong><span>ha consommés dans le territoire</span></div><div class="land-key-metric"><strong id="landInside">—</strong><span>ha dans les espaces retenus</span></div><div><strong id="landPercent">—</strong><span>de la consommation du territoire</span></div></div>
+          <p id="landCount" class="hint"></p><button id="landViewMap" class="text-button">Voir la carte des intersections</button>
+          <details><summary>Destinations en 2021 (cinq premières)</summary><table aria-label="Destinations des surfaces consommées dans les espaces retenus"><thead><tr><th>Occupation en 2021</th><th>Surface croisée</th></tr></thead><tbody id="landBreakdown"></tbody></table></details>
+          <details><summary>Localiser les plus grandes intersections</summary><div id="landHotspots"></div></details>
+          <button id="landExport" class="primary">Exporter ce croisement pour QGIS</button><button id="landCsv" class="text-button">Télécharger le bilan CSV</button>
+        </div>
+        <p class="hint">OCS Grand Est, millésime 2021 / évolution 2010–2021. Surfaces recalculées en Lambert-93, sans doubles comptes entre zonages. Les périmètres fournis ne permettent pas d’établir leur présence à la date de l’aménagement.</p>
+      </section>
+      <details class="water-tools"><summary>Cours d’eau : filtres et indicateurs</summary>
       <section class="step">
         <h2>Explorer les cours d’eau</h2>
         <label for="mode">Indicateur représenté</label>
@@ -60,7 +79,8 @@
         <div id="distribution" aria-label="Répartition des masses d’eau selon leur état"></div>
         <p class="hint">Les kilomètres décrivent uniquement les géométries fournies et découpées ; ils ne constituent pas un inventaire exhaustif du réseau.</p>
       </section>
-      <div class="export-area"><button id="export" class="primary export" disabled>Télécharger le GeoPackage</button><p class="hint">Cours d’eau filtrés + zonages cochés + périmètre + provenance / EPSG:4326</p></div>
+      </details>
+      <div class="export-area"><button id="export" class="primary export" disabled>Exporter eau et zonages</button><p class="hint">Cours d’eau filtrés + zonages cochés + périmètre + provenance / EPSG:4326</p></div>
       <button id="sources" class="text-button">Sources et précautions de lecture</button>
     </aside>
     <section class="map-workspace" aria-label="Carte interactive">
@@ -68,6 +88,7 @@
       <div class="map-caption"><span id="mapTitle">Sud-Lorraine</span><span class="caption-divider">/</span><span id="indicatorTitle">État écologique</span></div>
       <button id="toggleLayers" class="map-button layers-toggle" aria-controls="layerPanel" aria-expanded="true">Couches</button>
       <aside id="layerPanel" class="layer-panel" aria-label="Couches et légende">
+        <div id="landLegend" hidden><h2>Consommation 2010–2021</h2><label class="land-legend-entry"><input type="checkbox" id="landShowZones" checked><i class="land-zone-symbol"></i>Espaces comparés</label><span class="land-legend-entry"><i class="land-red"></i>Dans les espaces retenus</span><label class="land-legend-entry"><input type="checkbox" id="landShowAll" checked><i class="land-amber"></i>Toute la consommation du territoire</label></div>
         <div class="section-heading"><h2>Couches de la carte</h2><span class="small-badge">23 disponibles</span></div>
         <label class="layer-row"><input id="showWater" type="checkbox" checked><span><b>Cours d’eau</b><small>État des masses d’eau</small></span><i class="water-symbol" aria-hidden="true"></i></label>
         <label class="opacity-label" for="waterOpacity">Opacité <input id="waterOpacity" type="range" min="10" max="100" value="95"></label>
@@ -78,7 +99,7 @@
         <button id="fit" class="text-button">Recentrer sur le territoire</button>
       </aside>
       <div id="status" class="map-status" role="status" aria-live="polite">Chargement des données du dépôt…</div>
-      <div class="map-bottom"><span class="map-note">Données de démonstration / millésime à documenter</span><button id="toggleTable" class="map-button" aria-controls="tablePanel" aria-expanded="false">Voir les résultats <span id="tableCount">0</span></button></div>
+      <div class="map-bottom"><span class="map-note">Données de démonstration / millésime à documenter</span><button id="toggleTable" class="map-button" aria-controls="tablePanel" aria-expanded="false">Table des cours d’eau <span id="tableCount">0</span></button></div>
       <section id="tablePanel" class="table-panel" hidden aria-label="Table des résultats">
         <div class="table-toolbar"><div><h2>Masses d’eau de la sélection</h2><p>Cliquer sur une ligne pour la localiser.</p></div><label class="search-label" for="search">Rechercher <input type="search" id="search" placeholder="Nom ou code de masse d’eau"></label><button id="closeTable" class="icon-button" aria-label="Fermer la table">×</button></div>
         <div class="table-scroll"><table><thead><tr><th>Code</th><th>Masse d’eau</th><th id="stateHeading">État écologique</th><th>Longueur cartographiée</th></tr></thead><tbody id="tableBody"></tbody></table></div>
@@ -88,6 +109,7 @@
   </main>
   <dialog id="sourceDialog" aria-labelledby="sourceTitle">
     <div class="dialog-heading"><div><h2 id="sourceTitle">Sources et méthode</h2></div><button id="closeSources" class="icon-button" aria-label="Fermer les sources">×</button></div>
+    <h3>Consommation foncière et espaces d’intérêt écologique</h3><p>Source fournie : OCS Grand Est, millésime 2021, occupations du sol 2010 et 2021. Le fichier transmis contient 33 042 objets correspondant à la règle de consommation fournie ; 33 036 recoupent le périmètre Sud-Lorraine. Ce n’est pas un indicateur d’artificialisation nette au sens réglementaire. Les surfaces sont recalculées en Lambert-93 (EPSG:2154), après découpe ; les géométries exportées restent en WGS84. Les chevauchements entre espaces retenus sont fusionnés par objet OCS avant le calcul du bilan. Les points et les lignes ne contribuent pas au croisement surfacique. Les champs utiles avant/après et les identifiants sont conservés ; le champ de surface source reste distinct de la surface recalculée. Les zonages ne sont pas datés historiquement : le résultat ne démontre pas qu’un espace était déjà classé au moment de l’aménagement, ni une infraction ou un effet écologique.</p>
     <h3>Un premier jeu de données réel</h3><p>Les géométries et attributs proviennent des fichiers déjà présents dans le dépôt <a href="https://github.com/UtSeb/SL_environnement/tree/main/data" target="_blank" rel="noopener">UtSeb/SL_environnement</a>. Le producteur initial, le millésime d’évaluation, la licence et l’échelle de validité restent à renseigner avant une diffusion opérationnelle.</p>
     <dl><dt>Cours d’eau</dt><dd>Etats general - ecologique - chimique - masses eaux Sl-alleger.geojson</dd><dt>Territoires</dt><dd>Limites SL.geojson et quatre fichiers « Plaque », plus les deux référentiels administratifs fournis : 32 EPCI (SIREN) et 1 172 communes (INSEE), plus deux regroupements fournis (Métropole Grand Nancy et Pôle Épinal) dont les codes 111 et 222 ne sont pas des codes INSEE et les attributs ne sont pas des statistiques agrégées, en WGS84. Les périmètres sont ceux des fichiers transmis ; leur millésime administratif reste à préciser. Les données environnementales conservent leur couverture source, y compris si un périmètre s’étend au-delà.</dd></dl>
     <h3>Ce que fait l’analyse</h3><p>Les lignes sont découpées aux limites du territoire, y compris ses parties disjointes et ses trous. Les états restent ceux des masses d’eau dans le fichier source : ils ne sont pas réévalués localement. La longueur est calculée sur les géométries découpées, par distances géodésiques approchées sur une sphère.</p>

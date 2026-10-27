@@ -1,0 +1,5990 @@
+{
+  "source": "OCS Grand Est",
+  "millesime": 2021,
+  "periode": [
+    2010,
+    2021
+  ],
+  "source_file": "SL_Artificialisation-2010_2021.geojson",
+  "source_sha256": "dd502b045f3b64522df3c9c279fba40d4e78fbe2f04ac163886199d2aca3f12a",
+  "source_count": 33042,
+  "count": 33036,
+  "surface_sl_ha": 3941.426100910543,
+  "area_crs": "EPSG:2154",
+  "parts": [
+    {
+      "file": "part-001.geojson",
+      "bbox": [
+        4.9066470553864,
+        48.785491099055704,
+        5.000326579623724,
+        48.91239654892974
+      ],
+      "count": 246,
+      "bytes": 306310
+    },
+    {
+      "file": "part-002.geojson",
+      "bbox": [
+        5.350021342970357,
+        48.36442541815391,
+        5.498476996586477,
+        48.497395443565864
+      ],
+      "count": 90,
+      "bytes": 172566
+    },
+    {
+      "file": "part-003.geojson",
+      "bbox": [
+        5.000893406389594,
+        48.50002207532628,
+        5.499330090575262,
+        48.99997913650436
+      ],
+      "count": 1869,
+      "bytes": 2698586
+    },
+    {
+      "file": "part-004.geojson",
+      "bbox": [
+        5.000267525897297,
+        48.50746158017471,
+        5.499525146810231,
+        49.00005887506856
+      ],
+      "count": 1051,
+      "bytes": 1897195
+    },
+    {
+      "file": "part-005.geojson",
+      "bbox": [
+        5.052268631604698,
+        48.99988060852466,
+        5.493561972826964,
+        49.057071757359225
+      ],
+      "count": 65,
+      "bytes": 148343
+    },
+    {
+      "file": "part-006.geojson",
+      "bbox": [
+        5.77975601783545,
+        47.93775429031209,
+        5.996095701489388,
+        47.99928026225966
+      ],
+      "count": 55,
+      "bytes": 61674
+    },
+    {
+      "file": "part-007.geojson",
+      "bbox": [
+        5.501980952245435,
+        48.00458624348928,
+        6.000451315390479,
+        48.49998475525931
+      ],
+      "count": 2018,
+      "bytes": 2701738
+    },
+    {
+      "file": "part-008.geojson",
+      "bbox": [
+        5.566128980816667,
+        48.01063017650631,
+        5.999733945373784,
+        48.49414713785454
+      ],
+      "count": 49,
+      "bytes": 108768
+    },
+    {
+      "file": "part-009.geojson",
+      "bbox": [
+        5.731423218622624,
+        48.50029951192706,
+        5.998305867945846,
+        48.94332285161167
+      ],
+      "count": 1830,
+      "bytes": 2696426
+    },
+    {
+      "file": "part-010.geojson",
+      "bbox": [
+        5.500690657304889,
+        48.50130805335869,
+        5.998006203090856,
+        48.9969484884088
+      ],
+      "count": 1491,
+      "bytes": 2688119
+    },
+    {
+      "file": "part-011.geojson",
+      "bbox": [
+        5.499364847016024,
+        48.50099393792189,
+        5.784476745379695,
+        48.99670911627031
+      ],
+      "count": 670,
+      "bytes": 1405218
+    },
+    {
+      "file": "part-012.geojson",
+      "bbox": [
+        5.540880242070277,
+        49.00046766755437,
+        5.853567879244649,
+        49.06786634687442
+      ],
+      "count": 88,
+      "bytes": 177898
+    },
+    {
+      "file": "part-013.geojson",
+      "bbox": [
+        6.0004118480208,
+        47.89674272300483,
+        6.499970308675587,
+        48.000020448414666
+      ],
+      "count": 291,
+      "bytes": 398534
+    },
+    {
+      "file": "part-014.geojson",
+      "bbox": [
+        5.99968248247812,
+        47.99990570391851,
+        6.500184678060872,
+        48.500019468061936
+      ],
+      "count": 2369,
+      "bytes": 2701965
+    },
+    {
+      "file": "part-015.geojson",
+      "bbox": [
+        5.999618473869221,
+        47.999787190608814,
+        6.500072438959466,
+        48.412157256631836
+      ],
+      "count": 2096,
+      "bytes": 2701951
+    },
+    {
+      "file": "part-016.geojson",
+      "bbox": [
+        6.000265786108781,
+        48.000222320523825,
+        6.499590304848333,
+        48.41093522474012
+      ],
+      "count": 426,
+      "bytes": 694825
+    },
+    {
+      "file": "part-017.geojson",
+      "bbox": [
+        6.001580120893237,
+        48.500595253075964,
+        6.500663629502043,
+        48.98750896798157
+      ],
+      "count": 2069,
+      "bytes": 2701179
+    },
+    {
+      "file": "part-018.geojson",
+      "bbox": [
+        6.000175130218462,
+        48.50000022274525,
+        6.499987317618601,
+        48.988889176975555
+      ],
+      "count": 2202,
+      "bytes": 2702093
+    },
+    {
+      "file": "part-019.geojson",
+      "bbox": [
+        6.001330235334629,
+        48.500816826017555,
+        6.500175522005428,
+        48.984066563123314
+      ],
+      "count": 1426,
+      "bytes": 2700774
+    },
+    {
+      "file": "part-020.geojson",
+      "bbox": [
+        6.001151560881584,
+        48.499928762740026,
+        6.498877300000088,
+        48.98524474022822
+      ],
+      "count": 2208,
+      "bytes": 2702207
+    },
+    {
+      "file": "part-021.geojson",
+      "bbox": [
+        6.002708467281207,
+        48.505966292096375,
+        6.48008521115446,
+        48.98867238790753
+      ],
+      "count": 161,
+      "bytes": 597831
+    },
+    {
+      "file": "part-022.geojson",
+      "bbox": [
+        6.49996443533496,
+        47.84216378057551,
+        6.917177761446538,
+        48.000231728252686
+      ],
+      "count": 1231,
+      "bytes": 1831269
+    },
+    {
+      "file": "part-023.geojson",
+      "bbox": [
+        6.499817450453125,
+        48.000160286088686,
+        7.000066850350697,
+        48.500099143498645
+      ],
+      "count": 2412,
+      "bytes": 2702255
+    },
+    {
+      "file": "part-024.geojson",
+      "bbox": [
+        6.499828696974905,
+        47.99983194657865,
+        7.000345434270709,
+        48.46882677977686
+      ],
+      "count": 1712,
+      "bytes": 2701418
+    },
+    {
+      "file": "part-025.geojson",
+      "bbox": [
+        6.501085661618029,
+        47.999817518062095,
+        7.000225870599506,
+        48.46878705323887
+      ],
+      "count": 2021,
+      "bytes": 2701434
+    },
+    {
+      "file": "part-026.geojson",
+      "bbox": [
+        6.500663136708562,
+        48.000486007526625,
+        6.999941130162123,
+        48.48012206854451
+      ],
+      "count": 944,
+      "bytes": 1856901
+    },
+    {
+      "file": "part-027.geojson",
+      "bbox": [
+        6.500117259946627,
+        48.49986497143002,
+        6.995803912223123,
+        48.74072610388635
+      ],
+      "count": 1279,
+      "bytes": 1770678
+    },
+    {
+      "file": "part-028.geojson",
+      "bbox": [
+        6.999749910038816,
+        48.054039801472754,
+        7.179689785159955,
+        48.500181969163634
+      ],
+      "count": 651,
+      "bytes": 1062714
+    },
+    {
+      "file": "part-029.geojson",
+      "bbox": [
+        7.000961054113001,
+        48.5000395437381,
+        7.102050111575982,
+        48.5920735156259
+      ],
+      "count": 16,
+      "bytes": 49008
+    }
+  ],
+  "zones": [
+    {
+      "layer": "zonage_01",
+      "name": "HERONNIERE DU BOIS DE LA ROPPE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ILES DU FOULON ET DE L'ENCENSOIR"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES DE LA MOSELLE ET FORT DE GONDREVILLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LAC DE MADINE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LAC DE PIERRE PERCEE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LE DOMAINE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LE PLAIN A DAMELEVIERES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "MARAIS DES ETROITS PRES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ZONE HUMIDE A BOUXIERES-SOUS-FROIDMONT ET LESMENILS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "MARAIS DE LAY-ST-REMY ET PAGNY-SUR-MEUSE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "MARAIS DE MONCEL-SUR-SEILLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "MORTE D'ATTON"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PELOUSES MARNEUSES D'URUFFE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "BOIS DES FOURASSES ET PLATEAU DE VILLERS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES DE LA SEILLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIE HUMIDE DES SAULXIS A BELLEVILLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "RUISSEAU DE FRANCE ET BAS-MARAIS D'ALLENCOMBE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "RUISSEAU LA BREME"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LE TREY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "L'INGRESSIN"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "L'ESCH"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LES BOUVADES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LE TERROUIN"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LA PLAINE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LA MORTAGNE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LA BLETTE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LA VEZOUZE EN AMONT DE BLAMONT"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "RUISSEAU DE MADINE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LE RUPT-DE-MAD"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "RUISSEAU DE LA MONCELLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "MARAIS ET PRAIRIES DE L'ETANGE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ZONE PIONNIERE D'ART-SUR-MEURTHE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "BOIS DE LA VIOLE ET MARAIS DE VANNES-LE-CHATEL"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "BOIS DE PAGNY ET VALLON DE BEAUME-HAIE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "BOIS DU FEING A MAGNIERES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VAL DE MOSELLE AU NIVEAU D' ARNAVILLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "BOISEMENTS HUMIDES DU GARE LE COU"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "BOUCLE DE LA SEILLE A HAN"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "CARRIERE DE VILLEY-SAINT-ETIENNE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "CARRIERE SOUS LE BREUIL A VILLEY-SAINT-ETIENNE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "CARRIERES DE XEUILLEY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG DE BOSSUPRE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG DE BRIN"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG DE FALENZE ET FORET ATTENANTE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG DE PARROY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG DU NEUF MOULIN"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "NEUF ETANG DE MANDRES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG ROME"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANGS VERY ET DES SUREAUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANGS ET PRAIRIES AU SUD DE LA FORET DE LA REINE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG GRESSON ET PRAIRIES ENVIRONNANTES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLONS HUMIDES DE LA FORET DE BEZANGE-LA-GRANDE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "FORET DE VILLEY-SAINT-ETIENNE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "FORET DE VITRIMONT"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Marais de Pagny-sur-Meuse"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES HUMIDES DE TANCONVILLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES AU NORD DE LA FORET DE LA REINE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES HUMIDES DE PEXONNE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES DU SOLVIMPRE A GLONVILLE ET FONTENOY-LA-JOUTE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VAL DE MOSELLE AU NIVEAU DIEULOUARD"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES HUMIDES DE BATTIGNY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES HUMIDES DU SUD TOULOIS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLEE DE LA VEZOUZE  DE MARAINVILLER A JOLIVET"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRES DES BORDS DE MOSELLE A PAGNY-SUR-MOSELLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VERGERS DE PULNEY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "SABLIERES DU BOIS DES HIERES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE LA BASSE SAINT-JEAN"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VAL DE PASSEY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "MARAIS DU VAL DES NONNES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLEE DE LA MEURTHE SAUVAGE DE BERTRICHAMPS A SAINT-CLEMENT"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LA MOSELLE SAUVAGE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLEES DU MADON ET DU BRENON"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PELOUSES DE JAILLON"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLON DE BELLEFONTAINE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLON DE L'AROT"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLON HUMIDE DU BOIS DE FAULX A HOEVILLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLON DE L'AR A GERMINY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLON AU NORD DE SAINT-JEAN"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLONS DES BOUCLES DE LA MOSELLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VAU DE CHATEL"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "DOMAINE DU MOULIN DE VILLEVAUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ZONE ALLUVIALE DE LA MEURTHE A MONT-SUR-MEURTHE ET BLAINVILLE-SUR-L'EAU"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES ET BOCAGE DE VILLEY-SAINT-ETIENNE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ZONES HUMIDES ALLUVIALES DE BOSSERVILLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "BASSIN DES SALINES A ROSIERES-AUX-SALINES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES HUMIDES DE PRECHAMPS A VARANGEVILLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "RUISSEAU DU PRE AUX BOIS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Vallee de la Meuse d'Euville a Pagny-sur-Meuse"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Vallee de Palameix"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Vallee de l'Aviot et Pre Pavent"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etangs et forets Rangeval"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang de la Mosee et voisins"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Ruisseau du Bosmard a Lamorville"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Carrieres de Lerouville"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang de Lachaussee"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Lac de Madine"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang de Maux La Chevre"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang de la Perche"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Neuf etang de Mandres"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang de la Grande Croix"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang de Vigneulles"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang du Grand-Monfaucon"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Ancien étang de Girondel"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang Neuf Moulin et Etang Bitronaux"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang de Wargevau"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang Beugne et voisins"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang de Chaudotte"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang de Blonnaux"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etangs des Parois et etang de Minuit"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang d'Afrique et voisins"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang de Ronval , Saint-Agnant"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang de Refure"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Vallons des bois de Vignot et alentours"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Vallee de la Marsoupe"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Vallon de l'abbaye de Rangeval"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Bois d'Epiez, vallon du Ru Nicole et Les Roches"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Bois de Sauvigny et vallon de la Viole"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Source de Vacon"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Meandre de la Meuse a Pagny-la-Blanche-Cote"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies mosanes de Genicourt aux Paroches"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies d'Apremont-La-Foret"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies mosanes pres de Han-sur-Meuse"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies mosanes entre Ourches et Pagny"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES DE LA SEILLE DE CRAINCOURT A CHAMBREY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE LA FONTAINE DE LA DUCHESSE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DES FAIGNES D'ARTIMONT"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERES du BOIS de la POUSSIERE et des PAQUIS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERES EN AVAL DE BREITSOUZE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERES DE LA TETE DU PETIT ARTIMONT"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LA TRANCHEE DES 4 MARES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLON DE L'HOUDRIE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE LA GOUTTE DE SAICHY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LES SAULES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LES SAULES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLON DU RUISSEAU DE ROMAIN"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERES DE LA TETE DU PETIT ARTIMONT"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Pâturage à Trolles au nord de Blanchien"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE MERREUILLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ÉTANG ET TOURBIERE DE LA CUVE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DU LAC DE BLANCHEMER"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DU FLANC NORD DE LA TETE DU REGIT"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LA FORGE NEUVE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LA BASSE VALLEE DE LA MOSELOTTE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies à Azuré des Paluds de la confluence Moselle-Moselotte"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "RÉSERVE NATURELLE DE MACHAIS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies à Azuré des Paluds de la confluence Moselle-Moselotte"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Bois tourbeux de Retonfaing"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Le Pré Thia"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang Lallemand"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG JEAN FRANCAIS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ÉTANG CONÉ-FONTAINE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Tourbière du chalet des Charmes"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LA FRISON"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE JEMNAUFAING"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DU CHAMPATRE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLEE DE LA SEILLE DE NOMENY A LOUVIGNY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE PRAYÉ"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LAC DE LA  MAIX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VAL LE PRETRE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "DEUX AULNAIES DANS LA VALLEE DE RAVINE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "DEUX AULNAIES DANS LA VALLEE DE RAVINE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "CHAMAGNE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLÉE DE LA MEUSE DE DOMRÉMY À COUSSEY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES HYGROPHILES ET MONTAGNARDES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "SOURCE DANS L'ANCIEN LIT DU VAIR"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies à Azuré des paluds  d'Etival-Clairefontaine"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIE DU GRAND PAQUIS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLON EN FORET DE CHARMES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies à Azuré des paluds  d'Etival-Clairefontaine"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LES AULNEES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "L'ILE SOUS ESSEGNEY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "MORIN PRÉ"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Vallée de la Meurthe en aval de Saint-Dié"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies oligotrophes autour de Rambervillers"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies oligotrophes autour de Rambervillers"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES À LA CONFLUENCE VAIR-VRAINE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "FORET DOMANIALE DE RAMBERVILLERS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies oligotrophes autour de Rambervillers"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies oligotrophes autour de Rambervillers"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES DU ROUCEUX ET RUISSEAU DE L'ABREUVOIR"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIE MARÉCAGEUSE DU RUISSEAU DE TRÉVAUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "CHAMP LOISEAU"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLÉE DE LA MORTAGNE, FORET DE SAINTE HELENE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "FRICHES ET CARRIERES DANS LA VALLÉE DE LA MALDITE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LA VALLEE DE LA FAVE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "RÉSEAU DE MARDELLES EN FORET DE PADOUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LE PRE CHOPIN"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLON DU RUISSEAU DU BOIS LE PINSON"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LA GLAIRE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIE DE REBEUVILLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PESSIERE SUR TOURBE DANS LES GRANDS BOIS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairie humide à Mazirot"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "L'AVIOVE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LE MARAIS DES ROSEAUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LE MARAIS DES ROSEAUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LE PRE DE LA SCIE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Mégaphorbiaie du pré misère"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LES PATUREAUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Les Gravières"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LE GRAND PAQUIS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "FORET COMMUNALE DE TAINTRUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Aulnaie du Bois des Reveaux"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Bois de la Leau"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIE GERARD"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairie hygrophile du Fihis"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Les Grands Prés"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies méso-hygrophiles de la Faigne Blanche"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies méso-hygrophiles de la Feigne Brûlée"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies mésohygrophiles et mégaphorbiaies des Feignes de la Houssière"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies mésohygrophiles et mégaphorbiaies des Feignes de la Houssière"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies méso-hygrophiles du Saulcy"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies mésohygrophiles et mégaphorbiaies des Feignes de la Houssière"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies mésohygrophiles et mégaphorbiaies des Feignes de la Houssière"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies de fauche méso-hygrophiles des Neufs prés"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies de fauche méso-hygrophiles de la Grande pièce"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "FREMIFIN"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Bois et ruisseau du Repas"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG DE LA COMTESSE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "FORET DOMANIALE DE HAUTE MEURTHE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "FORET DOMANIALE DE HAUTE MEURTHE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE LA BOUYERE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "FORET DOMANIALE DE HAUTE MEURTHE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "RÉSERVE NATURELLE DU TANET-GAZON DU FAING"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "FORET DES HOSPICES DE NANCY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies de fauche méso-hygrophiles du Vacon"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Tourbière de Seuchaux"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies de fauche méso-hygrophiles du Beauchêne"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DU PINCHESTE ET ETANG D'ORON"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang de Chanau"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG DE JEANMOL"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ÉTANG DE PUTHIERES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "HAUTES PINASSES et GRANDES RONCES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "BOIS AU SUD DE SAUVILLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang du Bult"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "HAUTES PINASSES et GRANDES RONCES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "AULNAIE-FRENAIE DU RUISSEAU DE BONNEVAL"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERES DU COL DE SERCENEUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERES DU COL DE SERCENEUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DES BASSOTTES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERES A L'OUEST DU HAUT FOURNEAU"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE BELBRIETTE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "BOIS AU SUD DE SAUVILLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "BOIS AU SUD DE SAUVILLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Tourbière du Faing Janel"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE LA CHENEZELLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang de L'Embéchêne"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE LA PEPINIERE DES XETTES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG DE FRANCOGNEY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "DELTA DU RUISSEAU SAINT JACQUES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PATURAGES DE BALVEURCHE et ROUGE GAZON"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DU BAS-BEILLARD"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ÉTANG DE JOLIVET"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "AULNAIE DU RUISSEAU DE QUART FONTAINE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Lac de Gerardmer"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Lac de Gerardmer"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Lac de Gerardmer"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Lac de Gerardmer"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE LA GRANDE CHARME"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "DELTA DU RUISSEAU SAINT JACQUES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Lac de Gerardmer"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "AULNAIE A PRELE D'HIVER EN BORDURE DU GRAS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG DE LA FAIGNOTTE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Lac de Gerardmer"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Lac de Gerardmer"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LES GRANDS QUARTIERS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE ET LAC DE RETOURNEMER"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "MARAIS DU MOUZON"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "AULNAIE de FRANCOGNEY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DU HAUT CHITELET"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE LA BOULE DU DIABLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERES ET LAC DE LISPACH"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE LA GRANDE BASSE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DU HAUT DE MERELLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "FAIGNES FORIES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Faignes Lemoine"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies à Azuré des Paluds de la confluence Moselle-Moselotte"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE LA GRANDE BASSE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DU GRAND ÉTANG DE GÉRARDMER"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DU HAUT POIROT"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DES FAIGNES SOUS VOLOGNE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PATURAGES DU SAUT DE LA BOURRIQUE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DU HAUT DE LA COTE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE LA TÉNINE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DES FAIGNES DE NOIR RUPT"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DU BAS CHITELET"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERES DU PIED DU HOHNECK"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE ROUGE FAIGNE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Étang de Genaufaing"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE LONGEGOUTTE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERES DE GROUVELIN"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DU COL DE SAPOIS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "FAIGNE DE LA CROIX CLAUDÉ"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Massif du Ventron"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Massif du Ventron"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Tanet Gazon du Faing"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Ballons Comtois"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Hautes Chaumes du Rothenbach"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Grand Etang de Lachaussée"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Tourbière des Charmes"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Méandres de la Moselle"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "RÉSERVE NATURELLE du GRAND VENTRON"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG ET TOURBIERE DES ALNOUSES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LES FONTAINES CHAUDES et LES BASSES CLAIRES VOIVRES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE MICHOTTE ET PIERRACHE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE HAUTE DEGRADEE DU BOUCHOT"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ÉTANG DES CERISIERS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LES CORBEAUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "CONFLUENCE MOSELLE-MOSELOTTE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Tourbière de Rondfaing"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE ET ETANG DE LA DEMOISELLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG PACHEVAUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "AULNAIE MONTAGNARDE, CIRQUE du LAC des CORBEAUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Le Pont Jeanson"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies à Azuré des Paluds de la confluence Moselle-Moselotte"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang Thierry"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etangs Chatard et Grand-Père"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang de Clairesse"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ÉTANG DES CALOIS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ÉTANG DE CORBEFAING"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE BOMBEE DES MEULES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES PARATOURBEUSE ET MONTAGNARDE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "COMPLEXE PRAIRIAL DU BREUIL ET D'HERIVAL"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Étang le Dé"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "COMPLEXE PRAIRIAL DU BREUIL ET D'HERIVAL"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang de la Picarde"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "FORET DOMANIALE DE LONGEGOUTTE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LE BAMBOIS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "COMPLEXE PRAIRIAL DU BREUIL ET D'HERIVAL"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Étang le Villerain"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "L'étang de Trémeures"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ÉTANG DU MOINEAU"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ÉTANG D'ADELPHE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG DES MAUX CAILLOUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG DES MAUX CAILLOUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "GRAND ETANG DE CORFAING"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERES DES GRANDS BASSOTS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "GRAND ETANG DE CORFAING"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERES DES GRANDS BASSOTS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE LA FAIGNE LAUDRY"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG DES ARSONDIEUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DU HAUT DE CORFAING"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG DES BREUILLOTS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE L'ETANG DES BUTTES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DU HAUT DE BELUE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ETANG DES PRÊTRES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE FONDRONFAING"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE DE L'ETANG D'AVAUX"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "TOURBIERE FLOTTANTE DE L'ETANG DE LA PEAU"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIE MONTAGNARDE DE L'ETANG DE FRAC"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES MESO ET HYGROPHILE DE L'ETANG DE PRESLE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "RAVIN DU LUTHIER"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES MESO-HYGROPHILES DU VALLON DE PRESLES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRE DANS LA VALLEE DES CHARBONNIERS"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "RAVIN DU LUTHIER"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "RAVIN DU LUTHIER"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Forêt de pente et cascade du Bation"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Terrasses alluviales de la Moselle à Archettes"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Terrasses alluviales de la Moselle à Archettes"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "VALLEE DE LA SAONE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Tourbières et forêts de la Charme de Feing Janel"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Tourbières et forêts de la Charme de Feing Janel"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Tourbière de la Goutte Villemin"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Tourbière de la Croix Ferry"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LES NOIRES FAIGNES à ARCHES"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Forêt de pente et cascade du Bation"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Ruisseau de Préfonrupt"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Réseau de tourbières de la Mereille"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Tourbière de Morevoid"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "ÉTANG DE L'ABIME"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Erablaie à Scolopendre"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Marais alcalin de Dogneville"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Terrasses alluviales en bordure de Moselle"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Station à Osmonde royale"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Aulnaie marécageuse Saint Arnould le bois"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Réseau de tourbières de la Mereille"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Réseau de tourbières de la Mereille"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Réseau de tourbières de la Mereille"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Réseau de tourbières de la Mereille"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Boulaie pubescente de Thaon les Vosges"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang le Prêtre"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "AULNAIE DU RUISSEAU DE QUART FONTAINE"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Ruisseau de Biocourt"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "MORIN PRÉ"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Zones humides remarquables"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Zones humides remarquables"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Etang Nannon"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Zones humides remarquables"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Zones humides remarquables"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Zones humides remarquables"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies et sources des Evaux"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Marais du Habu"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies du col des Hayes"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Prairies du col des Hayes"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Zones humides remarquables"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Frankenthal-Missheimle"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "PRAIRIES DE LA VALLÉE DU MOUZON À SOULAUCOURT-SUR-MOUZON"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Col de Morteville"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Faignes des Minons"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Reisberg"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "Forêt dHarréville-les-Chanteurs"
+    },
+    {
+      "layer": "zonage_01",
+      "name": "LApance"
+    },
+    {
+      "layer": "zonage_02",
+      "name": "88*G30"
+    },
+    {
+      "layer": "zonage_02",
+      "name": "88*G14"
+    },
+    {
+      "layer": "zonage_02",
+      "name": "88*G16"
+    },
+    {
+      "layer": "zonage_02",
+      "name": "88*G15"
+    },
+    {
+      "layer": "zonage_02",
+      "name": "88*G17"
+    },
+    {
+      "layer": "zonage_02",
+      "name": "88*G36"
+    },
+    {
+      "layer": "zonage_02",
+      "name": "88*G29"
+    },
+    {
+      "layer": "zonage_02",
+      "name": "88*G18"
+    },
+    {
+      "layer": "zonage_02",
+      "name": "88*G19"
+    },
+    {
+      "layer": "zonage_02",
+      "name": "88*G20"
+    },
+    {
+      "layer": "zonage_02",
+      "name": "88*G22"
+    },
+    {
+      "layer": "zonage_02",
+      "name": "88*G21"
+    },
+    {
+      "layer": "zonage_02",
+      "name": "88*G24"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "LE LOUSCHBACH"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "DRUMONT TETE DE FELLERING"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "NEUFS-BOIS"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "RONDE TETE  BRAMONT"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "LE KASTELBERG"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "VALLON DE L'ARROT"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "ETANG DE MERREY"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "FORT DE LIOUVILLE"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "PARTIE AMONT DU RUISSEAU DE LA BIESME"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "BOIS REBU"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "GROTTE SAINTE-LUCIE"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "FORT DE TROYON"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "PELOUSES CALCAIRES DE LORRY-MARDIGNY"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "FORET DOMANIALE DE LA HAUTE-MEURTHE"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "ROUGE-RUPT (MASSIF DU VENTRON)"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "TOURBIERE DE MACHAIS"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "RUISSEAU DE L'ABREUVOIR"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "ETANG PRE DU TAUREAU ET PRAIRIES AVOISINANTES"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "RUISSEAU DE MONTPLONNE"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "MILIEUX HUMIDES DE LA PRESQU'ILE DE LA SAUSSAIE VOIRIN"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "ROSELIERE DE L'ETANG DE PARROY"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "ETANG DE VIGNEULLES"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "MARES DE SAULXURES-LES-NANCY ET TOMBLAINE"
+    },
+    {
+      "layer": "zonage_03",
+      "name": "PRAIRIES, ETANGS ET BOIS DU SECTEUR DE LA FERME DE BRICOURT EN WOEVRE"
+    },
+    {
+      "layer": "zonage_04",
+      "name": "Vall�e de la Meurthe de la Voivre � Saint-Cl�ment et tourbi�re de la Basse Saint-Jean"
+    },
+    {
+      "layer": "zonage_04",
+      "name": "Vall�e de la Meurthe du Collet de la Schlucht au Rudlin"
+    },
+    {
+      "layer": "zonage_04",
+      "name": "Hautes Vosges"
+    },
+    {
+      "layer": "zonage_04",
+      "name": "Massif de Vologne"
+    },
+    {
+      "layer": "zonage_04",
+      "name": "Ruisseau et tourbi�re de Belbriette"
+    },
+    {
+      "layer": "zonage_04",
+      "name": "Massif de Haute Meurthe, d�fil� de Straiture"
+    },
+    {
+      "layer": "zonage_04",
+      "name": "G�tes � chauves-souris autour de Saint-Di�"
+    },
+    {
+      "layer": "zonage_04",
+      "name": "Secteur du Tanet Gazon du Faing"
+    },
+    {
+      "layer": "zonage_04",
+      "name": "Massif du Donon, du Schneeberg et du Grossmann"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*T62"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*L01"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F10"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F10"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F21"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F21"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F54"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*H32"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*H22"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*H22"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F52"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F52"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F52"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*A29"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F25"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F71"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F71"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F22"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*A21"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*B22"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F58"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*Z41"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*B16"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F86"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*B32"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*C01"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*H24"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*Z31"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*B24"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*H36"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*H37"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*H35"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*H35"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*H38"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*H35"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*H35"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*H40"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*H39"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F11"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F11"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F11"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*N02"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F30"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*T70"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*Z57"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F02"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*T58"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*F02"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*Z53"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*T20"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*T20"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*T63"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*A26"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*Z63"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*R20"
+    },
+    {
+      "layer": "zonage_05",
+      "name": "88*A33"
+    },
+    {
+      "layer": "zonage_06",
+      "name": "88*Z56"
+    },
+    {
+      "layer": "zonage_06",
+      "name": "88*C06"
+    },
+    {
+      "layer": "zonage_06",
+      "name": "88*C03"
+    },
+    {
+      "layer": "zonage_06",
+      "name": "88*F01"
+    },
+    {
+      "layer": "zonage_06",
+      "name": "88*T11"
+    },
+    {
+      "layer": "zonage_06",
+      "name": "88*F19"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Forêt de Trois-Fontaines"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Forêt d'Harreville-les-Chanteurs"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Bois de Serqueux"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "L'Apance"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Pelouses et vallons forestiers de Chauvoncourt"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Pelouses, forêt et fort de Pagny-la-Blanche-Côte"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Plateau de Malzéville"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Pelouses d’Allamps et zones humides avoisinantes"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Pelouses du Toulois"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Pelouses de Lorry-Mardigny et Vittonville"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Hauts de Meuse"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Corridor de la Meuse"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Mines de Mairelles, de Château Lambert, réseau Jean Antoine, secteur le Thillot"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Gîtes à chiroptères de la Colline inspirée - Erablières, pelouses, église et château de Vandeleville"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Vallée de la Moselle du fond de Monvaux au vallon de la Deuille, ancienne poudrière de Bois sous Roche"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Bois du Feing"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Bois de Demange, Saint-Joire"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Forêts de la vallée de la Méholle"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Forêts de Gondrecourt-le-Château"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Forêts des Argonnelles"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Forêt domaniale de Beaulieu"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Forêt humide de la Reine et Catena de Rangeval"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Forêts et étangs du Bambois"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Forêt et étang de Parroy, vallée de la Vezouze et fort de Manonviller"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Forêt domaniale de Gérardmer ouest (La Morte Femme, Faignes de Noir Rupt)"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Massif du Grand Ventron"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Massif de Vologne"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Massif de Haute Meurthe, défilé de Straiture"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Massif de Saint Maurice et Bussang"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Hêtraie sapinière de Bousson et Grandcheneau"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Massif forestier de Longegoutte"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Chaumes du Hohneck, Kastelberg, Rainkopf, et Charlemagne"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Secteur du Tanet Gazon du Faing"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Tourbière de Lispach"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Tourbière de Machais et cirque de Blanchemer"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Etang et tourbière de la Demoiselle"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Tourbière du Champâtre"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Tourbière de Jemnaufaing"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Tourbière de la Bouyère"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Marais de Pagny-sur-Meuse"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Lac de Madine et étangs de Pannes"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Vallée de la Moselle (secteur Chatel-Tonnoy)"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Confluence Moselle - Moselotte"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Vallée de la Seille (secteur amont et petite Seille)"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Vallée du Madon (secteur Haroué / Pont-Saint-Vincent), du Brenon et carrières de Xeuilley"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Vallée de la Meuse (secteur Sorcy Saint-Martin)"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Vallée de la Meurthe de la Voivre à Saint-Clément et tourbière de la Basse Saint-Jean"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Vallée de la Meurthe du Collet de la Schlucht au Rudlin"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Vallée de l’Esch de Ansauville à Jezainville"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Ruisseau et tourbière de Belbriette"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Gîtes chiroptères autour d’Epinal"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Gîtes à chauves-souris autour de Saint-Dié"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Carrières du Perthois : gîtes à chauves-souris"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "La Meuse et ses annexes hydrauliques"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Massif du Donon, du Schneeberg et du Grossmann"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Hautes Vosges"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Vosges du sud"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Vallée de la Saône"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Vallée de la Lanterne"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Forêts, landes et marais des Ballons d’Alsace et de Servance"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Plateau des mille étangs"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Milieux forestiers et prairies humides des vallées du Mouzon et de l’Anger"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Gîtes à chiroptères de la Vôge"
+    },
+    {
+      "layer": "zonage_08",
+      "name": "Vallée de la Saônelle"
+    },
+    {
+      "layer": "zonage_09",
+      "name": "Parc Naturel Régional de Lorraine"
+    },
+    {
+      "layer": "zonage_09",
+      "name": "Parc Naturel Régional des Ballons des Vosges"
+    },
+    {
+      "layer": "zonage_10",
+      "name": "Ballons Comtois"
+    },
+    {
+      "layer": "zonage_10",
+      "name": "Tanet-Gazon-du-Faing"
+    },
+    {
+      "layer": "zonage_10",
+      "name": "Massif du Ventron"
+    },
+    {
+      "layer": "zonage_10",
+      "name": "Tourbière de Machais"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Secteur de Hattonchatel et Grand Couronné"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Tronçon de la vallée de la Meuse"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Vallée de la Saulx"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Secteur de l'Argonne"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Côtes de Toul et forêt de la Reine"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Secteur de Liverdun"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Secteur de Sexey-aux-Forges"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Côtes de Toul et vallée de la Meuse"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Côtes de la Voge, Monts Faucilles"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Vallée du Mouzon"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Colline de Sion Vaudémont et ses environs"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Massif forestier de la dépression de Darney"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Secteur du Val d'Ajol"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Hautes Vosges granitiques"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Secteur de Ban de Sapt"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Secteur du site de Gerbéviller"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Secteur de Rosières aux Salines"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Lac de Pierre Percée"
+    },
+    {
+      "layer": "zonage_11",
+      "name": "Basses Vosges gréseuses, Vosges Mosellanes du Sud"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BOIS SAINT-JOSEPH ET DU COTEAU GILLOT A HARREVILLLE-LES-CHANTEURS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Cirques glaciaires du Seestaettle et du Lac Vert"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Cirque du Missheimle à Soultzeren"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES DE LA VALLÉE DU MOUZON À SOULAUCOURT-SUR-MOUZON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Cirque de l'Altenbach et Côte 1000 à Soultzeren"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Cirque glaciaire du Sentier des Roches"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Cirques glaciaires de l'Altenweiher et de Leibelthal"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RAVINS BOISES DU CUL DE L'ANE A CHAMOUILLEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "STATIONS BOTANIQUES EN FORET DE TROIS-FONTAINES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Milieux tourbeux des Blanches Roches, du Rond Perthuis, de la Maxe, du Ruisseau de la Truite et de la Vallée des Framboises"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Cirque du Sternsee ou Lac des Perches"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Eboulis et Hêtraie-sapinière du Frauenfelsen au col d'Oderen"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Chaumes du versant Est du Grand et Petit Ventron"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Chaume du Kastelberg"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Cirques glaciaires du Lac Noir et du Lac Blanc"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES ET BOIS DE LA VALLÉE DE L'OGNON  ET DE SES VALLONS LATERAUX AU NORD DE LANEUVILLE-AU-BOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Falaises et cirque glaciaire du Hasenlochkopf à Wildenstein et Kruth"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Cours et prairies humides de la Bruche et de ses affluents de Saâles à Schirmeck"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Massif de la Bers et lacs de Neuweiher à Rimbach-près-Masevaux et Oberbruck"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Chaume du Felsachkopf"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Crête du Louschbach au Bonhomme"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Crêtes des hauteurs de la Forêt de la Vancelle au Col de la Hingrie"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Forêts de ravins et chaumes de la haute vallée de l'Alfeld à Sewen"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Massifs forestiers du Col d'Oderen à la Tête de Fellering"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Têtes des Neufs Bois et du Rouge Gazon"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Massifs du Bockloch à Kruth et du Heidelbeerenloch à Fellering"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Forêts de Bourbach à Fellering"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Chaume du Rothenbach"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Forêts de la Haute vallée de la Thur à Wildenstein"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Cirque et vallée glaciaire du Forlet"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "Wormspel, Ammelthal et vallée glaciaire de la Wormsa"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSE DES PATIS A SEXEY-AUX-FORGES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES A GRISCOURT ET DIEULOUARD"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES AUX CARRIERES A NORROY-LES-PONT-A-MOUSSON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PALEO-VALLEE DE LA MOSELLE A PAGNY-SUR-MEUSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LA MORTAGNE ET LE MOUSSOU DE MORTAGNE A SAINT-HELENE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "MARAIS DES ETROITS PRES A AINGERAY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE COUSSEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DE BOUSSON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DU SAINTOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERES DE LEROUVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE REFFROY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LA PETITE MEURTHE DE LA SOURCE A CLEFCY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTEAU DU CHENOT A VILLOUXEL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSE DE NOTRE-DAME DES GOUTTES A ALLAMPS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE DOMGERMAIN A BLENOD-LES-TOUL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "SOURCE, MARAIS ET PRAIRIES DE L'ETANGE A ALLAMPS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "SOURCES A LA GLAIRE ET L'AVIOVE A VILLOUXEL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSE DE LA COTE BLANCHE A ALLAIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSE DE LA COLLINE DE SION A VAUDEMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PLATEAU DE SAINTE-BARBE A PONT-SAINT-VINCENT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ZONE HUMIDE CLOS HERBUS A PARGNY-SUR-MUREAU"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSE LE VELOT A GIBEAUMEIX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FONDS DE BAUGNY, DE MUSSONVAUX ET RUISSEAU DE VAUX A VAUX-LES-PALAMEIX ET MARAIS DE TROYON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORETS DE HAUTE-MEURTHE, DE VOLOGNE, D'ANOULD, DE GERARDMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DOMANIALE DE HAUTE-MEURTHE A CLEFCY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE WARGEVAU A BOUCONVILLE-SUR-MADT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DU HAUT-CHITELET A XONRUPT-LONGEMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DU GRAND MONFAUCON A HEUDICOURT-SOUS-LES-COTES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LAC DE MADINE A NONSARD-LAMARCHE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE REFURE A BOUCONVILLE-SUR-MADT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERES DE MICHOTTE, DU PONT JEANSON ET ETANGS DU LIVIER ET DE CLAIRESSES A BELLEFONTAINE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DU MOINEAU AU VAL D'AJOL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAUX DE BON VIN ET DE FRESSE DE GRUEY-LES-SURANCE A FONTENOY-LE-CHATEAU"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE JEANMOIE A VILLE-SUR-ILLON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU LE RECOURT DE LA CHAPELLE-AUX-BOIS A BAINS-LES-BAINS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DOMANIALE DE SAINT MAURICE ET MASSIF DU DRUMONT A BUSSANG"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DOMANIALE DE SAINT-MAURICE-SUR-MOSELLE ET BUSSANG, MASSIFS DU ROUGE GAZON ET DU NEUFS BOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CIMETIERE DU CHOLERA A RANZIERES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES ET ZONES HUMIDES DE BELLEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIE REMARQUABLE A RAMBUCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES DE LA REINE A RAMBUCOURT, BROUSSEY-RAULECOURT ET GEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DU COL DE SAPOIS A GERARDMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE MERREUILLE A ROCHESSON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU ET TOURBIERES DE BELBRIETTE A XONRUPT-LONGEMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DOMANIALE DE FOSSARD ET TOURBIERES A TENDON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE LA COMTESSE AUX FORGES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CHAUMES DU HOHNECK, DU KASTELBERG ET DU RAINKOPF A LA BRESSE ET XONRUPT-LONGEMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "MARAIS DU MOUZON A MARTIGNY-LES-BAINS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LIT MAJEUR DE LA SAONE DE LIRONCOURT A MONTHUREUX-SUR-SAONE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTEAUX DU VAL DES AUGES DE FRAIN A GIGNEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "DELTA DU RUISSEAU DES PLOMBES AU LAC DE LONGEMER ET RIVIERE DE LA VOLOGNE A XONRUPT-LONGEMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DES CARRIERES DU PERTHOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE L'ORMANCON ENTRE SAINT-JOIRE ET MANDRES-EN-BARROIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLON DU RU NICOLE A MONTIGNY-LES-VAUCOULEURS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES LA RAFFE A SAINT-AMAND-SUR-ORNAIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEES DE L'OGNON ET DU NAILLEMONT A HORVILLE-EN-ORNOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LA COTE GODOT A GONDRECOURT-LE-CHATEAU"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RIVIERE DE BIESME ET FORET EN AMONT A BEAULIEU-EN-ARGONNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES ET PELOUSES CALCAIRES DE MOUILLONLIEU A LONGCHAMPS-SUR-AIRE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LE BEAU CHATEAU ET LE CHENOT A DOMPCEVRIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLON FORESTIER DES BOIS DU CHATEAU A SORCY-SAINT-MARTIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE ET COTEAU DU TERROUIN A JAILLON ET FRANCHEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LA CUMENE A SOULOSSE-SOUS-SAINT-ELOPHE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE RANGEVAL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BOIS DE LA VIOLE ET MARAIS DE VANNES-LE-CHATEL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LES CARRIERES A EUVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE GIRONVILLE-SOUS-LES-COTES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE SAINT-MIHIEL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANGS DE BITRONAUX ET NEUF MOULIN ET PRAIRIES HUMIDES A APREMONT-LA-FORET"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE VIGNEULLES A VIGNEULLES-LES-HATTONCHATEL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES DE REMBERT COTE ET BELLE VUE A MAIZEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ZONE HUMIDE LES ROSEAUX A LIFFOL-LE-GRAND"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE LONGEGOUTTE A SAPOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE VINTERGES A VENTRON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLONS EN FORET DOMANIALE D'APREMONT A APREMONT-LA-FORET"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES  A MAUVAGES, VILLEROY-SUR-MEHOLLE ET SAUVOY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE MAUX-LA-CHEVRE A BOUCONVILLE-SUR-MADT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE VARNEVILLE ET BUXIERES-SOUS-LES-COTES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE LACHAUSSEE ET MILIEUX ANNEXES A LACHAUSSEE ET VIGNEULLES-LES-HATTONCHATEL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG BEUGNE A LACHAUSSEE ET VIGNEULLES-LES-HATTONCHATEL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DU BOSMARD A LAMORVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES DU SAUT DU CERF A LIVERDUN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES DES PONTANCES A JEZAINVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES A VILLE-AU-VAL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE LA MEUSE A L'AMONT DE VAUCOULEURS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE LA MEUSE ENTRE TROUSSEY ET VOID-VACON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORETS DES HOSPICES DE NANCY A PLAINFAING ET AU VALTIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE LA MEUSE AU SUD DE BONCOURT-SUR-MEUSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE LA MEUSE DE MAIZEY A DIEUE-SUR-MEUSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DU GRAND MORINVAL A LAHEYCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES CALCAIRES DE BRANTIVAU A DOMPCEVRIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES ET NOUE DES PAQUIS A REBEUVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LE GRAND FOUILLOT ET BOIS LE ROI A MARBACHE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES A DOMMARTIN, CHAUDENEY ET PIERRE-LA-TREICHE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DU TERROIN DE TRONDES A VILLEY-SAINT-ETIENNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BOISEMENTS EN FORET COMMUNALE ET DOMANIALE DE COMMERCY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSE DE MARMANFOSSE A VALBOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANGS D'AFRIQUE, DE WENDEL, DES ANCEVIENNES ET DE BELIAN A VIGNEULLES-LES-HATTONCHATEL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "MARAIS DE VECOUX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES A ANDILLY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FONTAINES CHAUDES DES CLAIRES VOIVRES A FONTENOY-LE-CHATEAU"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES ET PRAIRIES CALCAIRES DE LE FRICHE A ROLLAINVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES A ALLAMPS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE FONDRONFAING A VENTRON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIÈRE ET PRÉS HYGROPHILES \"LES PERGIES\" A GERARDMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE LA MEHOLLE ET VALLONS FORESTIERS A SAUVOY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLON FORESTIER PRES DE LA CHAPELLE DE GEVAU A GEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "MILIEUX CALCICOLES SEMI-OUVERTS EN FORET DU VAU A GONDRECOURT-LE-CHATEAU"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE BOENE ET AFFLUENTS A MARTIGNY-LES-BAINS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DE BEZANGE-LA-GRANDE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET COMMUNALE DE TAINTRUX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE LA BASSE DE MALFOSSE A SENONES ET MOYENMOUTIER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DE RAMBERVILLERS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DES BASSOTTES A LIEZEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE L'ETANG D'AVAUX AU VAL D'AJOL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DU HAUT POIROT A GERARDMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE LA PEPINIERE DES XETTES A GERARDMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ANCIENNE CARRIERE DES ROCHIRES A GERARDMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERES DU COL DE SERCENEUX  A BAN-SUR-MEURTHE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DU HAUT DE MERELLE A GERARDMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE LA GOUTTE DU SAICHY A LA BRESSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERES DE LA CROIX CLAUDE ET DU BOIS DE LA POUSSIERE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VAL LE PRETRE A SELAINCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FONDS DE MONVAUX A MARON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DU BAS-CHITELET A LA BRESSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE LA FAIGNE LAUDRY ET LA FORET DOMANIALE DU GEHANT A FERDRUPT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERES DU GAZON DU FAING, DU TANET, ET A L'OUEST DU HAUT FOURNEAU AU VALTIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE L'ETANG DE MACHAIS A LA BRESSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE LA SARRE BLANCHE DE TURQUESTEIN-BLANCRUPT A NIDERHOFF"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BOUCLE DE LA SEILLE A HAN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES DE LA SEILLE DE BIONCOURT A ABONCOURT-SUR-SEILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES DE LA SEILLE ENTRE ABAUCOURT ET CRAINCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES A MARBOTTE ET HAN SUR MEUSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BOIS DES PAROCHES ET MASSIFS CONNEXES A DOMPCEVRIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DE VITRIMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES A MONCEL-SUR-SEILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ROCHERS DE SERPENTINE A CLEURIE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LAC DE LA MAIX A VEXAINCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE BLONNAUX A BROUSSEY-RAULECOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG NEUF DE BOUCQ"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE GERARD SAS A GEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DE CHARMES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE CHAMPOUGNY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DU POURRI-FAING A CORNIMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE LA GRANGE EN WOEVRE, DE L'ETANCHEE ET DE BRUNEHAUT A GEVILLE ET BOUCQ"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DES ALNOUSES ET TOURBIERES A LA CHAPELLE-AUX-BOIS ET A XERTIGNY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLON DE BELLEFONTAINE A CHAMPIGNEULLES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE PARROY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLON FORESTIER DES NONNES A ECROUVES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTE D'ORVAL ET PLATEAUX LA HORGNE ET LE CHARNOT A SALMAGNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSE DE LA COTE VOIREMONT A AINGERAY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE LA MORTE-FEMME A GERARDMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE FAIGNE DE LA LANDE A LA BRESSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LA CARRIERE DE MECRIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTE DE SAVRONY AU DESSUS DE CRABONCHAMP"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES A POUXEUX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANGS DES BRAUZES ET DE CHEMINEL A LISLE-EN-BARROIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE LA GRANDE BASSE A LA BRESSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES LA CHAMPAGNE A CHAUVONCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES A LORRY-MARDIGNY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES AU THILLOT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VAL DE MARSOUPE A SAINT-MIHIEL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PERTES DE LA MEUSE DE BAZOILLES-SUR-MEUSE A NEUFCHATEAU"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE DOGNEVILLE ET DIGNONVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "POUDRIERE D'OLIMA AUX FORGES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE GIRANCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES DE LA REINE DE BOUCQ A MANDRES-AUX-QUATRES-TOURS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DES GRANDES PAROIS A LACHAUSSEE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CAMP DES ROMAINS - COTE D'AILLY A HAN-SUR-MEUSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DU VAUROND A GONDRECOURT-LE-CHATEAU"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "MASSIF DU GRAND-VENTRON ET FORET DOMANIALE DE CORNIMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "HERONNIERE DE REPEUBOIS A CHATENOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE MONT-LES-NEUFCHATEAU ET SIONNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES DE LA COTE ET DES CHIMPELLES A VILLEY-LE-SEC"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES DE LA COTE DE L'EST A CIRCOURT-SUR-MOUZON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSE DU BOIS DE LA HAIE A THUILLEY-AUX-GROSEILLES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BOIS DU FEING A MAGNIERES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEES DU MADON ET DU BRENON DE HAROUE ET ETREVAL A PONT-SAINT-VINCENT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAUX LE BARBA, LA HUTTE, LES SPAXE ET AFFLUENTS AU NORD ET OUEST DU THOLY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE LA MEURTHE AU LIEU DIT LA COMBE AU VALTIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE FONTENOY-LE-CHATEAU"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE L'ETANG DES BUTTES (OU DE L'ERMITAGE DE FRERE JOSEPH) AU VENTRON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DES FAIGNES D'ARTIMONT A LA BRESSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE SUR LE FLANC NORD DE LA TETE DU REGIT A LA BRESSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERES DES HAUTES PINASSES, DES GRANDES RONCES ET DU HAUT RAIN A GRANGES-SUR-VOLOGNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DU FAING DU POTEU A BAN-SUR-MEURTHE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE LA BOUYERE A JUSSARUPT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DU HAUT DE BELUE A RUPT-SUR-MOSELLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE LA CHARME A THIEFOSSE ET RUPT-SUR-MOSELLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES D'ECROUVES A LAGNEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DITE DE PRAYE A MOUSSEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LA VEZOUZE EN AMONT DE BLAMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE LA CHENEZELLE A GERARDMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FAIGNES FORIES, TOURBIERE DU LAC DE RETOURNEMER ET SOURCES A XONRUPT-LONGEMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LA PIQUANTE PIERRE A GERBAMONT ET BASSE-SUR-LE-RUPT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LE BAMBOIS DE BAMONT A SAULXURES-SUR-MOSELOTTE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES A MANONVILLER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DE LA REINE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE LA MOSELLE SAUVAGE ENTRE BAYON ET LANGLEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES A FROLOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE SORCY-SAINT-MARTIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DU PINCHESTE ET ETANG D'ORON A BARBEY-SEROUX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PATURAGES DU SAUT DE LA BOURIQUE A GERARDMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TETE DE CIRQUE GLACIAIRE DE MORTEVILLE ET FORET DOMANIALE DE SAINT MAURICE ET BUSSANG"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DES FAIGNES DE NOIR RUPT A GERARDMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "NEUF ETANG DES MOINES A GEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE LA MOSEE A GEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG ROME A ROYAUMEIX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE LIOUVILLE A SAINT-JULIEN-SOUS-LES-COTES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "NEUF ETANG DE MANDRES-AUX-QUATRE-TOURS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORETS COMMUNALES ENTRE PAGNY-SUR-MEUSE ET BLENOD-LES-TOUL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE LA MEURTHE SAUVAGE DE BERTRICHAMPS A MONCEL-LES-LUNEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LES PRES ET GRAVIERES DE PAGNY-SUR-MOSELLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LES PRES DU LIEGEOT A DIEULOUARD"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BLANCHE COTE, COTE DES VIGNES ET COTE DE CHATILLON A PAGNY-LA-BLANCHE-COTE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DE RAVIN LES CRANTS A NEUFCHATEAU"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "SABLIERES DU BOIS DES HIERES A ROSIERES-AUX-SALINES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DU NEUF-MOULIN A ROYAUMEIX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "MARAIS DE LAY-SAINT-REMY ET PAGNY-SUR-MEUSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSE CALCAIRE DU MONT A TROUSSEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSE A CHOLOY-MENILLOT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PLATEAU D'ECROUVES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES DE LA COTE BARINE A PAGNEY-DERRIERE-BARINE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES LA VIERGE NOIRE A NANCOIS-SUR-ORNAIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DU GRAND ETANG DE GERARDMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTEAUX DE LA RIVIERE A AUTIGNY-LA-TOUR"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE L'ETANG DE LA CUVE A LA BRESSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERES DES GRANDS BASSOTS A GIRMONT-VAL-D'AJOL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE LA DEMOISELLE A SAINT-NABORD"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PLATEAU DE MALZEVILLE ET BUTTE SAINTE-GENEVIEVE A ESSEY-LES-NANCY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE TROYON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES DES EPINOTTES A NAIVES-ROSIERES, DE LA COTE MASSOT A BEHONNE ET DE L'ATRE A RESSON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE L'ESCH D'ANSAUVILLE A JEZAINVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "SOURCES TUFFEUSES DU PETANT  A MONTAUVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VERGERS ET PRAIRIES DE ROUVRES-LA-CHETIVE, CHATENOIS ET VIOCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE LA BESACE A DOMMARTIN-LES-REMIREMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DES MEULES A DOMMARTIN-LES-REMIREMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE MONTPLONNE A MONTPLONNE ET BAZINCOURT-SUR-SAUX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU LE TAINTROUE ET GITE A CHIROPTERES A SAINT-LEONARD"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DOMANIALE DE NOIRE GOUTTE A ROCHESSON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET EN RIVE GAUCHE DE LA VOLOGNE A L'AVAL DE GERARDMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TETE DE HOUE ET BOIS DES MEULES A DOMMARTIN-LES-REMIREMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES VERS LE MILIEU DU MONDE A RAON-AUX-BOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE LA GRANDE GOUTTE A SAINT-MAURICE-SUR-MOSELLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DU PAVON A DOMBASLE-DEVANT-DARNEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE LA FAIGNOTTE A VIOMENIL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VERGERS AUTOUR DE MARTINVELLE ET REGNEVELLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RIVIERE DE LA SAONE DE VIOMENIL A BONVILLET"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANGS DE FRANCOGNEY DES BOIS ET LE PRETRE A CHARMOIS-L'ORGUEILLEUX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "MORTE DE LA MOSELLE VERS \"LA SAUSSAIE VOIRIN\" A PONT-A-MOUSSON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES ET VERGERS DE PONT-SUR-MADON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DOMANIALE DE MONDON ET BOIS ATTENANT A MONCEL-LES-LUNEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LA RENAUDINE ET LA CROIX GAGNEE A NANCY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DU PRE AUX BOIS DE SAINT-GERMAIN A CHAMAGNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTE SAINT-PAUL A WILLERONCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERE DE GRUINE A SAUVIGNY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERE DE PAGNY-SUR-MEUSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE BEAUCHAMP DE BEAULIEU-EN-ARGONNE A CLERMONT-EN-ARGONNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU EN FORET DOMANIALE AU SUD DE CELLES-SUR-PLAINE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES  A CHIROPTERES DU COL DE LA CHAPELOTTE A ANGOMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES A AUTREY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE BACCARAT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES A HAROUE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES A MONT-L'ETROIT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES A VEZELISE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES A VITERNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTE LABIE A TRONDES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES DE JAILLON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DU BULT A URIMENIL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LE XOARUPT A FERDRUPT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LARRIERE AU VAL D'AJOL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LA CROIX AU VAL D'AJOL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DES PRETRES ET RUISSEAUX AU VAL D'AJOL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE CHEVRECUL A PLOMBIERES-LES-BAINS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "AFFLUENTS DE LA RIVIERE DE LA PLAINE EN FORET DOMANIALE DE CELLES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES A TOUL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES A GONDREVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES DE L'YRON A LACHAUSSEE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PETIT ETANG VERS LES LONGUES RAIES A FRANCHEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "STATION A OEIL DE BOEUF A LAMORVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DU FOND DE RENONVAUX A CHAVIGNY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU VERS LES NOIRES COLAS A BIONVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU VERS LES GRANDS PRES A TANCONVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DES BANS A CORCIEUX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE BASSE-SUR-LE-RUPT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "AFFLUENT DE LA MOSELLE A THIEFOSSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DU DROIT DE THIEFOSSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUPT DE BAMONT A SAULXURES-SUR-MOSELOTTE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LE VACCEUX AU THILLOT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE RAMONCHAMP"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU LE DESSUS DU RUPT A RUPT-SUR-MOSELLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DES BREUILLOTS A FONTENOY-LE-CHATEAU"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LE PREVERDOT A BAINS-LES-BAINS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FAING VAIREL A DECYMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANGS DES MAUX CAILLOUX, DE LA TETE DES SARRAZINS ET FENOT A GIRMONT-VAL-D'AJOL ET RUPT-SUR-MOSELLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU LA NICHE A RAON-AUX-BOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VAL DE MOSELLE SECTEUR D'ATTON ET LOISY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU A SAINT-NABORD"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU A RAON-AUX-BOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "AFFLUENT DU SAINT-OGER A DEYVILLERS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE SOBA ET SES AFFLUENTS A EPINAL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DES PRETRES A BELLEFONTAINE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU AFFLUENT DE LA CLEURIE AU THOLY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LA SAYE A VECOUX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CONFLUENCE MOSELLE-MOSELOTTE A REMIREMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DES ROSEAU ET AFFLUENTS A FREMIFONTAINE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BOISEMENTS HUMIDES ET GRAVIERES D'ARNAVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTEAUX ET VERGERS DE ROUVRES-EN-XAINTOIS A RAMECOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VAL DE MOSELLE SECTEUR DE BLENOD-LES-PONT-A-MOUSSON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LA CENSE DES PROJETS A BIFFONTAINE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU LE BUTTANT A BELMONT-SUR-BUTTANT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LE FOUYOT A BROUVELIEURES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "AFFLUENT DE LA MORTAGNE A MORTAGNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RESERVOIR DE BOUZEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU LE ROVION A BOUZEMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERE VERS BERTHELEVAUX A COUSSEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE ROZEROTTE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERE VERS LA COMBE A ATTIGNEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES HUMIDES DE BATTIGNY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DE PARROY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERE DE VILLEY-SAINT-ETIENNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "MASSIF FORESTIER DE MEINE A VANNES-LE-CHATEL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES DE LA MOSELLE ET FORT DE GONDREVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LAC DE PIERRE PERCEE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES VERS LE POTELON A ATTIGNEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE POMPIERRE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE MIDREVAUX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE JUBAINVILLE, BOIS BRULE ET BOIS DE LA ROBE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES D'HAGNEVILLE-ET-RONCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE CHATILLON-SUR-SAONE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE FLABEMONT EN FORET DE DARNEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE BOUXURULLES ET UBEXY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE BAZEGNEY, BOUZEMONT ET MADONNE-ET-LAMEREY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLON SAINT-ARNOULD A DEYVILLERS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLON DU CHALET BOUCHER A MEMENIL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLON DE LA BLETTE A BADONVILLER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE RONVAL A APREMONT-LA-FORET"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLON DE L'AR A GERMINY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLON DU RUISSEAU DES VIEUX PRES A ETIVAL-CLAIREFONTAINE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTEAU DE LA TETE DE CHAVION A VAGNEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLON DU RUISSEAU DE CHARARUPT A PIERRE-PERCEE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LE GRIMAUBOIS A HURBACHE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTEAU DES CHENAGE A LES ROIZES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VAL DE MOSELLE SECTEUR DE CHAMPEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERE VERS CENS-BAN A JAINVILLOTE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES ET BOCAGE DE VILLEY-SAINT-ETIENNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BASSIN DES SALINES A ROSIERES-AUX-SALINES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES HUMIDES DE PRECHAMPS A VARANGEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LE PLAIN A DAMELEVIERES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ILES DU FOULON ET DE L'ENCENSOIR A TOMBLAINE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BOISEMENTS HUMIDES DU GARE LE COU A DOMGERMAIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERE VERS LA VOIE DE LANDAVILLE A ROUVRES-LA-CHETIVE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERE SOUS LE BREUIL A VILLEY-SAINT-ETIENNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE BOSSUPRE A PARROY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DOMANIALE DE L'AVANT-GARDE A POMPEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CHAMP DE TIR A CHAUVONCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSE DU MONT SAINT-JEAN A JEANDELAINCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BOIS DU HAUT ET CLAIRIERE A GENEVRIERS A SEROCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANGS DE CORFAING"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLON DE L'AROT A BICQUELEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLONS DES BOUCLES DE LA MOSELLE DE CHAUDENEY-SUR-MOSELLE A SEXEY-AUX-FORGES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FALAISES DE LA DENT DE LA ROCHE A SEXEY-AUX-FORGES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BOISEMENTS DE LA NOIRE VALLEE EN FORET DOMANIALE DE LISLE-EN-BARROIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE BRIN A BRIN-SUR-SEILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ANASTOMOSE DE LA MOSELLE A IGNEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DOMANIALE DE MORTAGNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ROCHE DES DUCS A SAPOIS ET ROCHESSON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DOMANIALE DU VAL DE SENONES A MOUSSEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VERGERS DE BULLIGNY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES ET SOURCES DES EVAUX A VOMECOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "MARAIS DU HABU A MOYEMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ZONE ALLUVIALE DE LA MEURTHE A MONT-SUR-MEURTHE ET BLAINVILLE-SUR-L'EAU"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE MEREILLE A FERDRUPT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LES BOUVADES DE BAGNEUX A CHAUDENEY-SUR-MOSELLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLON DE FAULX ET PLATEAU DE MALZEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTEAUX DE LA ROANNE A LENONCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAUX LE SICHEREY ET LE ZOUNEAU A PROVENCHERES-LES-DARNEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE BELLE FONTAINE A LIGNEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "SOURCES LES AULNES A THUILLIERES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE BONNEVAL A SAINT-BASLEMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DU BOUXERAT A SENONGES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ZONE DE SOURCE A ESLEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERE VERS LES COLOMBELLES A LANDAVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DE NEUFEYS ET GITE A CHIROPTERES A VOUXEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU LE FLAMBART A LAMARCHE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE BONVILLERS A PADOUX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ZONES HUMIDES ALLUVIALES DE BOSSERVILLE A ART-SUR-MEURTHE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES DE LA VEZOUZE A MANONVILLER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIE HUMIDE SOUS LA COTE LE MARCHAL A COMMERCY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE L'AIRE DE LIGNIERES-SUR-AIRE A PIERREFITE-SUR-AIRE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAUX DES HAUTS-RUPTS ET DES BAS-RUPTS A GERARDMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DU RIEFAING A EPINAL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERE DE DOMPCEVRIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE LA GRANDE BRUNESSEAUX A GEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE CHAUDOTTE ET PRAIRIES DU GRAND PAQUIS A LACHAUSSEE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "MARAIS DE MONCEL-SUR-SEILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COL DU BONHOMME, HAUT FEIGNET ET FORET DES HOSPICES DE NANCY A PLAINFAING"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERE DE MAXEY-SUR-VAISE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE LA MOSELLE A THAON-LES-VOSGES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE BASOILLE A BOUCQ"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE LICHECOURT EN AVAL DU CHATEAU A RELANGES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG CONE-FONTAINE A HENNEZEL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSE DE LA COTE A FAULX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BELLE HUTTE A LA BRESSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DOMANIALE DE GERARDMER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "MONTAGNE DE COUARD AU THILLOT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERES ET ETANGS DE LA TETE NIQUEUSE A RAMONCHAMP"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLON DE LA FONTAINE DES GARDES A BADONVILLER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CAPTAGE DE LA VIGOTTE A GIRMONT-VAL-D'AJOL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE THAON-LES-VOSGES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE TIGNECOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE LA MOSELLE DE CHATEL-SUR-MOSELLE A PORTIEUX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERE DE CHASSEY-BEAUPRE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE HEVILLIERS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE LACHAUSSEE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE MONTIERS-SUR-SAULX ET FORET DE MORLEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE RENINAUX A LACHAUSSEE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DE CHENOT-HAZOTTE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LE PAIN DE SUCRE A DOMMARTIN-SOUS-AMANCE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE LA BASSE SAINT-JEAN A BERTRICHAMPS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSE DE SAINT-JEAN-DE-COTANCE A DOLCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIE HUMIDE D'HABEAUMONT A BOUCONVILLE-SUR-MADT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES A GALIUM BOREALE DU SUD TOULOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE LA VEZOUZE  DE MARAINVILLER A JOLIVET"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE JEMNAUFAING A ROCHESSON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DE CHAMPATRE A GERBAMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES HUMIDES DE TANCONVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES HUMIDES ET FRICHES DE PEXONNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DOMANIALE DE SOUCHE-THAON A THAON-LES-VOSGES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERES DU LAC DE BLANCHEMER A LA BRESSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTEAUX A L'EST DE VICHEREY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU SAINTE-ANNE A SEXEY-AUX-FORGES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GOUTTE DE CHERCHENEUX A ROCHESSON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLONS DANS LES BOIS DE DOMMARTIN ET DU HASOY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLONS BOISES EN VALLEE DE L'ESCH DE LIRONVILLE A JEZAINVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DU HAUT DE L'ALOUETTE A RAMONCHAMP"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LES GOUTTES DU BALLON A FRESSE-SUR-MOSELLE ET SAINT-MAURICE-SUR-MOSELLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES DE PIERRE-LA-TREICHE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES INONDABLES SUR LE RUISSEAU DE SAULX A LEROUVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE VADEVAL A LAVALLEE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BOCAGE DU XARUPT A GLONVILLE ET FONTENOY-LA-JOUTE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES A XIROCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE LA SEILLE DE NOMENY A LOUVIGNY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU VACON ET AFFLUENTS DES SOURCES A LA CONFLUENCE AVEC LA VEZOUZE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAUX DES GRANDS BOIS DE GLONVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DU CHAMP DU LOUP A REMENOVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DU BOIS DE LALEAU A SAINT-PIERREMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DU BOIS COLLIN A EINVAUX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE SAINT-FIACRE PRES DE BLENOD-LES-TOUL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PLATEAU EN FORET DOMANIALE DES FOSSARDS A SAINT-ETIENNE-LES-REMIREMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RIVIERE LA MALDITE A DAINVILLE-BERTHELEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES HUMIDES DE GERMINY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERE DE CLAIR CHENE A URUFFE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE CREPEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE LA MEUSE ENTRE HANS-SUR-MEUSE ET CHAUVONCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES REMARQUABLES DU TOULOIS A BRULEY, LUCEY ET TOUL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTEAUX ET VERGERS AU SUD DE VAUCOULEURS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VAL DE PASSEY A CHOLOY-MENILLOT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "SOURCES TUFFEUSES DE LA CORVEE ROUGE A APREMONT-LA-FORET"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CAMPANULE CERVICAIRE A RAMBUCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DES TREMEURES A BAINS-LES-BAINS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DES RUBIADES A CLEURIE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "TOURBIERE DES RUBIADES A CLEURIE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE NEUFCHATEAU"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "SOURCE ET RUISSEAU DE BERTHELEVAUX A COUSSEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU LE PETIT BANY DE BEAUFREMONT A LANDAVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VERGERS AUTOUR DE DOLAINCOURT ET COURCELLES-SOUS-CHATENOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE SAUVILLE ET AFFLUENTS A SAUVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAUX DU CREUCHOT ET DE FRENES DE VILLOTTE A ROCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BUTTE ENTRE LANDAVILLE ET BEAUFREMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DU BOIS DE BRUNCHARD ET AFFLUENTS DE TIGNECOURT A BLEURVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "HERONNIERE DU BOIS DE LA VOIVRE A DOGNEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE VENTRON AMONT ET AVAL DU RUISSEAU DES VINTERGES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DE FACQ ET JURE A ATTON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE LA COLLINE DE FRESSE ET AFFLUENTS A FRESSE-SUR-MOSELLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LA MADELEINE A SAINT-DIE-DES-VOSGES ET LE BOIS DE LA FAMILLE A TAINTRUX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES A REMIREMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DU PRE GUERIN A MENIL-SUR-BELVITTE ET SAINTE-BARBE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BELVITTE A SAINTE-BARBE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE LA MONCELLE ET AFFLUENTS A SAINTE-BARBE, LACHAPELLE ET DENEUVRE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LES MENNES HIERES A REMOMEIX ET LE MAISY A NEUVILLERS-SUR-FAVE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU EN FORET DOMANIALE DU BAN D'ETIVAL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE FALENZE ET FORET ATTENANTE A FRAIMBOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ANCIENNE CARRIERE DE VAUCOULEURS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSE VERS GRIVEE A VAUDEVILLE-LE-HAUT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES REMARQUABLES A HEUDICOURT-SOUS-LES-COTES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BOIS DES FOURASSES ET PLATEAU DE VILLERS A LAXOU"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERE DE SAINT-GERMAIN-SUR-MEUSE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERE DE VOID-VACON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG VERY A ROYAUMEIX"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES A MANONVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES A ROGEVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE RANCOURT-SUR-ORNAIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE SAMPIGNY ET MENIL-AUX-BOIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITE A CHIROPTERES DE SAINT-BENOIT-EN-WOEVRE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU EN FORET DOMANIALE DE CELLES A CELLES-SUR-PLAINE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAUX DE LA HAUTE SCIOTTE ET DU GRAND GOUTY A ALLARMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LA FAVE, AFFLUANTS ET MILIEUX ANNEXES A LUBINE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DE PARFOND RUPT A VIGNEULLES-LES-HATTONCHATEL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CARRIERES DE XEUILLEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG GRESSON ET MILIEUX ANNEXES A CIREY-SUR-VEZOUZE ET HARBOUEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DE VILLEY-SAINT-ETIENNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "HERONNIERE DU BOIS DE LA ROPPE A VILLEY-SAINT-ETIENNE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES DE GERMINY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG DES COLNOTS ET TOURBIERE DE MOREVOID A UZEMAIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "SOURCE DE L'AVIERE A RENAUVOID"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DU VILLAGE A RENAUVOID"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "HERONNIERE DU BOIS LES LAXES A SOCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE LA RAPPE A BETTEGNEY-SAINT-BRICE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU LE POINCOT A SAINT-VALLIER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DU GRAND BOIS A DOMPAIRE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE BRAUMONT A VALFROICOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU LE POTCUIT A LA NEUVEVILLE-SOUS-MONTFORT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTEAUX ET VERGERS AUTOUR DE DOMJULIEN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAUX ET PRAIRIES DU SOLVIMPRE ET DE L'HERMITAGE A GLONVILLE ET FONTENOY-LA-JOUTE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ZONE PIONNIERE D'ART-SUR-MEURTHE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAUX DE FRANCE ET DE FICHE ET BAS-MARAIS D'ALLENCOMBE A BADONVILLER ET ANGOMONT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU LA BREME DE ANGOMONT A SAINT-MAURICE-AUX-FORGES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RIVIERE LA BLETTE DE BADONVILLER A SAINTE-POLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "L'INGRESSIN DE FOUG A TOUL"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LA PLAINE DE LA SOURCE A LA TROUCHE A RAON-L'ETAPE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "VALLEE DE LA MORTAGNE DE MONT-SUR-MEURTHE A XAFFEVILLERS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE MADINE DE BOUILLONVILLE A NONSARD-LAMARCHE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LE RUPT-DE-MAD DE LAHAYVILLE A ARNAVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRES SALES  DE HARAUCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DE LA FOSSE LEMAIRE A MANDRES-EN-BARROIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DOMANIALE DE JEAN D'HEURS ET GITE A CHIRPTERES DE LISLE-EN-RIGAULT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PETIT RUISSEAU VERS LA TUILERIE A COURCELLES-EN-BARROIS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRAIRIES DE LA MEURTHE A SAINT-MICHEL-SUR-MEURTHE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTEAUX ET VERGERS D'OFFROICOURT ET DE VIVERS-LES-OFFROICOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "GITES A CHIROPTERES DE DARNEY ET MONTHUREUX-SUR-SAONE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "BASSIN VERSANT DU RUISSEAU DE BEAUME-HAIE A PAGNY-SUR-MOSELLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "COTEAUX ET VERGERS A BETTEGNEY, MADEGNEY ET REGNEY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DE LA MORTHE A LA CROIX-AUX-MINES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PRE DE FAUCHE VERS LE BREULEU A FRAIN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DE DARNEY A TIGNECOURT ET PRAIRIES A ISCHES"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "PELOUSES SUR LES COTES A LIRONCOURT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORET DE DARNEY A SAINT-JULIEN"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU LE GRAS EN FORET DE BELLE PERCHE A BLEURVILLE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ZONE HUMIDE DU CONEY ENTRE CHARMOIS-L'ORGUEILLEUX ET XERTIGNY"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "ETANG CURTIL VOIRON A FONTENOY-LE-CHATEAU"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LA CROIX DES CINQ TILLEULS"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "FORT DU COL DES CROIX ET TUNNEL DU HAUT-DU-THEM"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "MINES DE CHATEAU-LAMBERT"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LES PIERRES DE ROUGES ET VALLONS AU NORD DE FOUGEROLLES-LE-CHÂTEAU"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "LE FEING DU GRAVIER"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "RUISSEAU DU BOZON"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "SOMMET DU BALLON D'ALSACE"
+    },
+    {
+      "layer": "zonage_12",
+      "name": "CHAUMES DU BALLON DE SERVANCE ET DU COL DU BEUREY"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Château de Bainville-aux-Miroirs"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "La Pelouse"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Château du Bas et la partie de son parc appartenant à la commune"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Marronnier de Sully, sur le terre-plein en face de l'entrée de l'église."
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Site formé par le château de Fléville, son parc et le vallon Nord"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Parc du château de Gerbéviller et ses perspectives sur la vallée de la Mortagne"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Parc de Montaigu"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Vallée d'Esch (partie classée)"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Camp romain de César ou d'Afrique"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Bois-le-Prêtre"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Ruines de l'ancien château féodal de \"Qui Qu'en Grogne\""
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Bastion de Vaudémont"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Poirier foudroyé de Sotré,  montagne de Sion-Vaudémont (rattaché au site SC54552A)"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Terrains communaux de la montagne de Sion-Vaudémont"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Croix Sainte-Margueritte,  montagne de Sion-Vaudémont (rattachée au site SC54552A)"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Ensemble formé par le château d'Haroué, son parc et la vallée du Madon"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Avenue des tilleuls de Bar-le-Duc"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Esplanade du Château"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Platane d'Orient dans le jardin de la préfecture"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Pont Notre-Dame"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Terre-plein derrière la prison"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Tertre de Guédonval"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Tour de l'Horloge"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Rochers du Saut du Boulanger"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Terrasse de Beaulieu"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Vallon de Saint Rouin"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Avenue des tilleuls de Commercy"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Parc municipal de Ligny-en-Barrois"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Sept Roches dites \"Dames de Meuse\""
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Vieux chêne de la fontaine des Carmes (abattu)"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Orme de Saint-Balzème à Pretz"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Grand tilleul près de la Porte de France"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Plate-forme avec vue sur la vallée de la Woëvre"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Chêne Centenaire au lieu-dit \"la grande poirière\""
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Petit Drumont (sommet du Drumont)"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Rochers des Cuveaux sur la montagne dite tête des Cuveaux"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Site de la vallée de la Vologne sur la commune de Granges"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Cascade du Rudlin"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Gorge \"Le Trou de l'Enfer\", entre la Racine et le Haut-Macon"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Roche des Ducs à environ 2 Km du clocher au Nord-Est"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Roche des Corbeaux ou de la Bure au sommet du massif de la Bure à 4 km au nord de la ville"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Roche des Fées sur une ligne de la crête de la montagne d'Ormont à 4 Km au nord-est de la ville"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Roches Saint Martin au-dessus de la côte Saint-Martin à 2 km au sud-ouest de la ville."
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Cascade \"le Saut du Bouchot\""
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Le Haut du Roc"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Roche Mère Henry, au faite de la montagne dite côte de Senones"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Grande cascade de Tendon"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Petite cascade de Tendon"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Cascade de Faymont"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Site de l'Ermitage du Frère Joseph"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Lac de Longemer et sa vallée"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Site du Rouge Gazon et des Neufs Bois"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Ballon d'Alsace"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Moraine de Noirgueux et ses abords"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "Vallée des Roches (route d'Hérival)"
+    },
+    {
+      "layer": "zonage_13",
+      "name": "L'Abiétinée et la cure d'air Trianon"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "TOURBIERE DE LA MORTE FEMME (DE LA)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "CHAUME CHARLEMAGNE ET FAIGNES FORIE (DE LA, ET DES)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "CHAUME CHARLEMAGNE ET FAIGNES FORIE (DE LA, ET DES)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "LONGEGOUTTE (DE)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "CHARMES (DES)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "TOURBIERES DES HAUTES PINASSES ET DES GRANDES RONCES (DES)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "DEUX LACS (DES)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "RAMBERVILLERS (DE)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "TOURBIERE DU COL DU SURCENEUX (DE LA)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "HOUSSERAMONT - NOIR RUPT (D')"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "BOIS REBUS (DU)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "REIN DE LA GAGNE (DU)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "CHENNEZELLE (DE LA) ROCHIRES (ET DES)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "HAUTS DE BOUSSON (DES)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "BALLOIR (DU)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "CAPITAINE MONTE (DU)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "KERTOFF (DU)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "DAGONNIERE (LA)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "STRAITURE (DE)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "HAUTE-MEURTHE (DE LA)"
+    },
+    {
+      "layer": "zonage_14",
+      "name": "FONDS DE MONVAUX (DES)"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Ensemble formé par la vallée de la Moselle et la partie ouest de la ville"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Quartier Saint-Jacques"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Carrefour des rues de la Source, de la Charité et du Cheval Blanc"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Cours Léopold"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Grande Rue"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Parc de la Pépinière"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Parc de Saurupt"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Parc Olry et ses dépendances"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Parc Sainte-Marie"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Place Carnot"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Place d'Alliance, la rue d'Alliance et la rue Girardet (une partie)"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Place du Colonel Fabien et la rue des Dames"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Place Joseph Malval"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Quartier Saint-Epvre"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Place Duroc"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Château de Saulxures-lès-Nancy et son parc"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Totalité du territoire communal de Vandeléville"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Vallon de la Roanne et chevalements de puits de sel"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Ensemble fortifié de Villey-le-Sec"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Ensemble urbain compris dans la Ville Haute"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Vallée de la Saulx"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Etang de Lachaussée et ses abords"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Promenade des Capucins"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Vallée du Vair"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Ensemble formé par le lac de Lispach et ses abords immédiats"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Ensemble formé par la maison de Jeanne d'Arc, l'église et ses abords"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Ensemble urbain formé par le centre de la ville"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Tourbière du Beillard au lieu-dit \"Feignes de la Morte-Femme\""
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Lac de Gérardmer et parcelles l'environnant"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Ensemble formé par le site urbain"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Maisons dites \"Les grandes et les petites arcades\""
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Chapelle de la Madeleine et ses abords"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Places de l'Eglise, de l'Abbaye et de Mesdames"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Promenade du Calvaire"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Le Saint Mont"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Centre historique de Senones"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Site de la Louvière"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Massif de la Schlucht-Hohneck"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Zone entourant Vittel"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Tourbière au lieu-dit \"Belbriette\" et ses abords"
+    },
+    {
+      "layer": "zonage_15",
+      "name": "Lac de Retournemer et ses abords"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "MASSIF FORESTIER D'ARGONNE"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "MASSIF FORESTIER ET ETANGS DE BELVAL"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "Forêts de montagne des Vosges moyennes du massif du Donon au Schneeberg"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "VALLEE DE LA SAULX DE VITRY-EN-PERTHOIS A SERMAIZE-LES-BAINS"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "PRAIRIES ET BOIS DU BASSIGNY ET DE LA VALLEE DE LA MEUSE ENTRE HARRÉVILLE-LES-CHANTEURS ET MEUVY"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "BOIS, ETANGS ET PRAIRIES DU NORD PERTHOIS"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "FORETS DOMANIALES DE TROIS FONTAINES, DE JEAN D'HEURS, DE LA HAIE RENAULT ET AUTRES BOIS DE MAURUPT A CHANCENAY"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "Hautes Vosges haut-rhinoises"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "BOIS DE SERQUEUX"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "FORET DE MORIMOND ET BOIS VOISINS"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "VALLEE DE LA SEILLE DE LINDRE A MARLY"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "COTEAUX CALCAIRES DE LA MOSELLE EN AVAL DE PONT-A-MOUSSON"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "ZONES HUMIDES ET FORETS DE LA WOEVRE"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "PAYS DE NEUFCHATEAU"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "VALLEE DE LA MOSELLE DE THAON-LES-VOSGES A FLAVIGNY"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "MASSIF VOSGIEN"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "VOSGES MOYENNES"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "FORETS DE RAMBERVILLERS, DE CHARMES ET DE FRAIZE"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "VALLEE DE LA MOSELLE DE LA SOURCE A EPINAL"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "FORETS DES KOEURS, DE HAUTE CHARRIERE, DE SAMPIGNY ET BOIS ASSOCIES A KOEUR-LA-PETITE"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "CARRIERES DU PERTHOIS"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "VOGE ET BASSIGNY"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "PLATEAU DE HAYE ET BOIS L'EVEQUE"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "FORET DE LISLE-EN-BARROIS"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "VALLEE DE L'ESCH ET BOISEMENTS ASSOCIES"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "VALLEE DE LA MEURTHE DE LA SOURCE A NANCY"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "FORET DE PARROY"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "COTEAUX DE BAR-LE-DUC A LIGNY-EN-BARBOIS"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "VERGERS DE MIRECOURT"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "FORETS D'EPINAL ET DE TANNIERES"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "COTEAUX CALCAIRES DU RUPT DE MAD AU PAYS MESSIN"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "FORETS DOMANIALES DE VAUCOULEURS, DE MONTIGNY, DU VAU, DES BATIS ET DE MAUPAS"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "VALLEE DE LA MEUSE"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "COTES DU TOULOIS"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "COTEAUX ET VALLEE DU TERROUIN"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "BOIS DU GRAND RONCEY, DU PLANOT ET DE GIRAULTFAIHY"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "BALLONS D'ALSACE ET DE SERVANCE"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "VALLEE DE LA SAONE"
+    },
+    {
+      "layer": "zonage_16",
+      "name": "PLATEAU DES MILLE ETANGS"
+    },
+    {
+      "layer": "zonage_17",
+      "name": "MASSIF DES VOSGES: HAUTES VOSGES"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "La mortagne et le moussou de mortagne a saint-helene"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Ruisseau de la morthe a la croix-aux-mines"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Ruisseau en foret domaniale au sud de celles-sur-plaine"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Gites  a chiropteres du col de la chapelotte a angomont"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Foret de bousson"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Affluents de la riviere de la plaine en foret domaniale de celles"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Prairies de la meurthe a saint-michel-sur-meurthe"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Vallon du ruisseau des vieux pres a etival-clairefontaine"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Lac de la maix a vexaincourt"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Vallon du ruisseau de chararupt a pierre-percee"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Forets de haute-meurthe, de vologne, d'anould, de gerardmer"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Le grimaubois a hurbache"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Foret domaniale de haute-meurthe a clefcy"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Forets des hospices de nancy a plainfaing et au valtin"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Tourbiere dite de praye a moussey"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Vall?es de la bruche et affluents, et prairies et zones humides associ?es, en amont de schirmeck"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "La petite meurthe de la source a clefcy"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Foret communale de taintrux"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Tourbiere du faing du poteu a ban-sur-meurthe"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Foret domaniale de mortagne"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Ruisseau de la basse de malfosse a senones et moyenmoutier"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Foret domaniale du val de senones a moussey"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "La plaine de la source a la trouche a raon-l'etape"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Tourbiere du pincheste et etang d'oron a barbey-seroux"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Tourbieres du col de serceneux  a ban-sur-meurthe"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Vallee de la meurthe sauvage de bertrichamps a moncel-les-luneville"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "La cense des projets a biffontaine"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Affluent de la mortagne a mortagne"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "La madeleine a saint-die-des-vosges et le bois de la famille a taintrux"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Ruisseau et tourbieres de belbriette a xonrupt-longemer"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Ruisseau le taintroue et gite a chiropteres a saint-leonard"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Les mennes hieres a remomeix et le maisy a neuvillers-sur-fave"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Ruisseau en foret domaniale du ban d'etival"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Ruisseau en foret domaniale de celles a celles-sur-plaine"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Ruisseaux de la haute sciotte et du grand gouty a allarmont"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Tourbieres du gazon du faing, du tanet, et a l'ouest du haut fourneau au valtin"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Lac de pierre percee"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "La fave, affluants et milieux annexes a lubine"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Col du bonhomme, haut feignet et foret des hospices de nancy a plainfaing"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Cr?te du louschbach au bonhomme"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Ruisseau vers les noires colas a bionville"
+    },
+    {
+      "layer": "zonage_18",
+      "name": "Ruisseau des bans a corcieux"
+    },
+    {
+      "layer": "zonage_19",
+      "name": "Hautes-Vosges, Haut-Rhin"
+    },
+    {
+      "layer": "zonage_19",
+      "name": "Massif vosgien"
+    },
+    {
+      "layer": "zonage_19",
+      "name": "Cr�tes du Donon-Schneeberg, Bas-Rhin"
+    },
+    {
+      "layer": "zonage_21",
+      "name": "Vallee de la meurthe de la source a nancy"
+    },
+    {
+      "layer": "zonage_21",
+      "name": "Massif vosgien"
+    },
+    {
+      "layer": "zonage_21",
+      "name": "Vosges moyennes"
+    }
+  ],
+  "layers": [
+    {
+      "id": "zonage_01",
+      "label": "Zones humides remarquables",
+      "group": "Inventaires",
+      "source": "SL_Zones_Humides_Remarquables_ZHR__decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_02",
+      "label": "ENS géologiques",
+      "group": "Espaces naturels sensibles",
+      "source": "SL_ENS_geologiques_ZE_V2_decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_03",
+      "label": "Aires de protection de biotope",
+      "group": "Protections réglementaires",
+      "source": "SL_Aire_de_Protection_de_Biotope_decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_04",
+      "label": "Natura 2000 — ZSC",
+      "group": "Natura 2000",
+      "source": "SL__Zone_Speciale_de_Conservation_ZSC__decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_05",
+      "label": "Espaces naturels sensibles",
+      "group": "Espaces naturels sensibles",
+      "source": "SL_Espace_Naturel_Sensible_ENS__decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_06",
+      "label": "ENS superposés",
+      "group": "Espaces naturels sensibles",
+      "source": "SL_ENS_superpose_ZE_V2_decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_08",
+      "label": "Natura 2000 — SIC (fichier fourni)",
+      "group": "Natura 2000",
+      "source": "SL_Natura2000_SIC_decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_09",
+      "label": "Parcs naturels régionaux",
+      "group": "Parcs et paysages",
+      "source": "SL_Parc_Narurel_Regional_PNR__decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_10",
+      "label": "Réserves naturelles régionales",
+      "group": "Protections réglementaires",
+      "source": "SL_RNR_Reserves_naturelles_Lorraine_decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_11",
+      "label": "Paysages remarquables",
+      "group": "Parcs et paysages",
+      "source": "SL_Paysage_Remarquable_de_Lorraine_decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_12",
+      "label": "ZNIEFF de type 1",
+      "group": "Inventaires",
+      "source": "SL_znieff1_decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_13",
+      "label": "Sites classés",
+      "group": "Protections réglementaires",
+      "source": "SL_Sites_classes_decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_14",
+      "label": "Réserves biologiques",
+      "group": "Protections réglementaires",
+      "source": "SL_Reserves_biologiques_decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_15",
+      "label": "Sites inscrits",
+      "group": "Parcs et paysages",
+      "source": "SL_Sites_inscrits_decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_16",
+      "label": "ZNIEFF de type 2",
+      "group": "Inventaires",
+      "source": "SL_znieff2_decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_17",
+      "label": "Zones importantes pour les oiseaux (ZICO)",
+      "group": "Inventaires",
+      "source": "SL_Zone_Importante_pour_la_Conservation_des_Oiseaux_ZICO__decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_18",
+      "label": "ZNIEFF de type 1 — variante ZE V2",
+      "group": "Inventaires",
+      "source": "SL_ZNIEFF_1_ZE_V2_decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_19",
+      "label": "Natura 2000 — ZPS",
+      "group": "Natura 2000",
+      "source": "SL_Zone_de_Protection_Speciale_ZPS__decoupe_4326.geojson"
+    },
+    {
+      "id": "zonage_21",
+      "label": "ZNIEFF de type 2 — variante ZE",
+      "group": "Inventaires",
+      "source": "SL_ZNIEFF_2_ZE_decoupe_4326.geojson"
+    }
+  ],
+  "method": "Règle de consommation fournie ; intersection au Sud-Lorraine et aux zonages fournis ; composantes surfaciques ; aucune simplification. Attributs utiles conservés ; chemins locaux et attributs 2019 exclus. Millésime des zonages non établi."
+}
